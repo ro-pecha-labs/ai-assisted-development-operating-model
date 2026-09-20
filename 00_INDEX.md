@@ -1,14 +1,13 @@
-# Operating Model 2.0 Candidate Index
+# Operating Model 2.0 Release Index
 
-**Status:** NON-CANONICAL CANDIDATE — FROZEN / QUALIFIED PASS  
-**Version:** `2.0.0-rc2`  
-**Candidate:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`  
-**Exact commit:** `c5eee28bd8c8765824ac7f699be828018b92f5fb`  
-**Predecessor:** `OM2-2.0.0-RC1` — FAILED_QUALIFICATION / PRODUCT
+**Release:** `2.0.0`  
+**Status:** ACCEPTED RELEASE — PENDING EXPLICIT CANONICAL ADOPTION  
+**Qualified predecessor:** `OM2-2.0.0-RC2` — FROZEN / QUALIFIED PASS  
+**Failed predecessor:** `OM2-2.0.0-RC1` — FAILED_QUALIFICATION / PRODUCT
 
-Current canonical governance remains Operating Model v1.6.
+Current canonical governance remains Operating Model v1.6 until the explicit authority switch is completed.
 
-## Candidate entrypoints
+## Release entrypoints
 
 - Machine manifest: `OM.yaml`
 - Universal kernel: `CORE.md`
@@ -22,9 +21,8 @@ Current canonical governance remains Operating Model v1.6.
 - RC1 root cause: `RC1_ROOT_CAUSE.md`
 - Cross-profile qualification: `CROSS_PROFILE_QUALIFICATION.md`
 - DEV evidence parity qualification: `DEV_PARITY_QUALIFICATION.md`
-- RC2 readiness: `CANDIDATE_READINESS_RC2.md`
 - RC2 qualification: `RC2_QUALIFICATION.md`
+- Release acceptance: `ACCEPTANCE_2.0.0.md`
+- Adoption readiness: `ADOPTION_READINESS_2.0.0.md`
 
-RC2 is eligible for explicit prospective canonical adoption review.
-
-Until that adoption is completed, canonical OM remains v1.6.
+The release becomes canonical only through explicit prospective adoption in the authoritative cross-project governance index.
