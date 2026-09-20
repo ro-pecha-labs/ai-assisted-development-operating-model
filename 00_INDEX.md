@@ -1,7 +1,7 @@
 # Operating Model 2.0 Development Index
 
 **Status:** NON-CANONICAL DEVELOPMENT  
-**Version:** `2.0.0-dev.2`
+**Version:** `2.0.0-dev.3`
 
 Current canonical governance remains Operating Model v1.6 as resolved by the existing canonical Operating Model index.
 
@@ -13,5 +13,6 @@ Current canonical governance remains Operating Model v1.6 as resolved by the exi
 - Schemas: `schemas/`
 - DEV templates: `templates/DEV/`
 - Structural validator: `tools/validate.py`
+- Qualification records: `M0_ACCEPTANCE.md` through `M3_ACCEPTANCE.md`
 
 This development repository must not be interpreted as a canonical authority change.
