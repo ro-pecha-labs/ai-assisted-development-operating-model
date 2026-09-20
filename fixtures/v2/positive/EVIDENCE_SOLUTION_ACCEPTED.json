@@ -1,0 +1,15 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "SOL-ACCEPT-3",
+  "kind": "solution_acceptance",
+  "subject": {
+    "identity": "SOLUTION-v3",
+    "locator": "https://example.sharepoint.com/sites/architecture/solution-v3",
+    "revision": {
+      "kind": "version",
+      "value": "3"
+    }
+  },
+  "outcome": "ACCEPTED",
+  "summary": "Example accepted solution baseline without Git subject semantics."
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "EXP-42-CONCLUSION",
+  "kind": "experiment_conclusion",
+  "subject": {
+    "identity": "EXP-42",
+    "revision": {
+      "kind": "version",
+      "value": "run-3"
+    }
+  },
+  "outcome": "PASS",
+  "summary": "Example bounded experiment conclusion without Git subject semantics."
+}

@@ -1,0 +1,18 @@
+schema: om.active-state/v2
+objective:
+  id: EXP-42
+  summary: Determine whether the bounded approach satisfies the experiment success signal.
+trusted_baseline:
+  identity: EXP-PLAN-v1
+  revision:
+    kind: version
+    value: "1"
+active_work:
+  - kind: hypothesis
+    locator: experiment://exp-42/hypothesis
+  - kind: run
+    locator: experiment://exp-42/run-3
+phase: execution
+blockers: []
+next_actions:
+  - Evaluate run 3 against the predefined success signal.

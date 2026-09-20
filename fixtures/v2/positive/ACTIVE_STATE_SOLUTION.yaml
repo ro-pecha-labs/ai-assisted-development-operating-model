@@ -1,0 +1,18 @@
+schema: om.active-state/v2
+objective:
+  id: SOL-DECISION-7
+  summary: Resolve the current architecture decision and review boundary.
+trusted_baseline:
+  identity: SOLUTION-v3
+  revision:
+    kind: version
+    value: "3"
+active_work:
+  - kind: decision
+    locator: https://example.sharepoint.com/sites/architecture/decision-7
+  - kind: review
+    locator: https://example.sharepoint.com/sites/architecture/review-7
+phase: review
+blockers: []
+next_actions:
+  - Resolve the remaining architecture trade-off.
