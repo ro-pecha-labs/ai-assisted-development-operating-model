@@ -1,23 +1,24 @@
 # Operating Model 2.0 Development Index
 
-**Status:** NON-CANONICAL DEVELOPMENT — READY_TO_FREEZE  
-**Version:** `2.0.0-dev.5`  
-**Target formal candidate:** `OM2-2.0.0-RC1` / `om-v2.0.0-rc1`
+**Status:** NON-CANONICAL DEVELOPMENT  
+**Version:** `2.0.0-dev.6`  
+**Latest frozen candidate:** `OM2-2.0.0-RC1` — FAILED_QUALIFICATION / PRODUCT
 
-Current canonical governance remains Operating Model v1.6 as resolved by the existing canonical Operating Model index.
+Current canonical governance remains Operating Model v1.6.
 
-## Development entrypoints
+## Current development entrypoints
 
 - Machine manifest: `OM.yaml`
 - Universal kernel: `CORE.md`
 - Profiles: `profiles/`
 - Triggered playbooks: `playbooks/`
-- Schemas: `schemas/`
+- Current universal schemas: PROJECT v2, ACTIVE_STATE v2, EXTERNAL_SOURCES v1, EVIDENCE_RECORD v2
+- Legacy RC1 schemas remain present for historical interpretation
 - DEV templates: `templates/DEV/`
 - Structural and manifest validator: `tools/validate.py`
-- Qualification records: `M0_ACCEPTANCE.md` through `M3_ACCEPTANCE.md`
-- Formal candidate readiness: `CANDIDATE_READINESS.md`
+- RC1 qualification: `RC1_QUALIFICATION.md`
+- RC1 root cause: `RC1_ROOT_CAUSE.md`
 
-Normal work loads only CORE + the active profile + triggered playbooks, not the entire repository.
+Normal work loads only CORE + active profile + triggered playbooks.
 
 This development repository must not be interpreted as a canonical authority change.

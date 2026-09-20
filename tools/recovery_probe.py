@@ -3,38 +3,32 @@ import argparse, json, sys
 import yaml
 
 def recover(root: Path):
-    project_path = root / "PROJECT.yaml"
-    state_path = root / "ACTIVE_STATE.yaml"
+    project = yaml.safe_load((root / "PROJECT.yaml").read_text(encoding="utf-8"))
+    state = yaml.safe_load((root / "ACTIVE_STATE.yaml").read_text(encoding="utf-8"))
 
-    project = yaml.safe_load(project_path.read_text(encoding="utf-8"))
-    state = yaml.safe_load(state_path.read_text(encoding="utf-8"))
+    if project["schema"] != "om.project/v2":
+        raise ValueError("Expected om.project/v2")
+    if state["schema"] != "om.active-state/v2":
+        raise ValueError("Expected om.active-state/v2")
 
-    if project["project"]["profile"] != "DEV":
-        raise ValueError("Recovery fixture must use DEV profile.")
-    if project["state"]["active"] != ".project/ACTIVE_STATE.yaml":
-        raise ValueError("Unexpected active-state contract.")
-
-    active = state["active_work"]
     live = []
-    if "issue" in active:
-        live.append(f"issue:{active['issue']}")
-    if "branch" in active:
-        live.append(f"branch:{active['branch']}")
-    if "pull_request" in active:
-        live.append(f"pull_request:{active['pull_request']}")
+    active_branch = None
+    for pointer in state["active_work"]:
+        live.append(f"{pointer['kind']}:{pointer['locator']}")
+        if pointer["kind"] == "branch":
+            active_branch = pointer["locator"]
 
-    result = {
+    return {
         "bootstrap_files_read": 2,
         "project_id": project["project"]["id"],
         "profile": project["project"]["profile"],
         "objective_id": state["objective"]["id"],
-        "trusted_baseline_ref": state["trusted_baseline"]["ref"],
-        "active_branch": active.get("branch"),
+        "trusted_baseline_identity": state["trusted_baseline"]["identity"],
+        "active_branch": active_branch,
         "live_queries_required": live,
         "legacy_handoff_required": False,
         "historical_reconstruction_required": False,
     }
-    return result
 
 def main():
     parser = argparse.ArgumentParser()

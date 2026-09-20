@@ -1,26 +1,22 @@
 # AI-Assisted Development Operating Model 2.0
 
 **Status:** NON-CANONICAL DEVELOPMENT  
-**Development line:** `2.0.0-dev.5`  
-**Frozen candidate:** `OM2-2.0.0-RC1` — **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**  
-**Candidate tag:** `om-v2.0.0-rc1`
+**Development line:** `2.0.0-dev.6`  
+**Latest frozen candidate:** `OM2-2.0.0-RC1` — **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**
 
-This repository is the development surface for Operating Model 2.0. It does **not** supersede canonical Operating Model v1.6.
+RC1 remains immutable failed evidence. Canonical Operating Model remains v1.6.
 
-## Qualification status
+## Current development objective
 
-- OM2-M0 — DEV Kernel Bootstrap: PASS.
-- OM2-M1 — GitHub Control Plane: PASS.
-- OM2-M2 — Recovery Qualification: PASS.
-- OM2-M3 — SPC Shadow Recovery Pilot: PASS.
-- RC1 freeze integrity: PASS.
-- RC1 tag-bound structural validation: PASS.
-- RC1 cross-profile semantic qualification: **FAIL / PRODUCT**.
+Correct the RC1 cross-profile contract defect without patching RC1 in place.
 
-RC1 remains immutable failed evidence. It must not be patched in place.
+The successor development line introduces universal v2 machine contracts:
 
-The blocking defect is that the frozen universal `PROJECT.schema.json` requires Git repository semantics and `.project/ACTIVE_STATE.yaml` for every profile, while SOLUTION, DOCUMENT, EXPERIMENT and LIGHT allow non-Git authoritative control planes.
+- PROJECT v2 supports Git or external authoritative control planes;
+- ACTIVE_STATE v2 uses profile-neutral baseline and active-work pointers;
+- EVIDENCE_RECORD v2 uses profile-neutral subject identity and typed revision;
+- DEV Git requirements remain in the DEV profile/template rather than universal schemas.
 
-Development must produce a successor universal bootstrap contract before any new candidate freeze.
+Historical v1 schemas remain present and RC1 is not reinterpreted.
 
-Canonical OM remains v1.6 and SPC remains governed by v1.6.
+A new formal candidate may be considered only after hosted validation and cross-profile qualification of the successor contracts.

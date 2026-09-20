@@ -1,26 +1,31 @@
-schema: om.active-state/v1
+schema: om.active-state/v2
 
 objective:
-  id: QREC-01
-  summary: Recover the current trusted development objective from the minimal OM2 bootstrap.
+  id: QREC-02
+  summary: Recover current work from the universal v2 bootstrap.
 
 trusted_baseline:
-  ref: baseline/qrec-accepted
-  commit: 0123456789abcdef0123456789abcdef01234567
+  identity: baseline/qrec-accepted
+  revision:
+    kind: git_commit
+    value: 0123456789abcdef0123456789abcdef01234567
 
 active_work:
-  issue: 42
-  branch: feature/recovery-target
-  pull_request: 43
+  - kind: issue
+    locator: https://github.com/example/repo/issues/42
+  - kind: branch
+    locator: feature/recovery-target
+  - kind: pull_request
+    locator: https://github.com/example/repo/pull/43
 
 phase: development
 
 blockers: []
 
 next_actions:
-  - Inspect the referenced live branch, issue, pull request, and required checks.
-  - Continue the bounded development objective if live state is consistent.
+  - Inspect the referenced live work pointers and required checks.
+  - Continue the bounded objective if live state is consistent.
 
 conditional_reads:
   - when: architecture_question
-    ref: docs/architecture/
+    locator: docs/architecture/

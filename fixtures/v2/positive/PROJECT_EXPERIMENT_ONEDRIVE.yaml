@@ -1,0 +1,13 @@
+schema: om.project/v2
+project: {id: EXPERIMENTEXAMPLE, name: Experiment Example, profile: EXPERIMENT}
+control_plane:
+  kind: external
+  platform: onedrive
+  locator: https://example-my.sharepoint.com/personal/example
+governance:
+  operating_model:
+    repository: https://github.com/example/ai-assisted-development-operating-model
+    ref: om-v2.0.0-rc2
+    commit: 0123456789abcdef0123456789abcdef01234567
+state:
+  active: {locator: experiment-state.yaml, format: yaml}

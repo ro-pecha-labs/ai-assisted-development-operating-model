@@ -1,0 +1,15 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "DOC-APPROVAL-4",
+  "kind": "document_approval",
+  "subject": {
+    "identity": "POLICY-4",
+    "locator": "https://docs.google.com/document/d/policy",
+    "revision": {
+      "kind": "document_revision",
+      "value": "revision-4"
+    }
+  },
+  "outcome": "ACCEPTED",
+  "summary": "Example accepted document revision."
+}

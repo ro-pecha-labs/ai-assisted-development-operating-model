@@ -1,0 +1,11 @@
+schema: om.active-state/v2
+objective: {id: BAD, summary: Invalid duplicated history.}
+trusted_baseline: {identity: BASE}
+active_work:
+  - kind: document
+    locator: current
+blockers: []
+next_actions:
+  - Continue.
+history:
+  - old-state
