@@ -1,0 +1,20 @@
+schema: om.github-capability-profile/v1
+
+tiers:
+  GH_FULL:
+    description: Required controls are enforceable by platform-native mechanisms.
+    requirements:
+      protected_default_branch: required
+      required_ci: required
+      protected_candidate_identity: required
+      durable_release_identity: required
+      connected_mutation_environment: required_when_applicable
+
+  GH_CONDITIONAL:
+    description: One or more platform controls are unavailable; bounded compensating controls are required.
+    restrictions:
+      production_connected_mutation: blocked_by_default
+      destructive_connected_mutation: blocked_by_default
+
+  GH_BLOCKED:
+    description: Required integrity or authorization controls cannot be enforced or acceptably compensated.

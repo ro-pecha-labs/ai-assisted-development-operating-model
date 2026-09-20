@@ -1,0 +1,17 @@
+schema: om.manifest/v1
+
+operating_model:
+  version: 2.0.0-dev.2
+  status: non_canonical_development
+
+entrypoints:
+  core: CORE.md
+
+profiles:
+  DEV: profiles/DEV.md
+
+schemas:
+  project: schemas/PROJECT.schema.json
+  active_state: schemas/ACTIVE_STATE.schema.json
+  external_sources: schemas/EXTERNAL_SOURCES.schema.json
+  evidence_record: schemas/EVIDENCE_RECORD.schema.json

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/om/2.0/schemas/EXTERNAL_SOURCES.schema.json",
+  "title": "OM 2.0 External Source Authority Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "sources"
+  ],
+  "properties": {
+    "schema": {
+      "const": "om.external-sources/v1"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "system",
+          "locator",
+          "authority",
+          "purpose",
+          "pin"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{1,63}$"
+          },
+          "system": {
+            "enum": [
+              "google_drive",
+              "sharepoint",
+              "onedrive",
+              "dataverse",
+              "web",
+              "other"
+            ]
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "authority": {
+            "enum": [
+              "authoritative_source",
+              "reference_source",
+              "runtime_source"
+            ]
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "pin": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode"
+                ],
+                "properties": {
+                  "mode": {
+                    "const": "floating"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode",
+                  "value"
+                ],
+                "properties": {
+                  "mode": {
+                    "const": "revision"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode",
+                  "algorithm",
+                  "value"
+                ],
+                "properties": {
+                  "mode": {
+                    "const": "digest"
+                  },
+                  "algorithm": {
+                    "enum": [
+                      "sha256",
+                      "sha512"
+                    ]
+                  },
+                  "value": {
+                    "type": "string",
+                    "pattern": "^[0-9a-fA-F]{64,128}$"
+                  }
+                }
+              }
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 500
+          }
+        }
+      }
+    }
+  }
+}

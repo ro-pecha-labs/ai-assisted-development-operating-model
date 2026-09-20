@@ -1,0 +1,20 @@
+schema: om.project/v1
+
+project:
+  id: EXAMPLE
+  name: Example DEV Project
+  profile: DEV
+
+repository:
+  platform: github
+  canonical: https://github.com/example/example
+  default_branch: main
+
+governance:
+  operating_model:
+    repository: https://github.com/example/ai-assisted-development-operating-model
+    ref: om-v2.0.0-dev.1
+    commit: 0123456789abcdef0123456789abcdef01234567
+
+state:
+  active: .project/ACTIVE_STATE.yaml

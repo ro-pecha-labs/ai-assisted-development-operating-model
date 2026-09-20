@@ -1,0 +1,24 @@
+schema: om.active-state/v1
+
+objective:
+  id: M0
+  summary: Demonstrate prohibited duplicated platform state.
+
+trusted_baseline:
+  ref: baseline/example
+  commit: 0123456789abcdef0123456789abcdef01234567
+
+active_work:
+  branch: feature/example
+
+blockers: []
+
+next_actions:
+  - Continue.
+
+candidate_history:
+  - C1
+  - C2
+
+ci_status:
+  result: PASS

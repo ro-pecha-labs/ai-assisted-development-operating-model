@@ -1,0 +1,10 @@
+{
+  "schema": "om.evidence/v1",
+  "id": "EXAMPLE-FAIL-1",
+  "kind": "significant_failure",
+  "subject": {
+    "ref": "candidate/M0/C1",
+    "commit": "0123456789abcdef0123456789abcdef01234567"
+  },
+  "outcome": "FAIL"
+}
