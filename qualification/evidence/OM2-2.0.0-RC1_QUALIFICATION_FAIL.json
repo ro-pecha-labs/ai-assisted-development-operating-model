@@ -1,0 +1,17 @@
+{
+  "schema": "om.evidence/v1",
+  "id": "OM2-2.0.0-RC1-QUALIFICATION",
+  "kind": "candidate_qualification",
+  "subject": {
+    "ref": "om-v2.0.0-rc1",
+    "commit": "fbb591711ca124ba7dc16914ab4e7a9d176aae4d"
+  },
+  "outcome": "FAIL",
+  "classification": "PRODUCT",
+  "execution": {
+    "provider": "github",
+    "run_id": "35525071180",
+    "run_url": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/actions/runs/35525071180"
+  },
+  "summary": "Tag-bound structural validation passed, but cross-profile semantic qualification failed: the universal PROJECT schema requires a Git repository platform and .project/ACTIVE_STATE.yaml for every profile, while non-DEV profiles allow non-Git authoritative control planes. RC1 is therefore not acceptable as the universal canonical OM."
+}

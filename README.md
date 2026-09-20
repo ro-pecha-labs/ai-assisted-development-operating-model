@@ -1,10 +1,11 @@
 # AI-Assisted Development Operating Model 2.0
 
-**Status:** NON-CANONICAL DEVELOPMENT — READY TO FREEZE FORMAL CANDIDATE  
+**Status:** NON-CANONICAL DEVELOPMENT  
 **Development line:** `2.0.0-dev.5`  
-**Target candidate:** `OM2-2.0.0-RC1` / tag `om-v2.0.0-rc1`
+**Frozen candidate:** `OM2-2.0.0-RC1` — **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**  
+**Candidate tag:** `om-v2.0.0-rc1`
 
-This repository is the development surface for Operating Model 2.0. It does **not** supersede the current canonical Operating Model v1.6 until an explicit prospective adoption decision is made.
+This repository is the development surface for Operating Model 2.0. It does **not** supersede canonical Operating Model v1.6.
 
 ## Qualification status
 
@@ -12,14 +13,14 @@ This repository is the development surface for Operating Model 2.0. It does **no
 - OM2-M1 — GitHub Control Plane: PASS.
 - OM2-M2 — Recovery Qualification: PASS.
 - OM2-M3 — SPC Shadow Recovery Pilot: PASS.
-- Formal candidate readiness: READY_TO_FREEZE, pending immutable tag creation after exact post-merge CI.
+- RC1 freeze integrity: PASS.
+- RC1 tag-bound structural validation: PASS.
+- RC1 cross-profile semantic qualification: **FAIL / PRODUCT**.
 
-The qualified normal DEV recovery path is:
+RC1 remains immutable failed evidence. It must not be patched in place.
 
-`repository discovery → PROJECT.yaml → ACTIVE_STATE.yaml → live platform state → adopted CORE + profile → triggered playbooks only`.
+The blocking defect is that the frozen universal `PROJECT.schema.json` requires Git repository semantics and `.project/ACTIVE_STATE.yaml` for every profile, while SOLUTION, DOCUMENT, EXPERIMENT and LIGHT allow non-Git authoritative control planes.
 
-All five declared profiles, all eight triggered playbooks and all four machine contracts are represented in the development manifest. CI validates positive/negative schema fixtures, manifest path completeness, profile consistency and repository version coherence.
+Development must produce a successor universal bootstrap contract before any new candidate freeze.
 
-SPC remains governed by OM v1.6. The shadow pilot branch is non-authoritative and has not been merged into SPC product branches.
-
-Creating the formal candidate does not make OM2 canonical and does not authorize project adoption.
+Canonical OM remains v1.6 and SPC remains governed by v1.6.
