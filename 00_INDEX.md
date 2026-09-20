@@ -1,13 +1,14 @@
 # Operating Model 2.0 Candidate Index
 
-**Status:** NON-CANONICAL CANDIDATE — READY_TO_FREEZE  
+**Status:** NON-CANONICAL CANDIDATE — FROZEN / QUALIFIED PASS  
 **Version:** `2.0.0-rc2`  
-**Target candidate:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`  
+**Candidate:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`  
+**Exact commit:** `c5eee28bd8c8765824ac7f699be828018b92f5fb`  
 **Predecessor:** `OM2-2.0.0-RC1` — FAILED_QUALIFICATION / PRODUCT
 
 Current canonical governance remains Operating Model v1.6.
 
-## Current candidate entrypoints
+## Candidate entrypoints
 
 - Machine manifest: `OM.yaml`
 - Universal kernel: `CORE.md`
@@ -22,7 +23,8 @@ Current canonical governance remains Operating Model v1.6.
 - Cross-profile qualification: `CROSS_PROFILE_QUALIFICATION.md`
 - DEV evidence parity qualification: `DEV_PARITY_QUALIFICATION.md`
 - RC2 readiness: `CANDIDATE_READINESS_RC2.md`
+- RC2 qualification: `RC2_QUALIFICATION.md`
 
-Normal work loads only CORE + active profile + triggered playbooks.
+RC2 is eligible for explicit prospective canonical adoption review.
 
-This candidate repository state must not be interpreted as a canonical authority change.
+Until that adoption is completed, canonical OM remains v1.6.
