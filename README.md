@@ -1,6 +1,7 @@
 # AI-Assisted Development Operating Model 2.0
 
 **Status:** NON-CANONICAL DEVELOPMENT  
+**Development line:** `2.0.0-dev.5`  
 **Frozen candidate:** `OM2-2.0.0-RC1` — **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**  
 **Candidate tag:** `om-v2.0.0-rc1`
 
