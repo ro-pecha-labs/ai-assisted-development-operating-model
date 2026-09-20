@@ -1,7 +1,7 @@
 # Operating Model 2.0 Development Index
 
 **Status:** NON-CANONICAL DEVELOPMENT  
-**Version:** `2.0.0-dev.6`  
+**Version:** `2.0.0-dev.7`  
 **Latest frozen candidate:** `OM2-2.0.0-RC1` — FAILED_QUALIFICATION / PRODUCT
 
 Current canonical governance remains Operating Model v1.6.
@@ -18,6 +18,8 @@ Current canonical governance remains Operating Model v1.6.
 - Structural and manifest validator: `tools/validate.py`
 - RC1 qualification: `RC1_QUALIFICATION.md`
 - RC1 root cause: `RC1_ROOT_CAUSE.md`
+- Cross-profile qualification: `CROSS_PROFILE_QUALIFICATION.md`
+- DEV evidence parity qualification: `DEV_PARITY_QUALIFICATION.md`
 
 Normal work loads only CORE + active profile + triggered playbooks.
 

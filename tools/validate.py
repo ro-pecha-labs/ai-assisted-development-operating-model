@@ -31,6 +31,7 @@ CASES = [
     ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/positive/EVIDENCE_DOCUMENT_ACCEPTED.json", True),
     ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/positive/EVIDENCE_SOLUTION_ACCEPTED.json", True),
     ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/positive/EVIDENCE_EXPERIMENT_CONCLUSION.json", True),
+    ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/positive/EVIDENCE_MUTATION_EXECUTION.json", True),
     ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/negative/EVIDENCE_FAIL_UNCLASSIFIED.json", False),
     ("schemas/EVIDENCE_RECORD.schema.json", "qualification/evidence/OM2-2.0.0-RC1_FREEZE.json", True),
     ("schemas/EVIDENCE_RECORD.schema.json", "qualification/evidence/OM2-2.0.0-RC1_QUALIFICATION_FAIL.json", True),
