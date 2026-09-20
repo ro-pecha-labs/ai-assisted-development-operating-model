@@ -11,10 +11,10 @@ This repository is the development surface for Operating Model 2.0. It does **no
 - OM2-M0 — DEV Kernel Bootstrap: PASS.
 - OM2-M1 — GitHub Control Plane: PASS.
 - OM2-M2 — Recovery Qualification: PASS.
-- OM2-M3 — SPC Shadow Pilot: not started.
+- OM2-M3 — SPC Shadow Pilot: PREPARATION BLOCKED pending authoritative SPC state reconciliation.
 
 The qualified normal DEV recovery path is:
 
 `repository discovery → PROJECT.yaml → ACTIVE_STATE.yaml → live platform state → adopted CORE + profile → triggered playbooks only`.
 
-The SPC shadow pilot will test whether this model reduces real recovery cost without changing current SPC authority.
+M3 deliberately stops before writing shadow state into SPC because the current authoritative Drive state is older than the live GitHub development state. Reconciliation under OM v1.6 is required before the shadow pilot can begin.
