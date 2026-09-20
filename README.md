@@ -1,24 +1,25 @@
 # AI-Assisted Development Operating Model 2.0
 
-**Release:** `2.0.0`  
-**Status:** ACCEPTED RELEASE — PENDING EXPLICIT CANONICAL ADOPTION  
-**Qualified predecessor:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`
+**Canonical version:** `2.0.0`  
+**Canonical tag:** `om-v2.0.0`  
+**Exact canonical commit:** `769497a3477cfe5cc676d1ba972728404e9b3551`  
+**Status:** CURRENT CANONICAL OPERATING MODEL
 
-Canonical Operating Model remains v1.6 until the explicit authority switch is completed.
+The immutable GitHub release identified above is the normative authority for Operating Model 2.0.0.
 
-## Release basis
+## Qualification lineage
 
-OM 2.0.0 promotes the qualified RC2 normative contract without changing CORE, profiles, playbooks, schemas, DEV templates or validation semantics after candidate qualification.
+- OM2-M0 through M3: PASS.
+- OM2-2.0.0-RC1: FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY.
+- OM2-2.0.0-RC2: FROZEN / QUALIFIED PASS.
+- OM 2.0.0: ACCEPTED RELEASE.
+- GA tag-bound hosted validation: PASS.
+- Canonical prospective adoption: PASS, effective 2026-09-20.
 
-Qualification lineage includes:
+See `CANONICAL_ADOPTION_2.0.0.md`.
 
-- OM2-M0 through M3 PASS;
-- immutable RC1 failed PRODUCT evidence;
-- universal v2 successor correction;
-- all-five-profile qualification;
-- DEV evidence-parity qualification;
-- frozen RC2 tag-bound validation PASS.
+## Authority
 
-See `ACCEPTANCE_2.0.0.md` and `ADOPTION_READINESS_2.0.0.md`.
+The Google Drive `00_OPERATING_MODEL_INDEX.md` is the canonical discovery and historical registry pointer. It resolves current normative authority to immutable tag `om-v2.0.0`.
 
-Creating a 2.0.0 release does not itself switch canonical authority. That remains a separate explicit prospective governance action.
+Existing projects are not migrated automatically. Each project adopts OM 2.0.0 at its own explicit safe boundary.

@@ -1,28 +1,28 @@
-# Operating Model 2.0 Release Index
+# Operating Model 2.0 Canonical Index
 
-**Release:** `2.0.0`  
-**Status:** ACCEPTED RELEASE — PENDING EXPLICIT CANONICAL ADOPTION  
-**Qualified predecessor:** `OM2-2.0.0-RC2` — FROZEN / QUALIFIED PASS  
-**Failed predecessor:** `OM2-2.0.0-RC1` — FAILED_QUALIFICATION / PRODUCT
+**Version:** `2.0.0`  
+**Status:** CURRENT CANONICAL OPERATING MODEL  
+**Canonical tag:** `om-v2.0.0`  
+**Exact canonical commit:** `769497a3477cfe5cc676d1ba972728404e9b3551`
 
-Current canonical governance remains Operating Model v1.6 until the explicit authority switch is completed.
-
-## Release entrypoints
+## Canonical entrypoints
 
 - Machine manifest: `OM.yaml`
 - Universal kernel: `CORE.md`
 - Profiles: `profiles/`
 - Triggered playbooks: `playbooks/`
-- Current universal schemas: PROJECT v2, ACTIVE_STATE v2, EXTERNAL_SOURCES v1, EVIDENCE_RECORD v2
-- Legacy RC1 v1 schemas remain present for historical interpretation
+- Universal schemas: PROJECT v2, ACTIVE_STATE v2, EXTERNAL_SOURCES v1, EVIDENCE_RECORD v2
 - DEV templates: `templates/DEV/`
-- Structural and manifest validator: `tools/validate.py`
+- Validator: `tools/validate.py`
+
+## Qualification and adoption
+
 - RC1 qualification: `RC1_QUALIFICATION.md`
 - RC1 root cause: `RC1_ROOT_CAUSE.md`
 - Cross-profile qualification: `CROSS_PROFILE_QUALIFICATION.md`
 - DEV evidence parity qualification: `DEV_PARITY_QUALIFICATION.md`
 - RC2 qualification: `RC2_QUALIFICATION.md`
 - Release acceptance: `ACCEPTANCE_2.0.0.md`
-- Adoption readiness: `ADOPTION_READINESS_2.0.0.md`
+- Canonical adoption record: `CANONICAL_ADOPTION_2.0.0.md`
 
-The release becomes canonical only through explicit prospective adoption in the authoritative cross-project governance index.
+The immutable release tag `om-v2.0.0` is normative authority. Post-release evidence on `main` does not mutate the canonical release bytes.

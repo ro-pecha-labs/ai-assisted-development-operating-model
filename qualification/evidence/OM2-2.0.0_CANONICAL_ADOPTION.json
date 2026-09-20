@@ -1,0 +1,15 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.0.0-CANONICAL-ADOPTION",
+  "kind": "acceptance",
+  "subject": {
+    "identity": "OM-2.0.0",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.0.0",
+    "revision": {
+      "kind": "git_commit",
+      "value": "769497a3477cfe5cc676d1ba972728404e9b3551"
+    }
+  },
+  "outcome": "ACCEPTED",
+  "summary": "Operating Model 2.0.0 was explicitly adopted as the canonical cross-project Operating Model on 2026-09-20. The Drive governance index now points to immutable tag om-v2.0.0 at exact commit 769497a3477cfe5cc676d1ba972728404e9b3551; v1.6 remains preserved as superseded historical authority."
+}
