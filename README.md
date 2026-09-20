@@ -1,27 +1,24 @@
 # AI-Assisted Development Operating Model 2.0
 
-**Status:** NON-CANONICAL CANDIDATE — FROZEN / QUALIFIED PASS  
-**Version:** `2.0.0-rc2`  
-**Candidate:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`  
-**Exact commit:** `c5eee28bd8c8765824ac7f699be828018b92f5fb`  
-**Predecessor RC1:** **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**
+**Release:** `2.0.0`  
+**Status:** ACCEPTED RELEASE — PENDING EXPLICIT CANONICAL ADOPTION  
+**Qualified predecessor:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`
 
-Canonical Operating Model remains v1.6.
+Canonical Operating Model remains v1.6 until the explicit authority switch is completed.
 
-## RC2 qualification
+## Release basis
 
-RC2 is frozen and qualified PASS.
+OM 2.0.0 promotes the qualified RC2 normative contract without changing CORE, profiles, playbooks, schemas, DEV templates or validation semantics after candidate qualification.
 
-Qualification includes:
+Qualification lineage includes:
 
-- exact candidate identity and immutable protected tag;
-- protected-main hosted validation;
-- tag-triggered hosted validation on the exact frozen SHA;
-- all-five-profile cross-profile qualification;
-- DEV Git specialization without universal Git overreach;
-- DEV evidence-parity regression qualification;
-- preserved historical RC1 failed evidence.
+- OM2-M0 through M3 PASS;
+- immutable RC1 failed PRODUCT evidence;
+- universal v2 successor correction;
+- all-five-profile qualification;
+- DEV evidence-parity qualification;
+- frozen RC2 tag-bound validation PASS.
 
-See `RC2_QUALIFICATION.md`.
+See `ACCEPTANCE_2.0.0.md` and `ADOPTION_READINESS_2.0.0.md`.
 
-RC2 qualification does not itself make OM2 canonical and does not authorize SPC migration.
+Creating a 2.0.0 release does not itself switch canonical authority. That remains a separate explicit prospective governance action.
