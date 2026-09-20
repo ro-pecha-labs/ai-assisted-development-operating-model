@@ -1,0 +1,16 @@
+schema: om.project/v1
+project:
+  id: EXAMPLE
+  name: Invalid rules path
+  profile: DEV
+repository:
+  platform: github
+  canonical: https://github.com/example/example
+governance:
+  operating_model:
+    repository: https://github.com/example/om
+    ref: dev
+    commit: 0123456789abcdef0123456789abcdef01234567
+  project_rules: docs/DEVELOPMENT_RULES.md
+state:
+  active: .project/ACTIVE_STATE.yaml

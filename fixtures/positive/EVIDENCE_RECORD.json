@@ -1,0 +1,20 @@
+{
+  "schema": "om.evidence/v1",
+  "id": "EXAMPLE-C1-Q1",
+  "kind": "candidate_qualification",
+  "subject": {
+    "ref": "candidate/C1",
+    "commit": "0123456789abcdef0123456789abcdef01234567",
+    "artifact_digest": {
+      "algorithm": "sha256",
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  "outcome": "PASS",
+  "execution": {
+    "provider": "github",
+    "run_id": "12345",
+    "run_url": "https://github.com/example/example/actions/runs/12345"
+  },
+  "summary": "Example passing candidate qualification."
+}
