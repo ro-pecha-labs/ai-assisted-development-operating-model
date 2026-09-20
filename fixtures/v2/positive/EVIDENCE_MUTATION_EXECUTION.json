@@ -1,0 +1,33 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "DEV-MUTATION-1",
+  "kind": "mutation_execution",
+  "subject": {
+    "identity": "candidate/C2",
+    "revision": {
+      "kind": "git_commit",
+      "value": "0123456789abcdef0123456789abcdef01234567"
+    }
+  },
+  "outcome": "PASS",
+  "target": {
+    "environment_class": "NON_PRODUCTION",
+    "identity": "tenant/site/list"
+  },
+  "plan": {
+    "semantic_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "authorized_operations": ["create_list", "create_field"]
+  },
+  "artifacts": [
+    {
+      "name": "verification.json",
+      "uri": "qualification/evidence/verification.json",
+      "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "evidence_archive": {
+    "uri": "qualification/evidence/archive.zip",
+    "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "summary": "Example exact-target NON_PRODUCTION mutation evidence with plan and durable archive."
+}
