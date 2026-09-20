@@ -1,24 +1,27 @@
 # AI-Assisted Development Operating Model 2.0
 
-**Status:** NON-CANONICAL CANDIDATE — READY TO FREEZE  
+**Status:** NON-CANONICAL CANDIDATE — FROZEN / QUALIFIED PASS  
 **Version:** `2.0.0-rc2`  
-**Target candidate:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`  
+**Candidate:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`  
+**Exact commit:** `c5eee28bd8c8765824ac7f699be828018b92f5fb`  
 **Predecessor RC1:** **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**
 
 Canonical Operating Model remains v1.6.
 
-## RC2 readiness
+## RC2 qualification
 
-The successor to RC1 now has:
+RC2 is frozen and qualified PASS.
 
-- universal PROJECT v2, ACTIVE_STATE v2 and EVIDENCE_RECORD v2 contracts;
-- retained historical v1 schemas for RC1 interpretation;
-- all-five-profile pre-freeze qualification;
-- DEV Git specialization in the DEV profile/template;
-- restored DEV mutation/release evidence parity;
+Qualification includes:
+
+- exact candidate identity and immutable protected tag;
 - protected-main hosted validation;
-- protected immutable version-tag policy.
+- tag-triggered hosted validation on the exact frozen SHA;
+- all-five-profile cross-profile qualification;
+- DEV Git specialization without universal Git overreach;
+- DEV evidence-parity regression qualification;
+- preserved historical RC1 failed evidence.
 
-RC2 is not frozen until `om-v2.0.0-rc2` physically exists on the exact post-merge candidate-ready commit and tag-bound CI succeeds.
+See `RC2_QUALIFICATION.md`.
 
-RC2 freeze does not make OM2 canonical and does not authorize SPC migration.
+RC2 qualification does not itself make OM2 canonical and does not authorize SPC migration.
