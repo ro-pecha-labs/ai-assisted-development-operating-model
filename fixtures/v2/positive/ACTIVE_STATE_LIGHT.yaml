@@ -1,0 +1,16 @@
+schema: om.active-state/v2
+objective:
+  id: LIGHT-12
+  summary: Complete the current low-risk persistent work item.
+trusted_baseline:
+  identity: LIGHT-BASELINE-11
+  revision:
+    kind: other
+    value: current-11
+active_work:
+  - kind: task
+    locator: drive://light-example/task-12
+phase: active
+blockers: []
+next_actions:
+  - Complete the current task and persist the accepted result.
