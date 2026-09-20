@@ -1,18 +1,18 @@
 # OM2-M1 — GitHub Control Plane Acceptance
 
-**Status:** HOSTED IMPLEMENTATION IN PROGRESS
+**Status:** PASS — NON-CANONICAL DEVELOPMENT
 
-Completed:
-- GitHub implementation separated from universal CORE.
-- Capability tiers defined: GH-FULL / GH-CONDITIONAL / GH-BLOCKED.
-- Dedicated public organization repository created.
-- ChatGPT/Codex organization write access established.
+Qualified:
 
-Still required:
+- dedicated public organization repository established;
+- ChatGPT/Codex read/write access established;
 - repository-hosted structural CI PASS;
-- default-branch/ruleset strategy qualified;
-- candidate/release immutability strategy qualified;
-- platform conformance read-back;
-- architecture review/acceptance.
+- default branch protected by active organization ruleset;
+- pull request required for `main`;
+- required status check `structural-validation`;
+- strict up-to-date policy enabled;
+- deletion and non-fast-forward updates blocked;
+- version tags matching `om-v*` protected against update and deletion;
+- no bypass actors configured.
 
-Canonical adoption is not authorized by this milestone.
+M1 qualification does not authorize canonical adoption.

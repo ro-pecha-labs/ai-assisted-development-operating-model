@@ -1,7 +1,7 @@
 schema: om.manifest/v1
 
 operating_model:
-  version: 2.0.0-dev.2
+  version: 2.0.0-dev.3
   status: non_canonical_development
 
 entrypoints:
