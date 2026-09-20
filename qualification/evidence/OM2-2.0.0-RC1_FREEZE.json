@@ -1,0 +1,11 @@
+{
+  "schema": "om.evidence/v1",
+  "id": "OM2-2.0.0-RC1-FREEZE",
+  "kind": "candidate_freeze",
+  "subject": {
+    "ref": "om-v2.0.0-rc1",
+    "commit": "fbb591711ca124ba7dc16914ab4e7a9d176aae4d"
+  },
+  "outcome": "PASS",
+  "summary": "Formal non-canonical candidate freeze. Tag om-v2.0.0-rc1 points to exact commit fbb591711ca124ba7dc16914ab4e7a9d176aae4d and is protected against update and deletion by the active OM2 version-tags ruleset."
+}
