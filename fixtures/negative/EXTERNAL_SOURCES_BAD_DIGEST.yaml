@@ -1,0 +1,11 @@
+schema: om.external-sources/v1
+sources:
+  - id: source_a
+    system: other
+    locator: artifact-A
+    authority: reference_source
+    purpose: Invalid digest fixture
+    pin:
+      mode: digest
+      algorithm: sha256
+      value: NOT-A-SHA256

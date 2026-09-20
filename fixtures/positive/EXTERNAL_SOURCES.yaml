@@ -1,0 +1,10 @@
+schema: om.external-sources/v1
+sources:
+  - id: business_requirements
+    system: google_drive
+    locator: https://drive.google.com/file/d/example
+    authority: authoritative_source
+    purpose: Accepted business requirements
+    pin:
+      mode: revision
+      value: revision-42

@@ -1,0 +1,12 @@
+{
+  "schema": "om.evidence/v1",
+  "id": "EXAMPLE-C1-FAIL",
+  "kind": "significant_failure",
+  "subject": {
+    "ref": "candidate/C1",
+    "commit": "0123456789abcdef0123456789abcdef01234567"
+  },
+  "outcome": "FAIL",
+  "classification": "HARNESS",
+  "summary": "Example classified failure."
+}

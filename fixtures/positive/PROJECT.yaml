@@ -13,8 +13,12 @@ repository:
 governance:
   operating_model:
     repository: https://github.com/example/ai-assisted-development-operating-model
-    ref: om-v2.0.0-dev.1
+    ref: om-v2.0.0-dev.5
     commit: 0123456789abcdef0123456789abcdef01234567
+  project_rules: .project/DEVELOPMENT_RULES.md
 
 state:
   active: .project/ACTIVE_STATE.yaml
+
+external_sources:
+  manifest: .project/EXTERNAL_SOURCES.yaml
