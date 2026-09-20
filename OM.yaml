@@ -1,7 +1,7 @@
 schema: om.manifest/v1
 
 operating_model:
-  version: 2.0.0-dev.3
+  version: 2.0.0-dev.4
   status: non_canonical_development
 
 entrypoints:
@@ -9,6 +9,20 @@ entrypoints:
 
 profiles:
   DEV: profiles/DEV.md
+  SOLUTION: profiles/SOLUTION.md
+  DOCUMENT: profiles/DOCUMENT.md
+  EXPERIMENT: profiles/EXPERIMENT.md
+  LIGHT: profiles/LIGHT.md
+
+playbooks:
+  recovery: playbooks/RECOVERY.md
+  initialize: playbooks/INITIALIZE.md
+  failure_diagnosis: playbooks/FAILURE_DIAGNOSIS.md
+  candidate_release: playbooks/CANDIDATE_RELEASE.md
+  connected_mutation: playbooks/CONNECTED_MUTATION.md
+  external_source_mismatch: playbooks/EXTERNAL_SOURCE_MISMATCH.md
+  exceptional_handoff: playbooks/EXCEPTIONAL_HANDOFF.md
+  adoption_migration: playbooks/ADOPTION_MIGRATION.md
 
 schemas:
   project: schemas/PROJECT.schema.json
