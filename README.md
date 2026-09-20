@@ -1,24 +1,24 @@
 # AI-Assisted Development Operating Model 2.0
 
-**Status:** NON-CANONICAL DEVELOPMENT  
-**Development line:** `2.0.0-dev.7`  
-**Latest frozen candidate:** `OM2-2.0.0-RC1` — **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**
+**Status:** NON-CANONICAL CANDIDATE — READY TO FREEZE  
+**Version:** `2.0.0-rc2`  
+**Target candidate:** `OM2-2.0.0-RC2` / `om-v2.0.0-rc2`  
+**Predecessor RC1:** **FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY**
 
-RC1 remains immutable failed evidence. Canonical Operating Model remains v1.6.
+Canonical Operating Model remains v1.6.
 
-## Successor status
+## RC2 readiness
 
-The RC1 cross-profile contract defect is corrected prospectively by universal v2 machine contracts.
+The successor to RC1 now has:
 
-Pre-candidate qualification now covers:
+- universal PROJECT v2, ACTIVE_STATE v2 and EVIDENCE_RECORD v2 contracts;
+- retained historical v1 schemas for RC1 interpretation;
+- all-five-profile pre-freeze qualification;
+- DEV Git specialization in the DEV profile/template;
+- restored DEV mutation/release evidence parity;
+- protected-main hosted validation;
+- protected immutable version-tag policy.
 
-- all five profiles with Git and non-Git control-plane scenarios;
-- profile-neutral ACTIVE_STATE v2;
-- profile-neutral EvidenceRecord v2;
-- DEV Git specialization in DEV profile/template;
-- retained DEV mutation/release evidence capabilities: artifacts, exact semantic plan and durable evidence archive;
-- historical v1 evidence validation.
+RC2 is not frozen until `om-v2.0.0-rc2` physically exists on the exact post-merge candidate-ready commit and tag-bound CI succeeds.
 
-No new candidate has been frozen.
-
-A formal RC2 readiness gate follows only after this exact development revision passes protected hosted CI.
+RC2 freeze does not make OM2 canonical and does not authorize SPC migration.
