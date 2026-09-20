@@ -1,0 +1,19 @@
+schema: om.active-state/v2
+objective:
+  id: W1
+  summary: Continue the bounded DEV objective.
+trusted_baseline:
+  identity: EXAMPLE-1.0.0
+  locator: https://github.com/example/dev-example/commit/0123456789abcdef0123456789abcdef01234567
+  revision:
+    kind: git_commit
+    value: 0123456789abcdef0123456789abcdef01234567
+active_work:
+  - kind: branch
+    locator: feature/example
+  - kind: pull_request
+    locator: https://github.com/example/dev-example/pull/7
+phase: development
+blockers: []
+next_actions:
+  - Complete the bounded implementation unit.

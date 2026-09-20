@@ -1,0 +1,14 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "DEV-C1-Q1",
+  "kind": "candidate_qualification",
+  "subject": {
+    "identity": "candidate/C1",
+    "revision": {
+      "kind": "git_commit",
+      "value": "0123456789abcdef0123456789abcdef01234567"
+    }
+  },
+  "outcome": "PASS",
+  "summary": "Example DEV candidate qualification."
+}

@@ -1,0 +1,19 @@
+schema: om.active-state/v2
+objective:
+  id: DOC-REV-4
+  summary: Complete review of the current controlled document revision.
+trusted_baseline:
+  identity: POLICY-3
+  locator: https://docs.google.com/document/d/policy
+  revision:
+    kind: document_revision
+    value: revision-3
+active_work:
+  - kind: document
+    locator: https://docs.google.com/document/d/policy-working
+  - kind: review
+    locator: https://docs.google.com/document/d/policy-review
+phase: review
+blockers: []
+next_actions:
+  - Resolve the remaining sourced review comment.

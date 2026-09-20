@@ -1,0 +1,13 @@
+schema: om.project/v2
+project: {id: DOCUMENTEXAMPLE, name: Document Example, profile: DOCUMENT}
+control_plane:
+  kind: external
+  platform: google_drive
+  locator: https://drive.google.com/drive/folders/example
+governance:
+  operating_model:
+    repository: https://github.com/example/ai-assisted-development-operating-model
+    ref: om-v2.0.0-rc2
+    commit: 0123456789abcdef0123456789abcdef01234567
+state:
+  active: {locator: https://docs.google.com/document/d/example, format: native}

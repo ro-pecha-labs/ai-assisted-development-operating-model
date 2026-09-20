@@ -1,0 +1,13 @@
+schema: om.project/v2
+project: {id: BADPROJECT, name: Invalid mixed control plane, profile: DOCUMENT}
+control_plane:
+  kind: external
+  platform: github
+  locator: https://github.com/example/bad
+governance:
+  operating_model:
+    repository: https://github.com/example/om
+    ref: test
+    commit: 0123456789abcdef0123456789abcdef01234567
+state:
+  active: {locator: active.yaml, format: yaml}

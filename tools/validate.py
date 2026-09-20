@@ -13,30 +13,36 @@ except Exception as exc:
 ROOT = Path(__file__).resolve().parents[1]
 
 CASES = [
-    ("schemas/PROJECT.schema.json", "fixtures/positive/PROJECT.yaml", True),
-    ("schemas/PROJECT.schema.json", "fixtures/negative/PROJECT_BAD_RULES_PATH.yaml", False),
-    ("schemas/ACTIVE_STATE.schema.json", "fixtures/positive/ACTIVE_STATE.yaml", True),
-    ("schemas/ACTIVE_STATE.schema.json", "fixtures/negative/ACTIVE_STATE_DUPLICATED_PLATFORM_STATE.yaml", False),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_DEV_GIT.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_SOLUTION_SHAREPOINT.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_DOCUMENT_DRIVE.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_EXPERIMENT_ONEDRIVE.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_LIGHT_DRIVE.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/negative/PROJECT_INVALID_EXTERNAL_GITHUB.yaml", False),
+    ("schemas/ACTIVE_STATE.v2.schema.json", "fixtures/v2/positive/ACTIVE_STATE_DEV.yaml", True),
+    ("schemas/ACTIVE_STATE.v2.schema.json", "fixtures/v2/positive/ACTIVE_STATE_DOCUMENT.yaml", True),
+    ("schemas/ACTIVE_STATE.v2.schema.json", "fixtures/v2/negative/ACTIVE_STATE_WITH_HISTORY.yaml", False),
     ("schemas/EXTERNAL_SOURCES.schema.json", "fixtures/positive/EXTERNAL_SOURCES.yaml", True),
     ("schemas/EXTERNAL_SOURCES.schema.json", "fixtures/negative/EXTERNAL_SOURCES_BAD_DIGEST.yaml", False),
-    ("schemas/EVIDENCE_RECORD.schema.json", "fixtures/positive/EVIDENCE_RECORD.json", True),
-    ("schemas/EVIDENCE_RECORD.schema.json", "fixtures/positive/EVIDENCE_FAIL_CLASSIFIED.json", True),
-    ("schemas/EVIDENCE_RECORD.schema.json", "fixtures/negative/EVIDENCE_FAIL_WITHOUT_CLASSIFICATION.json", False),
+    ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/positive/EVIDENCE_DEV_PASS.json", True),
+    ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/positive/EVIDENCE_DOCUMENT_ACCEPTED.json", True),
+    ("schemas/EVIDENCE_RECORD.v2.schema.json", "fixtures/v2/negative/EVIDENCE_FAIL_UNCLASSIFIED.json", False),
+    ("schemas/EVIDENCE_RECORD.schema.json", "qualification/evidence/OM2-2.0.0-RC1_FREEZE.json", True),
+    ("schemas/EVIDENCE_RECORD.schema.json", "qualification/evidence/OM2-2.0.0-RC1_QUALIFICATION_FAIL.json", True),
 ]
 
 EXPECTED_PROFILES = {"DEV", "SOLUTION", "DOCUMENT", "EXPERIMENT", "LIGHT"}
 EXPECTED_PLAYBOOKS = {
-    "recovery",
-    "initialize",
-    "failure_diagnosis",
-    "candidate_release",
-    "connected_mutation",
-    "external_source_mismatch",
-    "exceptional_handoff",
+    "recovery", "initialize", "failure_diagnosis", "candidate_release",
+    "connected_mutation", "external_source_mismatch", "exceptional_handoff",
     "adoption_migration",
 }
-EXPECTED_SCHEMAS = {"project", "active_state", "external_sources", "evidence_record"}
-
+EXPECTED_CURRENT_SCHEMAS = {
+    "project": "schemas/PROJECT.v2.schema.json",
+    "active_state": "schemas/ACTIVE_STATE.v2.schema.json",
+    "external_sources": "schemas/EXTERNAL_SOURCES.schema.json",
+    "evidence_record": "schemas/EVIDENCE_RECORD.v2.schema.json",
+}
 
 def load(path):
     p = ROOT / path
@@ -44,11 +50,9 @@ def load(path):
         return json.loads(p.read_text(encoding="utf-8"))
     return yaml.safe_load(p.read_text(encoding="utf-8"))
 
-
 def fail(message):
     print(f"FAIL: {message}")
     return True
-
 
 failed = False
 
@@ -59,9 +63,7 @@ for schema_path, instance_path, should_pass in CASES:
     errors = sorted(validator.iter_errors(instance), key=lambda e: list(e.path))
     passed = not errors
     ok = passed == should_pass
-    status = "PASS" if ok else "FAIL"
-    expectation = "valid" if should_pass else "invalid"
-    print(f"{status}: {instance_path} expected {expectation}")
+    print(f"{'PASS' if ok else 'FAIL'}: {instance_path} expected {'valid' if should_pass else 'invalid'}")
     if not ok:
         failed = True
         for e in errors[:10]:
@@ -72,8 +74,7 @@ version = manifest.get("operating_model", {}).get("version")
 if not version:
     failed |= fail("OM.yaml has no operating_model.version")
 
-entrypoints = manifest.get("entrypoints") or {}
-core = entrypoints.get("core")
+core = (manifest.get("entrypoints") or {}).get("core")
 if not core or not (ROOT / core).is_file():
     failed |= fail(f"missing CORE entrypoint: {core}")
 else:
@@ -85,8 +86,6 @@ if set(profiles) != EXPECTED_PROFILES:
 for name, path in profiles.items():
     if not (ROOT / path).is_file():
         failed |= fail(f"profile {name} path missing: {path}")
-    else:
-        print(f"PASS: profile {name} -> {path}")
 
 playbooks = manifest.get("playbooks") or {}
 if set(playbooks) != EXPECTED_PLAYBOOKS:
@@ -94,40 +93,48 @@ if set(playbooks) != EXPECTED_PLAYBOOKS:
 for name, path in playbooks.items():
     if not (ROOT / path).is_file():
         failed |= fail(f"playbook {name} path missing: {path}")
-    else:
-        print(f"PASS: playbook {name} -> {path}")
 
 schemas = manifest.get("schemas") or {}
-if set(schemas) != EXPECTED_SCHEMAS:
-    failed |= fail(f"schema set mismatch: {sorted(schemas)}")
-for name, path in schemas.items():
+if schemas != EXPECTED_CURRENT_SCHEMAS:
+    failed |= fail(f"current schema mapping mismatch: {schemas}")
+for path in schemas.values():
     if not (ROOT / path).is_file():
-        failed |= fail(f"schema {name} path missing: {path}")
-    else:
-        print(f"PASS: schema {name} -> {path}")
+        failed |= fail(f"current schema path missing: {path}")
 
-project_schema = load("schemas/PROJECT.schema.json")
+legacy = manifest.get("legacy_schemas") or {}
+for name, path in legacy.items():
+    if not (ROOT / path).is_file():
+        failed |= fail(f"legacy schema {name} missing: {path}")
+
+project_schema = load(schemas["project"])
 profile_enum = set(project_schema["properties"]["project"]["properties"]["profile"]["enum"])
 if profile_enum != set(profiles):
-    failed |= fail(f"PROJECT profile enum does not match OM.yaml profiles: {sorted(profile_enum)}")
-else:
-    print("PASS: PROJECT profile enum matches OM.yaml")
+    failed |= fail("PROJECT v2 profile enum does not match OM.yaml profiles")
 
 for doc in ("README.md", "00_INDEX.md"):
     text = (ROOT / doc).read_text(encoding="utf-8")
     if version not in text:
-        failed |= fail(f"{doc} does not declare current OM.yaml version {version}")
-    else:
-        print(f"PASS: {doc} version matches {version}")
+        failed |= fail(f"{doc} does not declare current version {version}")
 
 core_text = (ROOT / core).read_text(encoding="utf-8")
 declared = set(re.findall(r"DEV|SOLUTION|DOCUMENT|EXPERIMENT|LIGHT", core_text))
 if not EXPECTED_PROFILES.issubset(declared):
     failed |= fail("CORE does not declare all manifest profiles")
-else:
-    print("PASS: CORE declares all manifest profiles")
+
+dev_project = load("templates/DEV/.project/PROJECT.yaml")
+dev_active = load("templates/DEV/.project/ACTIVE_STATE.yaml")
+if dev_project.get("schema") != "om.project/v2":
+    failed |= fail("DEV PROJECT template is not v2")
+if dev_project.get("control_plane", {}).get("kind") != "git":
+    failed |= fail("DEV PROJECT template is not Git-specialized")
+if dev_project.get("state", {}).get("active", {}).get("locator") != ".project/ACTIVE_STATE.yaml":
+    failed |= fail("DEV active-state locator mismatch")
+if dev_active.get("schema") != "om.active-state/v2":
+    failed |= fail("DEV ACTIVE_STATE template is not v2")
+if dev_active.get("trusted_baseline", {}).get("revision", {}).get("kind") != "git_commit":
+    failed |= fail("DEV baseline is not git_commit-specialized")
 
 if failed:
     sys.exit(1)
 
-print("ALL STRUCTURAL AND MANIFEST CONTRACTS PASS")
+print("ALL UNIVERSAL V2, LEGACY EVIDENCE, MANIFEST AND DEV SPECIALIZATION CONTRACTS PASS")

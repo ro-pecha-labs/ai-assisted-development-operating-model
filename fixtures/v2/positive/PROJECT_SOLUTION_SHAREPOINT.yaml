@@ -1,0 +1,13 @@
+schema: om.project/v2
+project: {id: SOLUTIONEXAMPLE, name: Solution Example, profile: SOLUTION}
+control_plane:
+  kind: external
+  platform: sharepoint
+  locator: https://example.sharepoint.com/sites/architecture
+governance:
+  operating_model:
+    repository: https://github.com/example/ai-assisted-development-operating-model
+    ref: om-v2.0.0-rc2
+    commit: 0123456789abcdef0123456789abcdef01234567
+state:
+  active: {locator: https://example.sharepoint.com/sites/architecture/active-state.yaml, format: yaml}

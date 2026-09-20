@@ -1,26 +1,14 @@
 schema: om.project/v2
-
-project:
-  id: EXAMPLE
-  name: Example DEV Project
-  profile: DEV
-
+project: {id: DEVEXAMPLE, name: DEV Git Example, profile: DEV}
 control_plane:
   kind: git
   platform: github
-  locator: https://github.com/example/example
+  locator: https://github.com/example/dev-example
   default_ref: main
-
 governance:
   operating_model:
     repository: https://github.com/example/ai-assisted-development-operating-model
     ref: om-v2.0.0-rc2
     commit: 0123456789abcdef0123456789abcdef01234567
-  project_rules:
-    locator: .project/DEVELOPMENT_RULES.md
-    format: markdown
-
 state:
-  active:
-    locator: .project/ACTIVE_STATE.yaml
-    format: yaml
+  active: {locator: .project/ACTIVE_STATE.yaml, format: yaml}

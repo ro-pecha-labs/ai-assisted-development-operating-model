@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/om/2.0/schemas/PROJECT.v2.schema.json",
+  "title": "OM 2.0 Universal Project Bootstrap Contract v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "project", "control_plane", "governance", "state"],
+  "properties": {
+    "schema": {"const": "om.project/v2"},
+    "project": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "profile"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_-]{1,31}$"},
+        "name": {"type": "string", "minLength": 1, "maxLength": 160},
+        "profile": {"enum": ["DEV", "SOLUTION", "DOCUMENT", "EXPERIMENT", "LIGHT"]}
+      }
+    },
+    "control_plane": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "platform", "locator"],
+          "properties": {
+            "kind": {"const": "git"},
+            "platform": {"enum": ["github", "gitlab", "azure_devops", "git_other"]},
+            "locator": {"type": "string", "format": "uri"},
+            "default_ref": {"type": "string", "minLength": 1, "maxLength": 160}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "platform", "locator"],
+          "properties": {
+            "kind": {"const": "external"},
+            "platform": {"enum": ["google_drive", "sharepoint", "onedrive", "other"]},
+            "locator": {"type": "string", "minLength": 1, "maxLength": 1000}
+          }
+        }
+      ]
+    },
+    "governance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["operating_model"],
+      "properties": {
+        "operating_model": {
+          "type": "object", "additionalProperties": false,
+          "required": ["repository", "ref", "commit"],
+          "properties": {
+            "repository": {"type": "string", "format": "uri"},
+            "ref": {"type": "string", "minLength": 1, "maxLength": 160},
+            "commit": {"type": "string", "pattern": "^[0-9a-fA-F]{40,64}$"}
+          }
+        },
+        "project_rules": {
+          "type": "object", "additionalProperties": false,
+          "required": ["locator"],
+          "properties": {
+            "locator": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "format": {"enum": ["markdown", "yaml", "json", "native"]}
+          }
+        }
+      }
+    },
+    "state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["active"],
+      "properties": {
+        "active": {
+          "type": "object", "additionalProperties": false,
+          "required": ["locator", "format"],
+          "properties": {
+            "locator": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "format": {"enum": ["yaml", "json", "markdown", "native"]}
+          }
+        }
+      }
+    },
+    "external_sources": {
+      "type": "object", "additionalProperties": false,
+      "required": ["manifest"],
+      "properties": {"manifest": {"type": "string", "minLength": 1, "maxLength": 1000}}
+    }
+  }
+}

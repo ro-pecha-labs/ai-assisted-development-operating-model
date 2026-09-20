@@ -1,0 +1,13 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "FAIL-1",
+  "kind": "significant_failure",
+  "subject": {
+    "identity": "subject-1",
+    "revision": {
+      "kind": "version",
+      "value": "1"
+    }
+  },
+  "outcome": "FAIL"
+}

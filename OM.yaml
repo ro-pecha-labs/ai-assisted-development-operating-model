@@ -1,7 +1,7 @@
 schema: om.manifest/v1
 
 operating_model:
-  version: 2.0.0-dev.5
+  version: 2.0.0-dev.6
   status: non_canonical_development
 
 entrypoints:
@@ -25,7 +25,12 @@ playbooks:
   adoption_migration: playbooks/ADOPTION_MIGRATION.md
 
 schemas:
-  project: schemas/PROJECT.schema.json
-  active_state: schemas/ACTIVE_STATE.schema.json
+  project: schemas/PROJECT.v2.schema.json
+  active_state: schemas/ACTIVE_STATE.v2.schema.json
   external_sources: schemas/EXTERNAL_SOURCES.schema.json
-  evidence_record: schemas/EVIDENCE_RECORD.schema.json
+  evidence_record: schemas/EVIDENCE_RECORD.v2.schema.json
+
+legacy_schemas:
+  project_v1: schemas/PROJECT.schema.json
+  active_state_v1: schemas/ACTIVE_STATE.schema.json
+  evidence_record_v1: schemas/EVIDENCE_RECORD.schema.json
