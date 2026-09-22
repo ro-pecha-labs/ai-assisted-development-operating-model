@@ -20,3 +20,7 @@ Required safety or integrity controls cannot be enforced or acceptably compensat
 ## Evidence and connector distinction
 
 AI connector limitations are separate from GitHub platform limitations and must be classified separately. Actions logs/artifacts are not the sole long-term acceptance evidence.
+
+## CI efficiency
+
+GitHub-hosted DEV workflows should apply `CI_EFFICIENCY.md` prospectively. Efficiency controls do not weaken required qualification, evidence, mutation authorization or historical integrity.
