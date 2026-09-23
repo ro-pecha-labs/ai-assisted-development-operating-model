@@ -14,7 +14,7 @@ governance:
   operating_model:
     repository: https://github.com/ro-pecha-labs/ai-assisted-development-operating-model
     ref: development
-    commit: 0000000000000000000000000000000000000000
+    commit: '0000000000000000000000000000000000000000'
 state:
   active:
     locator: .project/ACTIVE_STATE.yaml
