@@ -10,4 +10,6 @@
 6. Declare external sources that remain authoritative outside the new control plane.
 7. Verify recovery from the new bootstrap before adoption.
 8. Record the explicit adoption decision and exact immutable OM/project revision.
-9. Rollback, if needed, is another prospective boundary rather than erasure of the adoption event.
+9. After successful authority switch, demote, redirect or explicitly reclassify superseded current-state surfaces in the old control plane so they cannot remain a second current authority. Retain historical evidence and any external source with a distinct justified role.
+10. Re-read the new discovery path and verify that normal recovery does not resolve to a superseded current-state surface.
+11. Rollback, if needed, is another prospective boundary rather than erasure of the adoption event.
