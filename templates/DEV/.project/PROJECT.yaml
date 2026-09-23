@@ -14,8 +14,10 @@ control_plane:
 governance:
   operating_model:
     repository: https://github.com/ro-pecha-labs/ai-assisted-development-operating-model
-    ref: om-v2.0.0
-    commit: 769497a3477cfe5cc676d1ba972728404e9b3551
+    # Instantiate both values from the exact immutable OM release adopted by the project.
+    # The all-zero commit is a template sentinel and is rejected by project conformance.
+    ref: REPLACE_WITH_ADOPTED_IMMUTABLE_OM_REF
+    commit: "0000000000000000000000000000000000000000"
   project_rules:
     locator: .project/DEVELOPMENT_RULES.md
     format: markdown
