@@ -11,5 +11,6 @@
     "pull_request:https://github.com/example/repo/pull/43"
   ],
   "legacy_handoff_required": false,
-  "historical_reconstruction_required": false
+  "historical_reconstruction_required": false,
+  "assurance_mode": "standard"
 }
