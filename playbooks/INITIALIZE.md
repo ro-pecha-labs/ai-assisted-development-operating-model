@@ -10,6 +10,7 @@
 6. Establish only the platform protections and CI controls required by the selected profile/risk. For GitHub-hosted DEV CI, apply the GitHub CI efficiency policy in `platforms/github/CI_EFFICIENCY.md` when applicable.
 7. Record project-specific rules only where they specialize the profile.
 8. Validate the bootstrap structurally.
-9. Start work; do not pre-create historical ledgers, transitions or evidence folders that have no current use.
+9. For Git-native DEV, establish an ongoing project-state conformance gate where platform enforcement is feasible; scope it to governance/bootstrap paths rather than unrelated product changes.
+10. Start work; do not pre-create historical ledgers, transitions or evidence folders that have no current use.
 
 Reclassification later is prospective.
