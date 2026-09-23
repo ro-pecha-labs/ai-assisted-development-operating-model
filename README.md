@@ -30,9 +30,9 @@ The immutable `om-v2.0.0` release preserves the qualified RC2 bytes. Candidate-e
 
 ## Development line
 
-Development `main` is preparing non-canonical target `2.1.0-dev`. The current canonical authority remains immutable `om-v2.0.0` until a future OM 2.1 candidate qualifies, is accepted, and is explicitly adopted.
+Development `main` is preparing non-canonical candidate target `2.1.0-rc1`. The current canonical authority remains immutable `om-v2.0.0` until a future OM 2.1 candidate qualifies, is accepted, and is explicitly adopted.
 
-Current OM 2.1 development inputs:
+Current OM 2.1 candidate inputs:
 
 - `OM_SOLO_PROPOSAL.md`;
 - `OM_2.1_QUALIFICATION_PLAN.md`;
