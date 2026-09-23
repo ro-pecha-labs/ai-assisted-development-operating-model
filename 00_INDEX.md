@@ -27,8 +27,20 @@
 
 The immutable release tag `om-v2.0.0` is normative authority. Post-release evidence on `main` does not mutate the canonical release bytes.
 
-## Non-canonical candidate development
+## OM 2.1 release promotion
 
-Current candidate-ready target on `main`: `2.1.0-rc1` — Solo Assurance & Proportional DEV.
+OM 2.1.0 has passed RC1 acceptance review and is being promoted as an accepted non-canonical release line.
 
-This candidate line is not canonical and does not change the authority of `om-v2.0.0`. See `OM_SOLO_PROPOSAL.md` and `OM_2.1_QUALIFICATION_PLAN.md`.
+Qualified source candidate:
+
+- candidate: `OM2-2.1.0-RC1`;
+- immutable candidate tag: `om-v2.1.0-rc1`;
+- exact candidate commit: `02a4a3f5004fd497b2e4e6402b508c1a29802c35`;
+- disposition: FROZEN / QUALIFIED PASS / NON-CANONICAL.
+
+Promotion is controlled by:
+
+- `ACCEPTANCE_2.1.0.md`;
+- `GA_PROMOTION_PLAN_2.1.0.md`.
+
+The current canonical authority remains `om-v2.0.0` until OM 2.1.0 receives its own immutable GA identity, passes exact tag-bound hosted qualification and GA acceptance, and is then explicitly adopted prospectively.
