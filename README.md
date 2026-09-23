@@ -9,54 +9,28 @@
 
 The immutable GitHub release identified above remains the normative authority until a later release is explicitly adopted prospectively.
 
-## OM 2.0 qualification lineage
+## OM 2.1 qualification lineage
 
-- OM2-M0 through M3: PASS.
-- OM2-2.0.0-RC1: FAILED_QUALIFICATION / PRODUCT / NOT_ACCEPTED / DO_NOT_MODIFY.
-- OM2-2.0.0-RC2: FROZEN / QUALIFIED PASS.
-- OM 2.0.0: ACCEPTED RELEASE.
-- GA tag-bound hosted validation: PASS.
-- Canonical prospective adoption: PASS, effective 2026-09-20.
+Qualified candidate:
 
-See `CANONICAL_ADOPTION_2.0.0.md`.
+- `OM2-2.1.0-RC1`;
+- tag `om-v2.1.0-rc1`;
+- exact commit `02a4a3f5004fd497b2e4e6402b508c1a29802c35`;
+- FROZEN / QUALIFIED PASS / NON-CANONICAL.
 
-## Authority
+RC1 acceptance review passed.
 
-The Google Drive `00_OPERATING_MODEL_INDEX.md` is the canonical discovery and historical registry pointer. It currently resolves normative authority to immutable tag `om-v2.0.0`.
+The first GA release attempt `om-v2.1.0` is **not accepted for GA**. Its immutable tag was created on commit `3fa66871aa41b9e677f5ebb6ffb2c473a78673de` rather than the exact G2 promotion commit `3bcc928251286e9988b20afc67bdd7832d135ed3`.
 
-Existing projects are not migrated automatically. Each project adopts a canonical Operating Model at its own explicit safe boundary.
+The intervening change affected only `.github/workflows/validate.yml` CI trigger/concurrency behavior. No OM product semantics changed. The release attempt remains immutable historical evidence and is documented in `GA_DISPOSITION_2.1.0.md`.
 
-## OM 2.1 release line
+## OM 2.1.1 patch successor
 
-OM 2.1.0 has passed RC1 acceptance review and is in controlled GA promotion.
+Current release target: `2.1.1`.
 
-Qualified predecessor:
+This is a PATCH-class prospective recovery under `OM_RELEASE_POLICY.md` because the recovery addresses tooling/release-control coherence without changing normative behavior.
 
-- candidate: `OM2-2.1.0-RC1`;
-- tag: `om-v2.1.0-rc1`;
-- exact commit: `02a4a3f5004fd497b2e4e6402b508c1a29802c35`;
-- disposition: FROZEN / QUALIFIED PASS / NON-CANONICAL.
-
-The promotion changes only release identity/status and human-readable release-state coherence. Qualified normative behavior from RC1 is preserved.
-
-Promotion control:
-
-- `RC1_QUALIFICATION_2.1.0.md`;
-- `ACCEPTANCE_2.1.0.md`;
-- `GA_PROMOTION_PLAN_2.1.0.md`.
-
-OM 2.1.0 is not canonical until all of the following are complete:
-
-1. immutable GA identity `om-v2.1.0` is created on the exact validated promotion commit;
-2. tag-bound hosted qualification succeeds on that exact GA identity;
-3. GA acceptance is recorded;
-4. canonical adoption is explicitly authorized and the Drive governance index is switched prospectively.
-
-No child-project adoption is implied by OM-level release promotion or later OM-level canonical adoption.
-
-## OM 2.1 capability scope
-
-The OM 2.1 release line includes:
+The patch preserves the qualified OM 2.1 capability scope:
 
 - optional cross-profile solo assurance;
 - `SOLO_ASSURANCE`;
@@ -72,3 +46,14 @@ The OM 2.1 release line includes:
 - standard and solo bounded recovery.
 
 The five primary profiles remain DEV, SOLUTION, DOCUMENT, EXPERIMENT and LIGHT.
+
+Before OM 2.1.1 can be accepted:
+
+1. protected PR and structural CI must pass;
+2. exact post-merge promotion SHA must be captured;
+3. the final diff must contain no unexpected normative behavior change;
+4. immutable tag `om-v2.1.1` must be created on that exact SHA;
+5. tag-bound hosted validation must succeed on that exact identity;
+6. release acceptance must be recorded.
+
+Canonical adoption remains a separate explicit prospective event. No child-project adoption is implied by release promotion or OM-level adoption.

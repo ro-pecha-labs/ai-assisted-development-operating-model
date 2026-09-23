@@ -38,6 +38,17 @@ jobs:
           --expected qualification/recovery/expected-solo.json
       - name: Qualify OM 2.1 policy semantics
         run: python tools/qualify_om21.py
+      - name: Qualify release identity pin guard
+        shell: bash
+        run: |
+          GOOD=0123456789abcdef0123456789abcdef01234567
+          BAD=89abcdef0123456789abcdef0123456789abcdef
+          python tools/release_identity_guard.py --expected "$GOOD" --observed "$GOOD"
+          if python tools/release_identity_guard.py --expected "$GOOD" --observed "$BAD"; then
+            echo "Expected release identity mismatch to fail"
+            exit 1
+          fi
+          echo "Release identity mismatch rejection PASS"
       - name: Validate reusable project bootstrap conformance
         run: >-
           python tools/validate_project_bootstrap.py
