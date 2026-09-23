@@ -23,3 +23,7 @@ See `CANONICAL_ADOPTION_2.0.0.md`.
 The Google Drive `00_OPERATING_MODEL_INDEX.md` is the canonical discovery and historical registry pointer. It resolves current normative authority to immutable tag `om-v2.0.0`.
 
 Existing projects are not migrated automatically. Each project adopts OM 2.0.0 at its own explicit safe boundary.
+
+## Release packaging errata
+
+The immutable `om-v2.0.0` release preserves the qualified RC2 bytes. Candidate-era component status labels and the DEV template RC2 pin are documented in `ERRATA_2.0.0.md`; development `main` corrects them prospectively without mutating or reinterpreting the canonical release.
