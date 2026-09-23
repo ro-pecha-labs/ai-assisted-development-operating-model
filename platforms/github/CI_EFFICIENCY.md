@@ -16,6 +16,8 @@ This policy specializes the DEV profile for GitHub-hosted CI. It governs new wor
 8. **Cumulative gates require trigger design.** Where a higher-level gate re-executes lower-level suites, trigger topology should avoid unnecessary parallel execution of all cumulative gates while preserving required regression coverage.
 9. **Cost-aware initialization.** New DEV repositories shall review runner type, expected trigger frequency, path scope, PR/push duplication, artifact retention and cumulative test structure before CI is treated as qualified platform enforcement.
 10. **Qualification before reliance.** A CI optimization that changes runner, trigger topology, packaging or gate decomposition shall be qualified before it replaces the prior control.
+11. **Candidate/checkpoint is the cumulative qualification boundary.** Intermediate development commits, including AI-assisted commits, shall not each independently invoke cumulative candidate, release or historical qualification merely because they were pushed. Routine development should use the lightest sufficient PR validation; cumulative qualification belongs at an explicit candidate/checkpoint boundary, unless a safety-critical dependency requires earlier execution.
+12. **Retire closed lifecycle gates from automatic execution.** Once a candidate/wave gate is accepted, closed or superseded, its workflow should normally become explicit/manual historical requalification or be replaced by the successor gate. Closed gates shall not remain on broad automatic PR/push triggers without a documented current control purpose.
 
 ## Recommended PR concurrency baseline
 
