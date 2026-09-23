@@ -1,0 +1,36 @@
+name: OM Project State Conformance
+
+on:
+  workflow_call:
+    inputs:
+      om_ref:
+        description: Immutable adopted OM ref, for example om-v2.1.0
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  project-state-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout caller repository
+        uses: actions/checkout@v4
+
+      - name: Checkout adopted Operating Model
+        uses: actions/checkout@v4
+        with:
+          repository: ro-pecha-labs/ai-assisted-development-operating-model
+          ref: ${{ inputs.om_ref }}
+          path: .om
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validator dependencies
+        run: pip install -r .om/requirements.txt
+
+      - name: Validate project bootstrap against adopted OM
+        run: python .om/tools/validate_project_bootstrap.py . --om-root .om
