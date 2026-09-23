@@ -1,0 +1,20 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.1.0-RC1-QUALIFICATION",
+  "kind": "candidate_qualification",
+  "subject": {
+    "identity": "OM2-2.1.0-RC1",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.1.0-rc1",
+    "revision": {
+      "kind": "git_commit",
+      "value": "02a4a3f5004fd497b2e4e6402b508c1a29802c35"
+    }
+  },
+  "outcome": "PASS",
+  "execution": {
+    "provider": "github",
+    "run_id": "35851600488",
+    "run_url": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/actions/runs/35851600488"
+  },
+  "summary": "RC1 qualification PASS on the exact immutable candidate tag. Tag-triggered hosted validation passed structural contracts, standard and solo recovery, OM 2.1 policy semantics, reusable project-bootstrap conformance positive/negative controls, and uninstantiated DEV-template rejection. Pre-freeze Q0-Q5, including representative SPC shadow qualification, were PASS."
+}
