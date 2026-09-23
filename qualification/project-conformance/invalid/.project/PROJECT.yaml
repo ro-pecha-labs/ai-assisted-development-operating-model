@@ -1,0 +1,21 @@
+schema: om.project/v2
+project:
+  id: CONFINVALID
+  name: Conformance Valid Fixture
+  profile: DEV
+assurance:
+  mode: solo
+control_plane:
+  kind: git
+  platform: github
+  locator: https://github.com/example/conformance-invalid
+  default_ref: main
+governance:
+  operating_model:
+    repository: https://github.com/ro-pecha-labs/ai-assisted-development-operating-model
+    ref: development
+    commit: 0000000000000000000000000000000000000000
+state:
+  active:
+    locator: .project/ACTIVE_STATE.yaml
+    format: yaml
