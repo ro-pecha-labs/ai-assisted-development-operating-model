@@ -57,15 +57,26 @@ Triggered playbooks remain lazy-loaded.
 
 ## Q5 — Representative shadow pilot
 
-Use one real portfolio DEV project at a clean boundary without changing its current OM authority.
+Initial portfolio shadow audit on 2026-09-23: **FAIL / CONTROL_IMPLEMENTATION**.
 
-Measure:
+Fresh DVC, DAE, AAE and SPC Active State files all showed at least one structural drift from the bounded `om.active-state/v2` contract. See `OM_2.1_Q5_PORTFOLIO_SHADOW_FINDING.md`.
+
+Corrective OM 2.1 control:
+
+- reusable project-bootstrap validator;
+- reusable GitHub project-state conformance workflow;
+- DEV rule for ongoing path-scoped conformance.
+
+Q5 remains open. A successor real-project shadow pilot must prove PASS after one project is reconciled at a clean prospective boundary.
+
+The pilot shall measure:
 
 - recovery surface;
 - additional AI context from solo mode;
 - review overhead;
 - CI overhead;
-- lightweight/formal release classification usability.
+- lightweight/formal release classification usability;
+- continuous project-state conformance.
 
 ## Candidate gate
 
