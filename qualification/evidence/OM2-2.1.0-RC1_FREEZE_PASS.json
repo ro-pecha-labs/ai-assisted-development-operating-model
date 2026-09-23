@@ -1,0 +1,15 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.1.0-RC1-FREEZE",
+  "kind": "candidate_freeze",
+  "subject": {
+    "identity": "OM2-2.1.0-RC1",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.1.0-rc1",
+    "revision": {
+      "kind": "git_commit",
+      "value": "02a4a3f5004fd497b2e4e6402b508c1a29802c35"
+    }
+  },
+  "outcome": "PASS",
+  "summary": "RC1 freeze PASS. Fresh tag read-back resolves om-v2.1.0-rc1 to exact commit 02a4a3f5004fd497b2e4e6402b508c1a29802c35. Organization tag ruleset OM2 version tags is active for refs/tags/om-v*, blocks update and deletion, has no bypass actors, and current user cannot bypass. Release is published as Pre-release."
+}
