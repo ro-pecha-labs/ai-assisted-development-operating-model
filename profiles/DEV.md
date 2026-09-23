@@ -1,7 +1,6 @@
 # AI-Assisted Development Project Operating Model 2.0
 ## Profile: DEV
 
-**Status:** NON-CANONICAL DEVELOPMENT
 
 1. **DEV control plane.** DEV normally requires a Git-based authoritative project control plane. A non-Git exception must demonstrate equivalent source identity, history, candidate immutability, release identity, recoverability and evidence integrity.
 2. **Git-native bootstrap specialization.** A normal Git-native DEV project uses `om.project/v2` with `control_plane.kind: git`, an active-state locator such as `.project/ACTIVE_STATE.yaml`, and `om.active-state/v2`. Trusted DEV baselines should bind a `git_commit` revision; live work pointers normally identify branch, pull request and/or issue as applicable.
