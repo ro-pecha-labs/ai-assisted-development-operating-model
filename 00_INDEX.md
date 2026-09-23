@@ -1,9 +1,9 @@
-# Operating Model 2.0 Canonical Index
+# Operating Model 2.1 Canonical Index
 
-**Version:** `2.0.0`  
+**Version:** `2.1.1`  
 **Status:** CURRENT CANONICAL OPERATING MODEL  
-**Canonical tag:** `om-v2.0.0`  
-**Exact canonical commit:** `769497a3477cfe5cc676d1ba972728404e9b3551`
+**Canonical tag:** `om-v2.1.1`  
+**Exact canonical commit:** `df9812815a3a83c39b49c66035b4795acd777fc7`
 
 ## Canonical entrypoints
 
@@ -15,7 +15,7 @@
 - DEV templates: `templates/DEV/`
 - Validator: `tools/validate.py`
 
-The immutable release tag `om-v2.0.0` remains normative authority. Post-release development and evidence on `main` do not mutate the current canonical release bytes.
+The immutable release tag `om-v2.1.1` is the current normative authority. Post-release development and evidence on `main` do not mutate the canonical release bytes.
 
 ## OM 2.1 lineage
 
@@ -28,24 +28,17 @@ Qualified source candidate:
 
 RC1 acceptance review: PASS.
 
-The first GA release attempt `om-v2.1.0` is preserved as **NOT_ACCEPTED_FOR_GA / RELEASE_CONTROL_DEVIATION** because its immutable tag resolved to a later commit than the exact G2 promotion pin. See `GA_DISPOSITION_2.1.0.md`.
+The first GA release attempt `om-v2.1.0` is preserved as **NOT_ACCEPTED_FOR_GA / RELEASE_CONTROL_DEVIATION**. See `GA_DISPOSITION_2.1.0.md`.
 
-This was not an OM product defect. The only intervening change was CI trigger/concurrency topology in `.github/workflows/validate.yml`.
+OM 2.1.1 is the PATCH successor that preserves the qualified OM 2.1 normative behavior and remedies the release-control identity race prospectively.
 
-## OM 2.1.1 patch successor
+## OM 2.1.1 acceptance and adoption
 
-Current release target on `main`: `2.1.1`.
+- immutable release tag: `om-v2.1.1`;
+- exact release commit: `df9812815a3a83c39b49c66035b4795acd777fc7`;
+- tag-bound validation: `35854783610 / SUCCESS`;
+- release acceptance: `ACCEPTANCE_2.1.1.md`;
+- canonical adoption: `CANONICAL_ADOPTION_2.1.1.md`;
+- disposition: **ACCEPTED RELEASE / CURRENT CANONICAL NORMATIVE AUTHORITY**.
 
-The 2.1.1 patch preserves the qualified OM 2.1 normative behavior and remedies the release-control identity race prospectively.
-
-Required before acceptance:
-
-- protected PR;
-- structural CI;
-- exact post-merge promotion commit capture;
-- no unexpected normative diff from the qualified OM 2.1 line;
-- new immutable identity `om-v2.1.1` created only on that exact commit;
-- exact tag-bound hosted validation on `om-v2.1.1`;
-- separate release acceptance.
-
-The current canonical authority remains `om-v2.0.0` until a later accepted immutable release is explicitly adopted prospectively.
+Canonical adoption is prospective. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.

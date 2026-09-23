@@ -2,12 +2,14 @@
 
 ## Current canonical authority
 
-**Canonical version:** `2.0.0`  
-**Canonical tag:** `om-v2.0.0`  
-**Exact canonical commit:** `769497a3477cfe5cc676d1ba972728404e9b3551`  
+**Canonical version:** `2.1.1`  
+**Canonical tag:** `om-v2.1.1`  
+**Exact canonical commit:** `df9812815a3a83c39b49c66035b4795acd777fc7`  
 **Status:** CURRENT CANONICAL OPERATING MODEL
 
-The immutable GitHub release identified above remains the normative authority until a later release is explicitly adopted prospectively.
+The immutable GitHub release identified above is the current normative authority. Development and evidence commits on `main` do not mutate the canonical release bytes.
+
+Canonical adoption was explicitly authorized on 2026-09-23 and is recorded in `CANONICAL_ADOPTION_2.1.1.md`.
 
 ## OM 2.1 qualification lineage
 
@@ -20,17 +22,21 @@ Qualified candidate:
 
 RC1 acceptance review passed.
 
-The first GA release attempt `om-v2.1.0` is **not accepted for GA**. Its immutable tag was created on commit `3fa66871aa41b9e677f5ebb6ffb2c473a78673de` rather than the exact G2 promotion commit `3bcc928251286e9988b20afc67bdd7832d135ed3`.
+The first GA release attempt `om-v2.1.0` is **not accepted for GA** and remains immutable historical evidence. See `GA_DISPOSITION_2.1.0.md`.
 
-The intervening change affected only `.github/workflows/validate.yml` CI trigger/concurrency behavior. No OM product semantics changed. The release attempt remains immutable historical evidence and is documented in `GA_DISPOSITION_2.1.0.md`.
+OM 2.1.1 is the accepted PATCH successor. Its exact immutable identity is:
 
-## OM 2.1.1 patch successor
+`om-v2.1.1 -> df9812815a3a83c39b49c66035b4795acd777fc7`
 
-Current release target: `2.1.1`.
+Exact tag-bound hosted qualification: `35854783610 / SUCCESS`.
 
-This is a PATCH-class prospective recovery under `OM_RELEASE_POLICY.md` because the recovery addresses tooling/release-control coherence without changing normative behavior.
+GA acceptance: `ACCEPTANCE_2.1.1.md`.
 
-The patch preserves the qualified OM 2.1 capability scope:
+Canonical adoption: `CANONICAL_ADOPTION_2.1.1.md`.
+
+## OM 2.1 capability scope
+
+The canonical OM 2.1.1 release preserves the qualified OM 2.1 capability scope:
 
 - optional cross-profile solo assurance;
 - `SOLO_ASSURANCE`;
@@ -47,13 +53,8 @@ The patch preserves the qualified OM 2.1 capability scope:
 
 The five primary profiles remain DEV, SOLUTION, DOCUMENT, EXPERIMENT and LIGHT.
 
-Before OM 2.1.1 can be accepted:
+## Project adoption boundary
 
-1. protected PR and structural CI must pass;
-2. exact post-merge promotion SHA must be captured;
-3. the final diff must contain no unexpected normative behavior change;
-4. immutable tag `om-v2.1.1` must be created on that exact SHA;
-5. tag-bound hosted validation must succeed on that exact identity;
-6. release acceptance must be recorded.
+OM-level canonical adoption does not automatically migrate existing projects.
 
-Canonical adoption remains a separate explicit prospective event. No child-project adoption is implied by release promotion or OM-level adoption.
+DVC, SPC, AAE, DAE, APC and Application Factory portfolio controls retain their project-recorded OM pins until each performs a separate safe-boundary adoption according to its authoritative project state.
