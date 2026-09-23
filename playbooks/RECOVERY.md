@@ -1,6 +1,5 @@
 # Playbook — Recovery
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** a new session, lost context, explicit continue/recover request, or suspected state drift.
 
 1. Discover the project repository/control plane.
