@@ -1,8 +1,8 @@
 schema: om.manifest/v1
 
 operating_model:
-  version: 2.1.0-dev
-  status: non_canonical_development
+  version: 2.1.0-rc1
+  status: non_canonical_candidate
 
 entrypoints:
   core: CORE.md
