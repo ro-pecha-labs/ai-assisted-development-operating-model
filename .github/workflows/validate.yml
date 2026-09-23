@@ -1,8 +1,14 @@
 name: Validate OM2
 
 on:
-  push:
   pull_request:
+  push:
+    branches:
+      - main
+      - 'candidate/**'
+      - 'release/**'
+    tags:
+      - 'om-v*'
 
 permissions:
   contents: read
