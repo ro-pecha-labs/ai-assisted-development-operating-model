@@ -1,0 +1,31 @@
+schema: om.active-state/v2
+
+objective:
+  id: QREC-02
+  summary: Recover current work from the universal v2 bootstrap.
+
+trusted_baseline:
+  identity: baseline/qrec-accepted
+  revision:
+    kind: git_commit
+    value: 0123456789abcdef0123456789abcdef01234567
+
+active_work:
+  - kind: issue
+    locator: https://github.com/example/repo/issues/42
+  - kind: branch
+    locator: feature/recovery-target
+  - kind: pull_request
+    locator: https://github.com/example/repo/pull/43
+
+phase: development
+
+blockers: []
+
+next_actions:
+  - Inspect the referenced live work pointers and required checks.
+  - Continue the bounded objective if live state is consistent.
+
+conditional_reads:
+  - when: architecture_question
+    locator: docs/architecture/
