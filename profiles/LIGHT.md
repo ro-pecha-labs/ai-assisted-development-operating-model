@@ -1,7 +1,6 @@
 # AI-Assisted Development Project Operating Model 2.0
 ## Profile: LIGHT
 
-**Status:** NON-CANONICAL CANDIDATE
 
 1. **Purpose.** LIGHT governs low-risk persistent work that benefits from recoverability and authority discipline but does not justify a heavier profile.
 2. **Authority.** Keep one declared source of truth for persistent state. Avoid duplicate current-state documents.
