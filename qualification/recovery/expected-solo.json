@@ -1,0 +1,16 @@
+{
+  "bootstrap_files_read": 2,
+  "project_id": "RECOVERYFIXTURE",
+  "profile": "DEV",
+  "objective_id": "QREC-02",
+  "trusted_baseline_identity": "baseline/qrec-accepted",
+  "active_branch": "feature/recovery-target",
+  "live_queries_required": [
+    "issue:https://github.com/example/repo/issues/42",
+    "branch:feature/recovery-target",
+    "pull_request:https://github.com/example/repo/pull/43"
+  ],
+  "legacy_handoff_required": false,
+  "historical_reconstruction_required": false,
+  "assurance_mode": "solo"
+}
