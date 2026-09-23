@@ -1,6 +1,5 @@
 # Playbook — Initialize
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** creation of a new governed project or prospective adoption of OM by an ungoverned project.
 
 1. Classify the primary profile from the real work objective.

@@ -1,6 +1,5 @@
 # Playbook — Exceptional Handoff
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** work must move between agents/sessions while material in-flight state is not yet durably represented by normal project/platform state.
 
 1. Prefer normal repository recovery; do not create a handoff merely because a chat ends.

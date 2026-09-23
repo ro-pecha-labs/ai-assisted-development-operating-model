@@ -1,7 +1,6 @@
 # AI-Assisted Development Project Operating Model 2.0
 ## Profile: DOCUMENT
 
-**Status:** NON-CANONICAL CANDIDATE
 
 1. **Purpose.** DOCUMENT governs durable authored documents where correctness, review, provenance and controlled revision matter more than executable product lifecycle.
 2. **Authority.** One declared document/source repository is authoritative for the governed document state. Generated exports and convenience copies are derivative unless explicitly designated otherwise.

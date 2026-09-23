@@ -1,7 +1,6 @@
 # AI-Assisted Development Project Operating Model 2.0
 ## Profile: SOLUTION
 
-**Status:** NON-CANONICAL CANDIDATE
 
 1. **Purpose.** SOLUTION governs durable solution, architecture, design and implementation-definition work where the primary accepted output is a solution contract rather than an executable product candidate.
 2. **Authority.** The project shall declare one authoritative control plane for current solution state and decisions. Source material may remain authoritative externally when explicitly referenced.

@@ -1,7 +1,6 @@
 # AI-Assisted Development Project Operating Model 2.0
 ## Profile: EXPERIMENT
 
-**Status:** NON-CANONICAL CANDIDATE
 
 1. **Purpose.** EXPERIMENT governs bounded exploratory work intended to test a hypothesis, feasibility question, technology choice or uncertain approach.
 2. **Hypothesis.** The experiment shall state the question or hypothesis, bounded scope and success/failure signal strongly enough to avoid post-hoc reinterpretation.

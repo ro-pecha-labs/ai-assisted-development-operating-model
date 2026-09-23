@@ -1,7 +1,6 @@
 # AI-Assisted Development Project Operating Model 2.0
 ## CORE
 
-**Status:** NON-CANONICAL CANDIDATE
 
 1. **Authority.** Persistent project state shall have one declared authoritative control plane. Chat sessions, temporary caches, generated views and convenience copies are not independent authorities.
 2. **Discover first.** Available authoritative state shall be discovered before the user is asked to provide recoverable information.

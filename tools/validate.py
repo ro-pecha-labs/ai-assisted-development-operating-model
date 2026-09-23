@@ -50,6 +50,23 @@ EXPECTED_CURRENT_SCHEMAS = {
     "evidence_record": "schemas/EVIDENCE_RECORD.v2.schema.json",
 }
 
+NORMATIVE_COMPONENTS_WITHOUT_LOCAL_RELEASE_STATUS = [
+    "CORE.md",
+    "profiles/DEV.md",
+    "profiles/SOLUTION.md",
+    "profiles/DOCUMENT.md",
+    "profiles/EXPERIMENT.md",
+    "profiles/LIGHT.md",
+    "playbooks/RECOVERY.md",
+    "playbooks/INITIALIZE.md",
+    "playbooks/FAILURE_DIAGNOSIS.md",
+    "playbooks/CANDIDATE_RELEASE.md",
+    "playbooks/CONNECTED_MUTATION.md",
+    "playbooks/EXTERNAL_SOURCE_MISMATCH.md",
+    "playbooks/EXCEPTIONAL_HANDOFF.md",
+    "playbooks/ADOPTION_MIGRATION.md",
+]
+
 def load(path):
     p = ROOT / path
     if p.suffix.lower() == ".json":
@@ -122,6 +139,14 @@ for doc in ("README.md", "00_INDEX.md"):
     if version not in text:
         failed |= fail(f"{doc} does not declare current version {version}")
 
+for doc in NORMATIVE_COMPONENTS_WITHOUT_LOCAL_RELEASE_STATUS:
+    text = (ROOT / doc).read_text(encoding="utf-8")
+    if re.search(r"^\*\*Status:\*\*", text, flags=re.MULTILINE):
+        failed |= fail(
+            f"{doc} declares a local release/candidate status; "
+            "release status belongs to immutable version authority and the canonical index"
+        )
+
 core_text = (ROOT / core).read_text(encoding="utf-8")
 declared = set(re.findall(r"DEV|SOLUTION|DOCUMENT|EXPERIMENT|LIGHT", core_text))
 if not EXPECTED_PROFILES.issubset(declared):
@@ -129,6 +154,19 @@ if not EXPECTED_PROFILES.issubset(declared):
 
 dev_project = load("templates/DEV/.project/PROJECT.yaml")
 dev_active = load("templates/DEV/.project/ACTIVE_STATE.yaml")
+
+if manifest.get("operating_model", {}).get("status") == "accepted_release":
+    expected_release_ref = f"om-v{version}"
+    template_om = dev_project.get("governance", {}).get("operating_model", {})
+    if template_om.get("ref") != expected_release_ref:
+        failed |= fail(
+            f"accepted-release DEV template must pin {expected_release_ref}, "
+            f"got {template_om.get('ref')}"
+        )
+    template_commit = template_om.get("commit", "")
+    if not re.fullmatch(r"[0-9a-fA-F]{40}", template_commit):
+        failed |= fail("accepted-release DEV template must pin an exact 40-hex OM commit")
+
 if dev_project.get("schema") != "om.project/v2":
     failed |= fail("DEV PROJECT template is not v2")
 if dev_project.get("control_plane", {}).get("kind") != "git":

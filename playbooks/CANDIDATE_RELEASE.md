@@ -1,6 +1,5 @@
 # Playbook — Candidate and Release
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** DEV work is proposed for candidate freeze, candidate qualification, acceptance or release.
 
 1. Confirm applicable lessons/recurrence and pre-candidate controls are satisfied.

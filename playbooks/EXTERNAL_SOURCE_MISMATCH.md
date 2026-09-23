@@ -1,6 +1,5 @@
 # Playbook — External Source Mismatch
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** project state, runtime, cache, documentation or an external authoritative source disagree.
 
 1. Identify the content class in dispute and its declared authority.

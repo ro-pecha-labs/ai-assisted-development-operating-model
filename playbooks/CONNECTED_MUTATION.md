@@ -1,6 +1,5 @@
 # Playbook — Connected Mutation
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** any governed action may mutate an external system.
 
 1. Separate read-only discovery/Observe/Plan from mutation.
