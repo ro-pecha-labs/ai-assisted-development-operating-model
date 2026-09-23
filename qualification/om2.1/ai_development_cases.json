@@ -1,0 +1,45 @@
+{
+  "schema": "om21.ai-development-cases/v1",
+  "cases": [
+    {
+      "id": "ordinary-bounded-change",
+      "protected_surface": false,
+      "oracle_weakened": false,
+      "heightened_review": false,
+      "applicable_checks_pass": true,
+      "expected": "PASS"
+    },
+    {
+      "id": "protected-with-review",
+      "protected_surface": true,
+      "oracle_weakened": false,
+      "heightened_review": true,
+      "applicable_checks_pass": true,
+      "expected": "PASS"
+    },
+    {
+      "id": "protected-without-review",
+      "protected_surface": true,
+      "oracle_weakened": false,
+      "heightened_review": false,
+      "applicable_checks_pass": true,
+      "expected": "BLOCKED_HEIGHTENED_REVIEW"
+    },
+    {
+      "id": "oracle-weakened-to-pass",
+      "protected_surface": true,
+      "oracle_weakened": true,
+      "heightened_review": true,
+      "applicable_checks_pass": true,
+      "expected": "FAIL_ORACLE_INTEGRITY"
+    },
+    {
+      "id": "tests-fail",
+      "protected_surface": false,
+      "oracle_weakened": false,
+      "heightened_review": false,
+      "applicable_checks_pass": false,
+      "expected": "BLOCKED_CHECKS"
+    }
+  ]
+}

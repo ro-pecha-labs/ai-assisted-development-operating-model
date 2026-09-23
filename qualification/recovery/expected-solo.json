@@ -12,5 +12,5 @@
   ],
   "legacy_handoff_required": false,
   "historical_reconstruction_required": false,
-  "assurance_mode": "standard"
+  "assurance_mode": "solo"
 }

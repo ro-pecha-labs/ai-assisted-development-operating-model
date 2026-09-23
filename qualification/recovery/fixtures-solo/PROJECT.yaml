@@ -1,0 +1,26 @@
+schema: om.project/v2
+
+project:
+  id: RECOVERYFIXTURE
+  name: OM2 Recovery Qualification Fixture
+  profile: DEV
+
+assurance:
+  mode: solo
+
+control_plane:
+  kind: git
+  platform: github
+  locator: https://github.com/ro-pecha-labs/example-recovery-fixture
+  default_ref: main
+
+governance:
+  operating_model:
+    repository: https://github.com/ro-pecha-labs/ai-assisted-development-operating-model
+    ref: development
+    commit: 48446689b3a767fcbbf97ae3628f0cb48eb6ec87
+
+state:
+  active:
+    locator: .project/ACTIVE_STATE.yaml
+    format: yaml

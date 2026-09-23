@@ -1,0 +1,16 @@
+schema: om.active-state/v2
+objective:
+  id: CONF-VALID
+  summary: Validate a bounded current-state bootstrap.
+trusted_baseline:
+  identity: baseline/conformance
+  revision:
+    kind: git_commit
+    value: 0123456789abcdef0123456789abcdef01234567
+active_work:
+  - kind: branch
+    locator: feature/conformance
+phase: development
+blockers: []
+next_actions:
+  - Run the bounded conformance gate.

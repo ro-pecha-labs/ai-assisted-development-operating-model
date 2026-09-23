@@ -39,3 +39,15 @@ Before enabling or materially changing a GitHub Actions workflow, determine:
 - Is every uploaded artifact required by evidence or delivery semantics?
 - Does a cumulative gate cause lower-level suites to execute multiple times for one change?
 - Has the changed CI configuration itself been qualified?
+
+## Execution and storage hierarchy
+
+1. **Do not persist routine successful output.** Platform logs/job summaries are sufficient unless a material claim requires durable evidence.
+2. **Use cache for reproducible dependency/tool reuse.** Prefer cache for downloaded SDKs, package-manager caches and deterministic toolchain reuse rather than rebuilding an image or uploading the same dependency as an artifact.
+3. **Use Actions artifacts for bounded temporary output.** Upload artifacts only when cross-job transfer, bounded diagnostics or temporary qualification evidence requires them; configure retention proportionately.
+4. **Use GitHub Release assets for accepted immutable distributions.** Do not use transient Actions artifacts as the primary long-lived distribution surface for an accepted release.
+5. **Use Packages only for package-manager consumption.** Publish to GitHub Packages when the artifact is intended to be consumed as a package/container dependency, not merely because storage is available.
+6. **Use custom runner images only after measurement.** Custom images are appropriate only when measured repeated setup cost justifies the paid larger-runner execution and image-storage model. A large toolchain download alone is not sufficient justification.
+7. **Prefer standard hosted runners by default.** Do not move to larger/specialized runners solely to avoid a setup step that can be handled efficiently by setup actions or cache.
+
+Before adopting a storage optimization, measure both execution savings and the new storage/runner cost. A cost optimization shall not weaken exact-runtime or evidence claims.

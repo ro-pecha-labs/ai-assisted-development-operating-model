@@ -1,0 +1,77 @@
+{
+  "schema": "om21.solo-assurance-cases/v1",
+  "cases": [
+    {
+      "id": "material-with-self-review",
+      "material_change": true,
+      "human_self_review": true,
+      "external_two_person_required": false,
+      "second_human_approved": false,
+      "human_authorization_required": false,
+      "human_authorized": false,
+      "ai_review_present": true,
+      "claim_independent_human_review": false,
+      "expected": "PASS"
+    },
+    {
+      "id": "material-without-self-review",
+      "material_change": true,
+      "human_self_review": false,
+      "external_two_person_required": false,
+      "second_human_approved": false,
+      "human_authorization_required": false,
+      "human_authorized": false,
+      "ai_review_present": true,
+      "claim_independent_human_review": false,
+      "expected": "BLOCKED_HUMAN_SELF_REVIEW"
+    },
+    {
+      "id": "two-person-policy-ai-not-substitute",
+      "material_change": true,
+      "human_self_review": true,
+      "external_two_person_required": true,
+      "second_human_approved": false,
+      "human_authorization_required": false,
+      "human_authorized": false,
+      "ai_review_present": true,
+      "claim_independent_human_review": false,
+      "expected": "BLOCKED_EXTERNAL_CONTROL"
+    },
+    {
+      "id": "two-person-policy-satisfied",
+      "material_change": true,
+      "human_self_review": true,
+      "external_two_person_required": true,
+      "second_human_approved": true,
+      "human_authorization_required": false,
+      "human_authorized": false,
+      "ai_review_present": false,
+      "claim_independent_human_review": true,
+      "expected": "PASS"
+    },
+    {
+      "id": "human-authorization-missing",
+      "material_change": false,
+      "human_self_review": false,
+      "external_two_person_required": false,
+      "second_human_approved": false,
+      "human_authorization_required": true,
+      "human_authorized": false,
+      "ai_review_present": true,
+      "claim_independent_human_review": false,
+      "expected": "BLOCKED_HUMAN_AUTHORIZATION"
+    },
+    {
+      "id": "false-human-review-claim",
+      "material_change": false,
+      "human_self_review": false,
+      "external_two_person_required": false,
+      "second_human_approved": false,
+      "human_authorization_required": false,
+      "human_authorized": false,
+      "ai_review_present": true,
+      "claim_independent_human_review": true,
+      "expected": "FAIL_FALSE_HUMAN_REVIEW_CLAIM"
+    }
+  ]
+}

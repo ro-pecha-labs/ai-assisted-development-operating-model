@@ -1,0 +1,59 @@
+{
+  "schema": "om21.dev-release-cases/v1",
+  "cases": [
+    {
+      "id": "utility-low-risk",
+      "connected_mutation": false,
+      "destructive_or_prod": false,
+      "formal_downstream_adoption": false,
+      "governed_external_distribution_requires_candidate": false,
+      "project_policy_requires_formal": false,
+      "expected": "lightweight"
+    },
+    {
+      "id": "connected-mutation",
+      "connected_mutation": true,
+      "destructive_or_prod": false,
+      "formal_downstream_adoption": false,
+      "governed_external_distribution_requires_candidate": false,
+      "project_policy_requires_formal": false,
+      "expected": "formal"
+    },
+    {
+      "id": "prod-destructive",
+      "connected_mutation": false,
+      "destructive_or_prod": true,
+      "formal_downstream_adoption": false,
+      "governed_external_distribution_requires_candidate": false,
+      "project_policy_requires_formal": false,
+      "expected": "formal"
+    },
+    {
+      "id": "formal-downstream-adoption",
+      "connected_mutation": false,
+      "destructive_or_prod": false,
+      "formal_downstream_adoption": true,
+      "governed_external_distribution_requires_candidate": false,
+      "project_policy_requires_formal": false,
+      "expected": "formal"
+    },
+    {
+      "id": "external-distribution-policy",
+      "connected_mutation": false,
+      "destructive_or_prod": false,
+      "formal_downstream_adoption": false,
+      "governed_external_distribution_requires_candidate": true,
+      "project_policy_requires_formal": false,
+      "expected": "formal"
+    },
+    {
+      "id": "project-policy",
+      "connected_mutation": false,
+      "destructive_or_prod": false,
+      "formal_downstream_adoption": false,
+      "governed_external_distribution_requires_candidate": false,
+      "project_policy_requires_formal": true,
+      "expected": "formal"
+    }
+  ]
+}

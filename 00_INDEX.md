@@ -26,3 +26,9 @@
 - Canonical adoption record: `CANONICAL_ADOPTION_2.0.0.md`
 
 The immutable release tag `om-v2.0.0` is normative authority. Post-release evidence on `main` does not mutate the canonical release bytes.
+
+## Non-canonical development
+
+Current development target on `main`: `2.1.0-dev` — Solo Assurance & Proportional DEV.
+
+This development line is not canonical and does not change the authority of `om-v2.0.0`. See `OM_SOLO_PROPOSAL.md` and `OM_2.1_QUALIFICATION_PLAN.md`.

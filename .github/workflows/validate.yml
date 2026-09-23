@@ -1,8 +1,14 @@
 name: Validate OM2
 
 on:
-  push:
   pull_request:
+  push:
+    branches:
+      - main
+      - 'candidate/**'
+      - 'release/**'
+    tags:
+      - 'om-v*'
 
 permissions:
   contents: read
@@ -23,3 +29,24 @@ jobs:
           python tools/recovery_probe.py
           qualification/recovery/fixtures
           --expected qualification/recovery/expected.json
+      - name: Qualify solo recovery
+        run: >-
+          python tools/recovery_probe.py
+          qualification/recovery/fixtures-solo
+          --expected qualification/recovery/expected-solo.json
+      - name: Qualify OM 2.1 policy semantics
+        run: python tools/qualify_om21.py
+      - name: Validate reusable project bootstrap conformance
+        run: >-
+          python tools/validate_project_bootstrap.py
+          qualification/project-conformance/valid
+          --om-root .
+          --skip-om-git-pin-check
+      - name: Qualify invalid project bootstrap rejection
+        shell: bash
+        run: |
+          if python tools/validate_project_bootstrap.py qualification/project-conformance/invalid --om-root . --skip-om-git-pin-check; then
+            echo "Expected invalid project bootstrap to fail"
+            exit 1
+          fi
+          echo "Negative project bootstrap conformance PASS"

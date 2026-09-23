@@ -18,7 +18,13 @@ CASES = [
     ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_DOCUMENT_DRIVE.yaml", True),
     ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_EXPERIMENT_ONEDRIVE.yaml", True),
     ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_LIGHT_DRIVE.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_DEV_GIT_SOLO.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_SOLUTION_SHAREPOINT_SOLO.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_DOCUMENT_DRIVE_SOLO.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_EXPERIMENT_ONEDRIVE_SOLO.yaml", True),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/positive/PROJECT_LIGHT_DRIVE_SOLO.yaml", True),
     ("schemas/PROJECT.v2.schema.json", "fixtures/v2/negative/PROJECT_INVALID_EXTERNAL_GITHUB.yaml", False),
+    ("schemas/PROJECT.v2.schema.json", "fixtures/v2/negative/PROJECT_INVALID_ASSURANCE_MODE.yaml", False),
     ("schemas/ACTIVE_STATE.v2.schema.json", "fixtures/v2/positive/ACTIVE_STATE_DEV.yaml", True),
     ("schemas/ACTIVE_STATE.v2.schema.json", "fixtures/v2/positive/ACTIVE_STATE_DOCUMENT.yaml", True),
     ("schemas/ACTIVE_STATE.v2.schema.json", "fixtures/v2/positive/ACTIVE_STATE_SOLUTION.yaml", True),
@@ -41,7 +47,7 @@ EXPECTED_PROFILES = {"DEV", "SOLUTION", "DOCUMENT", "EXPERIMENT", "LIGHT"}
 EXPECTED_PLAYBOOKS = {
     "recovery", "initialize", "failure_diagnosis", "candidate_release",
     "connected_mutation", "external_source_mismatch", "exceptional_handoff",
-    "adoption_migration",
+    "adoption_migration", "ai_development_loop", "solo_assurance",
 }
 EXPECTED_CURRENT_SCHEMAS = {
     "project": "schemas/PROJECT.v2.schema.json",
@@ -65,6 +71,8 @@ NORMATIVE_COMPONENTS_WITHOUT_LOCAL_RELEASE_STATUS = [
     "playbooks/EXTERNAL_SOURCE_MISMATCH.md",
     "playbooks/EXCEPTIONAL_HANDOFF.md",
     "playbooks/ADOPTION_MIGRATION.md",
+    "playbooks/AI_DEVELOPMENT_LOOP.md",
+    "playbooks/SOLO_ASSURANCE.md",
 ]
 
 def load(path):
@@ -133,6 +141,13 @@ project_schema = load(schemas["project"])
 profile_enum = set(project_schema["properties"]["project"]["properties"]["profile"]["enum"])
 if profile_enum != set(profiles):
     failed |= fail("PROJECT v2 profile enum does not match OM.yaml profiles")
+
+assurance_schema = project_schema.get("properties", {}).get("assurance", {})
+assurance_modes = set(
+    assurance_schema.get("properties", {}).get("mode", {}).get("enum", [])
+)
+if assurance_modes != {"standard", "solo"}:
+    failed |= fail(f"PROJECT v2 assurance modes mismatch: {sorted(assurance_modes)}")
 
 for doc in ("README.md", "00_INDEX.md"):
     text = (ROOT / doc).read_text(encoding="utf-8")

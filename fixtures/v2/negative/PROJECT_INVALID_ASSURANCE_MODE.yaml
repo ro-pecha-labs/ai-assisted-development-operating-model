@@ -1,0 +1,16 @@
+schema: om.project/v2
+project: {id: DEVEXAMPLE, name: DEV Git Example, profile: DEV}
+assurance:
+  mode: committee
+control_plane:
+  kind: git
+  platform: github
+  locator: https://github.com/example/dev-example
+  default_ref: main
+governance:
+  operating_model:
+    repository: https://github.com/example/ai-assisted-development-operating-model
+    ref: om-v2.0.0-rc2
+    commit: 0123456789abcdef0123456789abcdef01234567
+state:
+  active: {locator: .project/ACTIVE_STATE.yaml, format: yaml}

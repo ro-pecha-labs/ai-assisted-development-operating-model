@@ -1,8 +1,8 @@
 schema: om.manifest/v1
 
 operating_model:
-  version: 2.0.0
-  status: accepted_release
+  version: 2.1.0-dev
+  status: non_canonical_development
 
 entrypoints:
   core: CORE.md
@@ -23,6 +23,8 @@ playbooks:
   external_source_mismatch: playbooks/EXTERNAL_SOURCE_MISMATCH.md
   exceptional_handoff: playbooks/EXCEPTIONAL_HANDOFF.md
   adoption_migration: playbooks/ADOPTION_MIGRATION.md
+  ai_development_loop: playbooks/AI_DEVELOPMENT_LOOP.md
+  solo_assurance: playbooks/SOLO_ASSURANCE.md
 
 schemas:
   project: schemas/PROJECT.v2.schema.json
