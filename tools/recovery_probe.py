@@ -22,6 +22,7 @@ def recover(root: Path):
         "bootstrap_files_read": 2,
         "project_id": project["project"]["id"],
         "profile": project["project"]["profile"],
+        "assurance_mode": project.get("assurance", {}).get("mode", "standard"),
         "objective_id": state["objective"]["id"],
         "trusted_baseline_identity": state["trusted_baseline"]["identity"],
         "active_branch": active_branch,
