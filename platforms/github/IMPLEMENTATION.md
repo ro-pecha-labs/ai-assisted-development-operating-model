@@ -24,3 +24,7 @@ AI connector limitations are separate from GitHub platform limitations and must 
 ## CI efficiency
 
 GitHub-hosted DEV workflows should apply `CI_EFFICIENCY.md` prospectively. Efficiency controls do not weaken required qualification, evidence, mutation authorization or historical integrity.
+
+## Project-state conformance
+
+For OM 2.1 Git-native DEV projects, use the reusable project-state conformance control described in `PROJECT_STATE_CONFORMANCE.md` to prevent post-adoption drift of `.project` bootstrap records. Scope the caller workflow to governance/bootstrap paths where feasible.
