@@ -17,3 +17,4 @@
 13. **Platform-native enforcement.** Reliable schema, source-control, CI, permission and protected-environment enforcement is preferred over repeated manual procedural checks.
 14. **Human-facing simplicity.** Internal governance mechanics should not be exposed to the user unless they materially affect a decision, authorization, blocker, risk, required action or exception.
 15. **Revision.** Canonical OM revisions shall be identifiable by immutable versioned authority and become effective only through explicit prospective adoption. Generated human-readable distributions are derivative unless explicitly designated otherwise.
+16. **Assurance topology.** A project may declare an assurance mode independently of its primary profile. Solo assurance changes how review independence is achieved; it does not weaken authority, historical integrity, fail-closed authorization, exact target identity, destructive/PROD authority or required human approval.
