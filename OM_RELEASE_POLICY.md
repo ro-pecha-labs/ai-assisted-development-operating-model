@@ -60,6 +60,12 @@ Minimum:
 - immutable candidate/RC lineage;
 - formal release acceptance and prospective canonical adoption.
 
+## Release-safe templates
+
+Distributed project templates shall not embed candidate-era or release-specific OM pins that would become stale when candidate bytes are promoted unchanged to GA.
+
+Templates may contain explicit non-usable sentinels for adopted OM ref/commit values only when project conformance rejects those sentinels until the template is instantiated with an exact immutable adopted release.
+
 ## Historical integrity
 
 A later release never rewrites the meaning of evidence produced under an earlier effective OM version.

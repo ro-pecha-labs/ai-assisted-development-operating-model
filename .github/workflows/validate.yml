@@ -50,3 +50,11 @@ jobs:
             exit 1
           fi
           echo "Negative project bootstrap conformance PASS"
+      - name: Qualify uninstantiated DEV template rejection
+        shell: bash
+        run: |
+          if python tools/validate_project_bootstrap.py qualification/project-conformance/uninstantiated-template --om-root . --skip-om-git-pin-check; then
+            echo "Expected uninstantiated DEV template to fail"
+            exit 1
+          fi
+          echo "Uninstantiated DEV template rejection PASS"

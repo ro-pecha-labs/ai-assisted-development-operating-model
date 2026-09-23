@@ -57,9 +57,9 @@ Triggered playbooks remain lazy-loaded.
 
 ## Q5 — Representative shadow pilot
 
-Initial portfolio shadow audit on 2026-09-23: **FAIL / CONTROL_IMPLEMENTATION**.
+**PASS**
 
-Fresh DVC, DAE, AAE and SPC Active State files all showed at least one structural drift from the bounded `om.active-state/v2` contract. See `OM_2.1_Q5_PORTFOLIO_SHADOW_FINDING.md`.
+Initial portfolio audit on 2026-09-23 found structural project-state drift in DVC, DAE, AAE and SPC and was preserved as **FAIL / CONTROL_IMPLEMENTATION** in `OM_2.1_Q5_PORTFOLIO_SHADOW_FINDING.md`.
 
 Corrective OM 2.1 control:
 
@@ -67,16 +67,20 @@ Corrective OM 2.1 control:
 - reusable GitHub project-state conformance workflow;
 - DEV rule for ongoing path-scoped conformance.
 
-Q5 remains open. A successor real-project shadow pilot must prove PASS after one project is reconciled at a clean prospective boundary.
+Successor representative pilot used SPC from live `main` commit `599dadc8cc01af419ecf2178e70c31a539d9008c` in a non-authoritative shadow branch.
 
-The pilot shall measure:
+The first shadow run correctly exposed two over-length `EXTERNAL_SOURCES.purpose` values while PROJECT, exact OM pin and bounded ACTIVE_STATE already passed. The shadow-only text was reconciled without changing source locator, authority or pin semantics.
 
-- recovery surface;
-- additional AI context from solo mode;
-- review overhead;
-- CI overhead;
-- lightweight/formal release classification usability;
-- continuous project-state conformance.
+Successor run `35839945652` at SPC shadow commit `fb8157ce16f627170520747de2d35c1e8c9ea26d` passed both:
+
+- reusable project-state conformance;
+- bounded solo recovery.
+
+Recovery read exactly two bootstrap files totaling 2,584 bytes, recovered `assurance_mode=solo`, the exact SPC 1.3.0 trusted baseline, and required neither legacy handoff nor historical reconstruction.
+
+See `OM_2.1_Q5_SPC_SHADOW_ACCEPTANCE.md`.
+
+The shadow branch is qualification evidence only and is not merged into SPC `main`; no SPC OM 2.1 adoption is implied.
 
 ## Candidate gate
 

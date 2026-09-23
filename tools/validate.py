@@ -170,17 +170,11 @@ if not EXPECTED_PROFILES.issubset(declared):
 dev_project = load("templates/DEV/.project/PROJECT.yaml")
 dev_active = load("templates/DEV/.project/ACTIVE_STATE.yaml")
 
-if manifest.get("operating_model", {}).get("status") == "accepted_release":
-    expected_release_ref = f"om-v{version}"
-    template_om = dev_project.get("governance", {}).get("operating_model", {})
-    if template_om.get("ref") != expected_release_ref:
-        failed |= fail(
-            f"accepted-release DEV template must pin {expected_release_ref}, "
-            f"got {template_om.get('ref')}"
-        )
-    template_commit = template_om.get("commit", "")
-    if not re.fullmatch(r"[0-9a-fA-F]{40}", template_commit):
-        failed |= fail("accepted-release DEV template must pin an exact 40-hex OM commit")
+template_om = dev_project.get("governance", {}).get("operating_model", {})
+if template_om.get("ref") != "REPLACE_WITH_ADOPTED_IMMUTABLE_OM_REF":
+    failed |= fail("DEV template must use the adopted-OM ref placeholder")
+if template_om.get("commit") != "0000000000000000000000000000000000000000":
+    failed |= fail("DEV template must use the all-zero exact-commit sentinel before instantiation")
 
 if dev_project.get("schema") != "om.project/v2":
     failed |= fail("DEV PROJECT template is not v2")
