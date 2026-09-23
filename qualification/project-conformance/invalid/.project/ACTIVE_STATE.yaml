@@ -1,0 +1,15 @@
+schema: om.active-state/v2
+objective:
+  id: CONF-INVALID
+  summary: Negative fixture with an overgrown next-action list.
+trusted_baseline:
+  identity: baseline/conformance
+active_work:
+  - kind: branch
+    locator: feature/conformance
+blockers: []
+next_actions:
+  - one
+  - two
+  - three
+  - four
