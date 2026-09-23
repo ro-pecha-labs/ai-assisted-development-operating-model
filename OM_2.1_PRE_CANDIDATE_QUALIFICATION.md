@@ -1,6 +1,6 @@
 # OM 2.1 — Pre-Candidate Qualification Status
 
-**Status:** PRE-CANDIDATE / Q0-Q4 PASS / Q5 OPEN / NOT READY TO FREEZE
+**Status:** PRE-CANDIDATE / Q0-Q5 PASS / READY FOR CANDIDATE-READINESS REVIEW
 **Development head:** `57b52ca04b2b94539dabe9f391f5b0398829e47d`
 **Hosted validation run:** `35838690953`
 
@@ -110,23 +110,34 @@ Successor run:
 
 ## Q5 — Representative real-project shadow pilot
 
-**OPEN / INITIAL AUDIT FAIL — CONTROL_IMPLEMENTATION**
+**PASS**
 
-Fresh portfolio audit found current Active State drift in DVC, DAE, AAE and SPC. See `OM_2.1_Q5_PORTFOLIO_SHADOW_FINDING.md`.
+Initial portfolio audit remains preserved as `FAIL / CONTROL_IMPLEMENTATION` because DVC, DAE, AAE and SPC all exhibited post-adoption bootstrap drift.
 
-The finding exposed missing continuous child-repository bootstrap enforcement. OM 2.1 development now includes:
+Successor SPC shadow qualification:
 
-- `tools/validate_project_bootstrap.py`;
-- reusable GitHub workflow `.github/workflows/project-state-conformance.yml`;
-- DEV conformance rule;
-- GitHub path-scoped caller guidance.
+- source SPC `main`: `599dadc8cc01af419ecf2178e70c31a539d9008c`;
+- shadow commit: `fb8157ce16f627170520747de2d35c1e8c9ea26d`;
+- exact OM 2.1 development revision under test: `8a277e103219fffad1ae4dbab5237debdc10dea2`;
+- workflow run: `35839945652`;
+- project-state conformance: PASS;
+- bounded solo recovery: PASS;
+- bootstrap files read: 2;
+- bootstrap bytes: 2,584;
+- `assurance_mode`: `solo`;
+- historical reconstruction: false;
+- legacy handoff: false.
 
-Q5 requires a successor real-project shadow pilot at a clean boundary after a project is reconciled and can exercise the prospective 2.1 conformance control.
+The first SPC shadow run exposed only pre-existing `EXTERNAL_SOURCES.purpose` length drift. The successor changed text only, preserving external-source locator, authority and pin semantics.
+
+See `OM_2.1_Q5_SPC_SHADOW_ACCEPTANCE.md`.
 
 ## Candidate disposition
 
-**NOT READY TO FREEZE.**
+**READY FOR CANDIDATE-READINESS REVIEW.**
 
-Do not create an OM 2.1 RC until Q5 PASS or explicit qualification adjudication establishes a different bounded disposition.
+Q0-Q5 are PASS. Before any RC freeze, candidate readiness must still verify release-safe template semantics, protected-main/platform controls, exact source identity, all-profile regressions, and absence of unresolved recurrence classes.
+
+No RC/tag, canonical adoption or child-project OM 2.1 migration is created by this qualification status.
 
 No existing OM 2.0.0 evidence or project adoption is reinterpreted by this development qualification.

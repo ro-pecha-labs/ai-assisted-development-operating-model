@@ -1,0 +1,22 @@
+schema: om.active-state/v2
+
+objective:
+  id: M0
+  summary: Complete the current bounded development objective.
+
+trusted_baseline:
+  identity: baseline/example
+  revision:
+    kind: git_commit
+    value: 0123456789abcdef0123456789abcdef01234567
+
+active_work:
+  - kind: branch
+    locator: feature/example
+
+phase: development
+
+blockers: []
+
+next_actions:
+  - Complete the current bounded development unit.
