@@ -13,9 +13,9 @@ control_plane:
 
 governance:
   operating_model:
-    repository: https://github.com/example/ai-assisted-development-operating-model
-    ref: om-v2.0.0-rc2
-    commit: 0123456789abcdef0123456789abcdef01234567
+    repository: https://github.com/ro-pecha-labs/ai-assisted-development-operating-model
+    ref: om-v2.0.0
+    commit: 769497a3477cfe5cc676d1ba972728404e9b3551
   project_rules:
     locator: .project/DEVELOPMENT_RULES.md
     format: markdown
