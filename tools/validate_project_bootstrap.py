@@ -58,8 +58,17 @@ def main():
     project = load_data(project_file)
     ok = validate(om_root / "schemas" / "PROJECT.v2.schema.json", project_file)
 
+    om_binding = project.get("governance", {}).get("operating_model", {})
+    expected_ref = om_binding.get("ref")
+    expected_commit = om_binding.get("commit")
+    if expected_ref == "REPLACE_WITH_ADOPTED_IMMUTABLE_OM_REF":
+        print("FAIL: PROJECT still contains the DEV template OM ref placeholder", file=sys.stderr)
+        ok = False
+    if expected_commit == "0000000000000000000000000000000000000000":
+        print("FAIL: PROJECT still contains the DEV template all-zero OM commit sentinel", file=sys.stderr)
+        ok = False
+
     if not args.skip_om_git_pin_check:
-        expected_commit = project.get("governance", {}).get("operating_model", {}).get("commit")
         actual_commit = subprocess.check_output(
             ["git", "-C", str(om_root), "rev-parse", "HEAD"], text=True
         ).strip()
