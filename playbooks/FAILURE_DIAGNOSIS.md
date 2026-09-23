@@ -1,6 +1,5 @@
 # Playbook — Failure Diagnosis
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** significant failure, connected failure, ambiguous regression or repeated root-cause class.
 
 1. Preserve the failed evidence before remediation.
