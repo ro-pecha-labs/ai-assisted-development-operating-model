@@ -23,3 +23,10 @@ jobs:
           python tools/recovery_probe.py
           qualification/recovery/fixtures
           --expected qualification/recovery/expected.json
+      - name: Qualify solo recovery
+        run: >-
+          python tools/recovery_probe.py
+          qualification/recovery/fixtures-solo
+          --expected qualification/recovery/expected-solo.json
+      - name: Qualify OM 2.1 policy semantics
+        run: python tools/qualify_om21.py
