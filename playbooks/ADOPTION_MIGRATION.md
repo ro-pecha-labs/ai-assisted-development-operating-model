@@ -1,6 +1,5 @@
 # Playbook — Adoption and Migration
 
-**Status:** NON-CANONICAL DEVELOPMENT  
 **Trigger:** a project or the Operating Model itself is proposed to change governance version, authority model or control plane.
 
 1. Identify the last trusted pre-adoption boundary.
