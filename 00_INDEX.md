@@ -27,8 +27,8 @@
 
 The immutable release tag `om-v2.0.0` is normative authority. Post-release evidence on `main` does not mutate the canonical release bytes.
 
-## Non-canonical development
+## Non-canonical candidate development
 
-Current development target on `main`: `2.1.0-dev` — Solo Assurance & Proportional DEV.
+Current candidate-ready target on `main`: `2.1.0-rc1` — Solo Assurance & Proportional DEV.
 
-This development line is not canonical and does not change the authority of `om-v2.0.0`. See `OM_SOLO_PROPOSAL.md` and `OM_2.1_QUALIFICATION_PLAN.md`.
+This candidate line is not canonical and does not change the authority of `om-v2.0.0`. See `OM_SOLO_PROPOSAL.md` and `OM_2.1_QUALIFICATION_PLAN.md`.
