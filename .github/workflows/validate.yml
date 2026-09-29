@@ -19,8 +19,8 @@ jobs:
   structural-validation:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
@@ -49,6 +49,15 @@ jobs:
             exit 1
           fi
           echo "Release identity mismatch rejection PASS"
+      - name: Qualify GitHub Actions runtime guard
+        shell: bash
+        run: |
+          python tools/actions_runtime_guard.py .github/workflows
+          if python tools/actions_runtime_guard.py qualification/actions-runtime/node20-negative.yml; then
+            echo "Expected deprecated Node.js action runtime to fail"
+            exit 1
+          fi
+          echo "Deprecated action runtime rejection PASS"
       - name: Validate reusable project bootstrap conformance
         run: >-
           python tools/validate_project_bootstrap.py
