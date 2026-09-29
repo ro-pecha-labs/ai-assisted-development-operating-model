@@ -1,0 +1,10 @@
+# Negative fixture for tools/actions_runtime_guard.py: must be rejected.
+# Not a workflow (outside .github/workflows); never executed.
+name: node20-negative-fixture
+on: workflow_dispatch
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5

@@ -16,16 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout caller repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Checkout adopted Operating Model
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ro-pecha-labs/ai-assisted-development-operating-model
           ref: ${{ inputs.om_ref }}
           path: .om
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 

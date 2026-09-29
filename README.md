@@ -53,6 +53,16 @@ The canonical OM 2.1.1 release preserves the qualified OM 2.1 capability scope:
 
 The five primary profiles remain DEV, SOLUTION, DOCUMENT, EXPERIMENT and LIGHT.
 
+## OM 2.1.2 patch release
+
+Accepted release: `2.1.2` (tag `om-v2.1.2` → `78f7390e58ce363c1e734d6beb54c08ac50131c6`, released from `release/om-2.1`); see `ACCEPTANCE_2.1.2.md`.
+
+PATCH-class under `OM_RELEASE_POLICY.md`: the GitHub-hosted validation workflow and the reusable project-state conformance workflow move from Node.js 20 action majors (`actions/checkout@v4`, `actions/setup-python@v5`) to Node.js 24 majors (`@v6`), with a deterministic regression guard `tools/actions_runtime_guard.py`. No CORE, profile, playbook, schema, template, validator semantics, policy or recovery behavior changes. See `PATCH_2.1.2.md`.
+
+`om-v2.1.2` is cut from `om-v2.1.1` plus the 2.1.1 acceptance/adoption records, not from `main`: post-2.1.1 policy development on `main` (CI_EFFICIENCY rules 11–12) is not part of this patch.
+
+Acceptance does not perform canonical adoption: canonical authority remains `om-v2.1.1` until OM 2.1.2 is explicitly adopted. Projects then re-pin at their own safe boundary.
+
 ## Project adoption boundary
 
 OM-level canonical adoption does not automatically migrate existing projects.
