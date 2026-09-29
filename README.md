@@ -2,14 +2,14 @@
 
 ## Current canonical authority
 
-**Canonical version:** `2.1.1`  
-**Canonical tag:** `om-v2.1.1`  
-**Exact canonical commit:** `df9812815a3a83c39b49c66035b4795acd777fc7`  
+**Canonical version:** `2.1.2`  
+**Canonical tag:** `om-v2.1.2`  
+**Exact canonical commit:** `78f7390e58ce363c1e734d6beb54c08ac50131c6`  
 **Status:** CURRENT CANONICAL OPERATING MODEL
 
 The immutable GitHub release identified above is the current normative authority. Development and evidence commits on `main` do not mutate the canonical release bytes.
 
-Canonical adoption was explicitly authorized on 2026-09-23 and is recorded in `CANONICAL_ADOPTION_2.1.1.md`.
+Canonical adoption of OM 2.1.2 was explicitly authorized on 2026-09-29 and is recorded in `CANONICAL_ADOPTION_2.1.2.md`. OM 2.1.1 (`CANONICAL_ADOPTION_2.1.1.md`, 2026-09-23) remains historical canonical authority.
 
 ## OM 2.1 qualification lineage
 
@@ -61,7 +61,7 @@ PATCH-class under `OM_RELEASE_POLICY.md`: the GitHub-hosted validation workflow 
 
 `om-v2.1.2` is cut from `om-v2.1.1` plus the 2.1.1 acceptance/adoption records, not from `main`: post-2.1.1 policy development on `main` (CI_EFFICIENCY rules 11–12) is not part of this patch.
 
-Acceptance does not perform canonical adoption: canonical authority remains `om-v2.1.1` until OM 2.1.2 is explicitly adopted. Projects then re-pin at their own safe boundary.
+OM 2.1.2 is the current canonical authority (`CANONICAL_ADOPTION_2.1.2.md`). Projects re-pin at their own safe boundary.
 
 ## Project adoption boundary
 
