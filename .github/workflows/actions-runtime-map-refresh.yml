@@ -1,0 +1,28 @@
+name: Actions runtime map refresh (advisory)
+
+# Manual, read-only. Compares tools/actions_runtime_map.json with the upstream action.yml of each
+# mapped action and prints differences to the job summary. It never changes the map and is not a gate.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  refresh-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Compare the runtime map with upstream
+        shell: bash
+        run: |
+          python tools/actions_runtime_map_refresh.py --propose | tee refresh-report.txt
+          {
+            echo "### Actions runtime map refresh (advisory)"
+            echo '```'
+            cat refresh-report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

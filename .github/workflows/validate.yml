@@ -115,6 +115,9 @@ jobs:
           grep -q 'GitHub Actions runtime check (report)' gate-summary.md
           rm -f gate-enforce.out gate-report.out gate-summary.md
           echo "Actions runtime gate modes PASS"
+      - name: Qualify actions runtime map maintenance
+        shell: bash
+        run: bash qualification/actions-runtime-map/run_qualification.sh
       - name: Qualify pin reference finder
         shell: bash
         run: bash qualification/pin-references/run_qualification.sh
