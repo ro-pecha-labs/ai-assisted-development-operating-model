@@ -2,14 +2,14 @@
 
 ## Current canonical authority
 
-**Canonical version:** `2.1.2`  
-**Canonical tag:** `om-v2.1.2`  
-**Exact canonical commit:** `78f7390e58ce363c1e734d6beb54c08ac50131c6`  
+**Canonical version:** `2.1.3`  
+**Canonical tag:** `om-v2.1.3`  
+**Exact canonical commit:** `ed816aa46694b44b681f9453aaef3d0458ed0d79`  
 **Status:** CURRENT CANONICAL OPERATING MODEL
 
 The immutable GitHub release identified above is the current normative authority. Development and evidence commits on `main` do not mutate the canonical release bytes.
 
-Canonical adoption of OM 2.1.2 was explicitly authorized on 2026-09-29 and is recorded in `CANONICAL_ADOPTION_2.1.2.md`. OM 2.1.1 (`CANONICAL_ADOPTION_2.1.1.md`, 2026-09-23) remains historical canonical authority.
+Canonical adoption of OM 2.1.3 was explicitly authorized on 2026-10-02 and is recorded in `CANONICAL_ADOPTION_2.1.3.md`. OM 2.1.2 (`CANONICAL_ADOPTION_2.1.2.md`, 2026-09-29) and OM 2.1.1 (`CANONICAL_ADOPTION_2.1.1.md`, 2026-09-23) remain historical canonical authority.
 
 ## OM 2.1 qualification lineage
 
@@ -61,7 +61,7 @@ PATCH-class under `OM_RELEASE_POLICY.md`: the GitHub-hosted validation workflow 
 
 `om-v2.1.2` is cut from `om-v2.1.1` plus the 2.1.1 acceptance/adoption records, not from `main`: post-2.1.1 policy development on `main` (CI_EFFICIENCY rules 11–12) is not part of this patch.
 
-OM 2.1.2 is the current canonical authority (`CANONICAL_ADOPTION_2.1.2.md`). Projects re-pin at their own safe boundary.
+OM 2.1.2 is historical canonical authority (superseded by 2.1.3 on 2026-10-02; `CANONICAL_ADOPTION_2.1.2.md`). Projects re-pin at their own safe boundary.
 
 ## OM 2.1.3 patch release
 
@@ -69,7 +69,7 @@ Accepted release: `2.1.3` (tag `om-v2.1.3` → `ed816aa46694b44b681f9453aaef3d04
 
 PATCH-class under `OM_RELEASE_POLICY.md`: `tools/actions_runtime_guard.py` reads a data map of official `actions/*` Node.js 24 majors (`tools/actions_runtime_map.json`, 14 actions), reports unmapped official actions as `UNJUDGED`, and the reusable project-state conformance workflow runs the guard over the caller's workflows in non-blocking `--report` mode. Conformance pass/fail is unchanged; enforcement is deferred to a MINOR release. See `PATCH_2.1.3.md`.
 
-Canonical authority remains `om-v2.1.2` until OM 2.1.3 is explicitly adopted. Projects then re-pin at their own safe boundary.
+OM 2.1.3 is the current canonical authority (`CANONICAL_ADOPTION_2.1.3.md`). Projects re-pin at their own safe boundary.
 
 ## Project adoption boundary
 
