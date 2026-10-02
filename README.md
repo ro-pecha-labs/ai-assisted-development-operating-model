@@ -71,11 +71,11 @@ PATCH-class under `OM_RELEASE_POLICY.md`: `tools/actions_runtime_guard.py` reads
 
 OM 2.1.3 is the current canonical authority (`CANONICAL_ADOPTION_2.1.3.md`). Projects re-pin at their own safe boundary.
 
-## OM 2.2 candidate line
+## OM 2.2.0 minor release (promotion in progress, non-canonical)
 
-Release candidate `2.2.0-rc1` (MINOR, non-canonical, target `2.2.0`) on `release/om-2.2`: optional enforcement of the Node.js runtime check in the reusable project-state conformance workflow (`actions_runtime: report|enforce`, default `report`), runtime map maintenance, a pin reference finder for adoptions and hosted conformance caller guidance. Plan: `OM_2.2_QUALIFICATION_PLAN.md`; qualification: `OM_2.2_PRE_CANDIDATE_QUALIFICATION.md` (Q0–Q7 PASS); readiness: `CANDIDATE_READINESS_2.2.0_RC1.md`.
+Promotion of the qualified candidate `om-v2.2.0-rc1` (`f0a8fa5b0c945a6ed684db67bbf21b6baf8328c1`) to the GA identity `2.2.0` (MINOR) on `release/om-2.2`: optional enforcement of the Node.js runtime check in the reusable project-state conformance workflow (`actions_runtime: report|enforce`, default `report`), runtime map maintenance, a pin reference finder for adoptions and hosted conformance caller guidance. Plan: `OM_2.2_QUALIFICATION_PLAN.md`; qualification: `OM_2.2_PRE_CANDIDATE_QUALIFICATION.md` (Q0–Q7 PASS) and `RC1_QUALIFICATION_2.2.0.md` (RC1 PASS); readiness: `CANDIDATE_READINESS_2.2.0_RC1.md`.
 
-`OM.yaml` declares `2.2.0-rc1` (`non_canonical_candidate`). The RC is not frozen until the immutable tag `om-v2.2.0-rc1` exists and is read back. Canonical authority remains `om-v2.1.3`.
+`OM.yaml` declares `2.2.0` (`accepted_release`) as release-identity metadata only; the normative bytes are those of `om-v2.2.0-rc1`. OM 2.2.0 has no immutable GA tag until `om-v2.2.0` is created and read back, is not accepted until the tag-bound qualification passes, and is not canonical until explicit prospective adoption. Canonical authority remains `om-v2.1.3`.
 
 ## Project adoption boundary
 
