@@ -77,6 +77,44 @@ jobs:
             exit 1
           fi
           echo "Actions runtime map coverage PASS"
+      - name: Qualify GitHub Actions runtime gate modes
+        shell: bash
+        run: |
+          F=qualification/actions-runtime
+          G=tools/actions_runtime_gate.py
+          # Q0: the reusable workflow keeps the non-failing default
+          python - <<'PY'
+          import yaml
+          w = yaml.safe_load(open('.github/workflows/project-state-conformance.yml'))
+          i = w[True]['workflow_call']['inputs']['actions_runtime']
+          assert i['type'] == 'string' and i['default'] == 'report' and i['required'] is False, i
+          print('Q0 default actions_runtime=report PASS')
+          PY
+          # Q1: enforce with a compliant workflow
+          python $G --mode enforce $F/node24-positive.yml
+          # Q2: enforce rejects Node.js 20, report does not
+          if python $G --mode enforce $F/node20-negative.yml > gate-enforce.out; then
+            cat gate-enforce.out; echo "Expected enforce to fail"; exit 1
+          fi
+          cat gate-enforce.out
+          grep -q '^::error::' gate-enforce.out
+          python $G --mode report $F/node20-negative.yml > gate-report.out
+          cat gate-report.out
+          grep -q '^::warning::' gate-report.out
+          grep -q '^REPORT: ' gate-report.out
+          # Q2: invalid mode fails
+          if python $G --mode strict $F/node24-positive.yml; then
+            echo "Expected invalid mode to fail"; exit 1
+          fi
+          # Q3: unmapped official actions never fail, in either mode
+          python $G --mode enforce $F/unmapped-official.yml
+          python $G --mode report $F/unmapped-official.yml
+          # summary file is written
+          rm -f gate-summary.md
+          python $G --mode report --summary gate-summary.md $F/node20-negative.yml > /dev/null
+          grep -q 'GitHub Actions runtime check (report)' gate-summary.md
+          rm -f gate-enforce.out gate-report.out gate-summary.md
+          echo "Actions runtime gate modes PASS"
       - name: Validate reusable project bootstrap conformance
         run: >-
           python tools/validate_project_bootstrap.py
