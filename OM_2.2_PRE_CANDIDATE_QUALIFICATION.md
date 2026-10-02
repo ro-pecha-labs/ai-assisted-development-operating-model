@@ -1,6 +1,6 @@
 # OM 2.2 — Pre-Candidate Qualification Status
 
-**Status:** PRE-CANDIDATE / Q0–Q5 AND Q7 PASS / Q6 PENDING / NOT READY FOR CANDIDATE-READINESS REVIEW  
+**Status:** PRE-CANDIDATE / Q0–Q7 PASS / READY FOR CANDIDATE-READINESS REVIEW  
 **Development head:** `ae9217c23a1adacbee9fa6b20887574904286670` (`release/om-2.2`)  
 **Date:** 2026-10-02
 
@@ -28,7 +28,7 @@ Current canonical authority remains `om-v2.1.3`. This record does not freeze a c
 
 **PASS.** Structural CI step "Qualify GitHub Actions runtime gate modes": enforce passes a compliant workflow (Q1); enforce rejects a Node.js 20 workflow, report does not, an invalid mode fails (Q2); `UNJUDGED` official actions never fail in either mode (Q3). The step logic of the reusable workflow was additionally simulated in eight situations, including a fail-closed `enforce` against an adopted OM revision without the gate.
 
-Not yet evidenced: a hosted run of the reusable workflow in `enforce` mode (Q6).
+A hosted run of the reusable workflow in `enforce` mode is evidenced by Q6.
 
 ## Q4 — Runtime map maintenance
 
@@ -42,7 +42,18 @@ Not yet evidenced: a hosted run of the manual refresh workflow (the same command
 
 ## Q6 — Shadow pilot
 
-**PENDING.** Read-only pilot on shadow branches without merge: DVC (worst case, about 212 Node.js 20 references) and AAE (clean) with `enforce` and `report`. Requires explicit authorization to push a shadow branch to each pilot repository.
+**PASS.** Read-only shadow pilot on 2026-10-02, authorized by the owner, in two portfolio projects. Each project received a draft pull request that is never merged (`[PILOT Q6 - DO NOT MERGE]`) from branch `shadow/om-2.2-pilot-q6`: `.project/PROJECT.yaml` pinned to the exact `release/om-2.2` head `88d8e46c9ba9f6e6067c33d9902193e27d1a1e87` (the validator compares the commit) and a caller with two jobs invoking the reusable workflow at that commit, `actions_runtime: report` and `actions_runtime: enforce`. The source branches of both projects were unchanged.
+
+| Project | PR (head) | Run | `conformance-report` | `conformance-enforce` |
+|---|---|---|---|---|
+| AAE (clean case) | #69 (`95dc19c`) | `36998214102` | success | success |
+| DVC (worst case) | #350 (`77d4f83`) | `36998221851` | success | **failure**, at the step "GitHub Actions runtime check" |
+
+- In DVC the step "Validate project bootstrap against adopted OM" succeeded in both jobs; the enforce job failed only at the runtime check, as designed. The report job's runtime check succeeded (non-blocking).
+- Local dry run of the same gate on the pilot base commits (AAE `393bc16`, DVC `c35948d`): AAE 36 mapped references in 22 workflow files, none below its Node.js 24 major; DVC 216 deprecated references among 287 mapped references in 159 workflow files.
+- AAE's own `lightweight-governance-safety` check also succeeded on the pilot PR (run `36998213444`).
+
+Limits of this evidence: the job and step conclusions were read from the Actions API; the text of the job summaries and annotations was not read, so the hosted counts for DVC are not independently confirmed (only the local dry run is). The pilot exercised the reusable workflow at a commit, not at a release tag.
 
 ## Q7 — Recovery and all-profile regression
 
@@ -62,6 +73,6 @@ The new schema `schemas/ACTIONS_RUNTIME_MAP.v1.schema.json` is **not** added to 
 
 ## Remaining before candidate readiness
 
-1. Q6 shadow pilot (needs authorization).
+1. Close the two pilot pull requests without merging and remove the shadow branches (owner decision).
 2. Candidate readiness record, release identity promotion to `2.2.0-rc1` and README/index status for the candidate.
 3. Immutable RC tag, created by the owner, and RC qualification record.
