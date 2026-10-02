@@ -53,6 +53,23 @@ jobs:
 
 The immutable ref in the caller and the exact commit in `PROJECT.yaml` must describe the same adopted OM release.
 
+## GitHub Actions runtime check
+
+The reusable workflow also scans the caller's `.github/workflows` for GitHub Actions pinned below the lowest major that runs on Node.js 24 (`tools/actions_runtime_map.json`, official `actions/*` only).
+
+The caller selects the behavior with the optional input `actions_runtime`:
+
+- `report` (default): findings are printed, written to the job summary and raised as a warning; the job result is not affected;
+- `enforce`: the job fails when a mapped action is pinned below its Node.js 24 major.
+
+Any other value fails the job. Official actions that are not in the map (`UNJUDGED`) and third-party actions do not fail in either mode. `enforce` requires the adopted OM revision (`om_ref`) to provide `tools/actions_runtime_gate.py`; otherwise the job fails closed. The check runs when the caller workflow runs, so a caller that should catch workflow-only changes must also trigger on them.
+
+```yaml
+    with:
+      om_ref: om-v2.2.0
+      actions_runtime: enforce
+```
+
 ## Cost model
 
 The gate is intentionally:

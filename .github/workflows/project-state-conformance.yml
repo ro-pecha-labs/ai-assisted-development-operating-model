@@ -7,6 +7,13 @@ on:
         description: Immutable adopted OM ref, for example om-v2.1.0
         required: true
         type: string
+      actions_runtime:
+        description: >-
+          Node.js runtime check of the caller's GitHub workflows: report (default, never fails)
+          or enforce (fails on a mapped action pinned below its Node.js 24 major)
+        required: false
+        type: string
+        default: report
 
 permissions:
   contents: read
@@ -35,25 +42,25 @@ jobs:
       - name: Validate project bootstrap against adopted OM
         run: python .om/tools/validate_project_bootstrap.py . --om-root .om
 
-      - name: Report GitHub Actions runtime status (non-blocking)
+      - name: GitHub Actions runtime check
         shell: bash
+        env:
+          ACTIONS_RUNTIME_MODE: ${{ inputs.actions_runtime }}
         run: |
-          if [ ! -f .om/tools/actions_runtime_guard.py ]; then
-            echo "::notice::Adopted OM revision has no actions runtime guard; skipped"
+          case "$ACTIONS_RUNTIME_MODE" in
+            report|enforce) ;;
+            *) echo "::error::Invalid actions_runtime '$ACTIONS_RUNTIME_MODE'; expected report or enforce"; exit 2 ;;
+          esac
+          if [ ! -f .om/tools/actions_runtime_gate.py ]; then
+            if [ "$ACTIONS_RUNTIME_MODE" = "enforce" ]; then
+              echo "::error::actions_runtime=enforce requires an adopted OM revision that provides tools/actions_runtime_gate.py"
+              exit 2
+            fi
+            echo "::notice::Adopted OM revision has no actions runtime gate; skipped"
             exit 0
           fi
           if [ ! -d .github/workflows ]; then
             echo "No .github/workflows in caller repository; nothing to scan"
             exit 0
           fi
-          python .om/tools/actions_runtime_guard.py --report .github/workflows | tee actions-runtime-report.txt
-          {
-            echo "### GitHub Actions runtime report (non-blocking)"
-            echo '```'
-            cat actions-runtime-report.txt
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-          if grep -q '^REPORT: ' actions-runtime-report.txt; then
-            echo "::warning::Deprecated Node.js action runtime references found in caller workflows (report only; does not affect conformance)"
-          fi
-          rm actions-runtime-report.txt
+          python .om/tools/actions_runtime_gate.py --mode "$ACTIONS_RUNTIME_MODE" --summary "$GITHUB_STEP_SUMMARY" .github/workflows
