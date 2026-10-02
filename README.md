@@ -79,6 +79,12 @@ MINOR under `OM_RELEASE_POLICY.md`: optional enforcement of the Node.js runtime 
 
 OM 2.2.0 is the current canonical authority (`CANONICAL_ADOPTION_2.2.0.md`). Projects re-pin at their own safe boundary.
 
+## OM 2.3.0 minor release (promotion in progress, non-canonical)
+
+Promotion of the qualified candidate `om-v2.3.0-rc1` (`e70e97dddeab9a3a941b705c6b478a5e982d8472`) to the GA identity `2.3.0` (MINOR) on `release/om-2.3`, based on `om-v2.2.0`: CI efficiency portfolio rules for GitHub-hosted DEV CI (`platforms/github/CI_EFFICIENCY.md` rules 13-19, gate closure on acceptance in `playbooks/CANDIDATE_RELEASE.md`) and the read-only measurement tool `tools/ci_usage_report.py` (`static` and `usage`, never blocking). No change to CORE, profiles, schemas, templates, project-state validator semantics or conformance pass/fail. See `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.3.0_RC1.md` and `RC1_QUALIFICATION_2.3.0.md`.
+
+`OM.yaml` declares `2.3.0` (`accepted_release`) as release-identity metadata only; the normative bytes are those of `om-v2.3.0-rc1`. OM 2.3.0 has no immutable GA tag until `om-v2.3.0` is created and read back, is not accepted until the tag-bound qualification passes, and is not canonical until explicit prospective adoption. Canonical authority remains `om-v2.2.0`.
+
 ## Project adoption boundary
 
 OM-level canonical adoption does not automatically migrate existing projects.

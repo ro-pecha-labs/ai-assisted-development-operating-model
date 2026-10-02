@@ -10,7 +10,7 @@ Projects may track, where useful:
 - recovery time from a fresh session;
 - rework caused by stale or duplicated state;
 - candidate failures caught before external mutation;
-- CI minutes and expensive-runner minutes;
+- CI minutes and expensive-runner minutes (estimate with `tools/ci_usage_report.py`; see `platforms/github/CI_EFFICIENCY.md`);
 - duplicate execution count;
 - manual governance artifact count;
 - time from development-ready to accepted/released state;

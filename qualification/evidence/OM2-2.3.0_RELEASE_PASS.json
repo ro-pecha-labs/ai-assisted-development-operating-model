@@ -1,0 +1,20 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.3.0-RELEASE",
+  "kind": "release",
+  "subject": {
+    "identity": "OM2-2.3.0",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.3.0",
+    "revision": {
+      "kind": "git_commit",
+      "value": "df716c43a8f19ef15ceb5b2bcc3237b393877c90"
+    }
+  },
+  "outcome": "PASS",
+  "execution": {
+    "provider": "github",
+    "run_id": "37013239329",
+    "run_url": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/actions/runs/37013239329"
+  },
+  "summary": "GA release PASS. Annotated tag om-v2.3.0 (tag object d419a1510a365282fb99af8876f0cc6b9a9ab216, tagger Robert Pecha, 2026-10-02T13:28:21Z, unsigned) was read back from GitHub and resolves to exact commit df716c43a8f19ef15ceb5b2bcc3237b393877c90 (merge of PR #58 into release/om-2.3). Tag-triggered Validate OM2 run 37013239329 (event push, ref om-v2.3.0, head SHA df716c4) completed SUCCESS. Compare gate against om-v2.3.0-rc1 (e70e97dddeab9a3a941b705c6b478a5e982d8472): only OM.yaml, README.md, 00_INDEX.md, RC1_QUALIFICATION_2.3.0.md and qualification/evidence/OM2-2.3.0-RC1_FREEZE_PASS.json differ; no normative file changed. All 14 validate.yml run steps passed locally on the tag and tools/release_identity_guard.py passed. A GitHub Release OM 2.3.0 is not published at the time of this record (latest release is om-v2.2.0); the accepted identity is the tag. Individual ruleset clauses were not verified in this record. Canonical authority remains om-v2.2.0."
+}
