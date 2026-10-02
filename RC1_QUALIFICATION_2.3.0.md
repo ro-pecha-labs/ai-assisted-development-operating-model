@@ -1,6 +1,6 @@
 # OM 2.3.0-rc1 — Candidate Qualification
 
-**Status:** RC1 QUALIFICATION PARTIAL (A and C PASS; B open, owner decision pending) — NON-CANDIDATE-ACCEPTED, NON-CANONICAL
+**Status:** RC1 QUALIFICATION PASS (A and C PASS; B not required by owner decision) — NON-CANONICAL
 **Candidate identity:** `OM2-2.3.0-RC1`
 **Tag:** `om-v2.3.0-rc1` (annotated, tag object `0802e505ca133a88be86c6988ba5b7c1b97a43f3`) -> commit `e70e97dddeab9a3a941b705c6b478a5e982d8472`
 **Date:** 2026-10-02
@@ -20,13 +20,13 @@ Checkout of `om-v2.3.0-rc1` (`e70e97d`), all 14 `run:` steps of `validate.yml` e
 
 ## B. Hosted call of the reusable conformance workflow at the tag
 
-**NOT EXECUTED. Open.** `CANDIDATE_READINESS_2.3.0_RC1.md` planned one hosted call of `project-state-conformance.yml` at tag `om-v2.3.0-rc1`.
+**NOT REQUIRED — owner decision.** `CANDIDATE_READINESS_2.3.0_RC1.md` planned one hosted call of `project-state-conformance.yml` at tag `om-v2.3.0-rc1`. The owner decided on 2026-10-02 (in the development session) to record its omission, because the called bytes are identical to OM 2.2.0.
 
-- The reusable workflow validates the **caller repository** root (`python .om/tools/validate_project_bootstrap.py . --om-root .om`), including that the caller's `.project/PROJECT.yaml` pins the exact OM commit of the checked-out tag. The OM repository has no `.project/PROJECT.yaml`, so a call from the OM repository itself would fail at the bootstrap validation and would not evidence the candidate.
-- OM 2.2.0-rc1 evidenced this call through a never-merged draft pull request in a child repository (AAE). The same would be possible for 2.3.0-rc1; the session has read access to the child repositories, not push access, and no child repository was modified.
-- The workflow, validator, gate and schemas are byte-identical to OM 2.2.0 (section A), so the hosted call would exercise bytes that were already qualified at `om-v2.2.0`.
+- The reusable workflow validates the **caller repository** root (`python .om/tools/validate_project_bootstrap.py . --om-root .om`), including that the caller's `.project/PROJECT.yaml` pins the exact OM commit of the checked-out tag. The OM repository has no `.project/PROJECT.yaml`, so a call from the OM repository itself would not evidence the candidate; evidencing it needs a never-merged draft pull request in a child repository, as for 2.2.0-rc1.
+- `git diff om-v2.2.0 om-v2.3.0-rc1` is empty for `.github/workflows/project-state-conformance.yml`, `tools/validate_project_bootstrap.py`, `tools/actions_runtime_gate.py` and `schemas/` (section A). The hosted call would therefore exercise bytes that were already qualified at `om-v2.2.0` (hosted shadow pilot and tag-bound call of 2.2.0-rc1).
+- No hosted call was executed for `om-v2.3.0-rc1`; no child repository was modified.
 
-Owner decision required: (1) execute the hosted call through a child draft pull request as for 2.2.0-rc1, or (2) record that it is not required for 2.3.0 because the called bytes are identical to `om-v2.2.0`, which this section documents. Until then the qualification is PARTIAL.
+This is a decision to omit, not a pass of the call. If any of the files above ever differs between a future candidate and `om-v2.2.0`, the hosted call is required again.
 
 ## C. Tag-bound tool qualification on a child repository (read-only)
 
@@ -37,13 +37,13 @@ Owner decision required: (1) execute the hosted call through a child draft pull 
 
 ## Known limits of this record
 
-1. Section B is not executed (see above).
+1. Section B is not executed; its omission is an owner decision based on byte identity with `om-v2.2.0` (see above).
 2. The `usage` timing was measured on a 40-run sample of one repository.
 3. No GitHub Release is published; ruleset clauses of tag protection were not verified (see the freeze evidence).
 
 ## Verdict
 
-**RC1 qualification: PARTIAL.** Sections A and C pass; section B awaits the owner decision. OM 2.3.0 shall not proceed to GA promotion planning until B is executed or its omission is explicitly decided by the owner and recorded. GA promotion shall preserve the normative bytes and change only release identity and status text.
+**RC1 qualification: PASS.** Sections A and C pass; section B is not required by the owner decision recorded above. OM 2.3.0 may proceed to GA promotion planning. GA promotion shall preserve the normative bytes and change only release identity and status text, as for OM 2.2.0.
 
 ## Non-canonical boundary
 
