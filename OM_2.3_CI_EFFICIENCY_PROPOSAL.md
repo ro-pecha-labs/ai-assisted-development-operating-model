@@ -34,7 +34,7 @@ Patterns that repeated across repositories and are not yet covered by `platforms
 
 No change to CORE, profiles, schemas, project-state validator semantics or conformance pass/fail.
 
-## Open decisions for the OM owner
+## Open decisions for the OM owner (confirmed 2026-10-02, see `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`)
 
 1. Fold into a next MINOR (2.3) or into a re-opened 2.2 line. This draft assumes 2.3 from `om-v2.2.0`.
 2. Whether governance conformance on pull requests should remain as in `PROJECT_STATE_CONFORMANCE.md`. This draft does not change it; rule 18 only addresses state churn.
