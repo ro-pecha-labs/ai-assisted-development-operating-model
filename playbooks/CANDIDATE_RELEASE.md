@@ -15,5 +15,6 @@
 11. On acceptance, bind release ref, source commit, package digest where applicable, acceptance evidence and known limitations.
 12. Use protected tags/releases or equivalent platform-native controls where qualified.
 13. Do not rely exclusively on ephemeral CI logs for long-lived acceptance evidence.
+14. On acceptance, close the candidate/wave CI gates (`platforms/github/CI_EFFICIENCY.md` rules 12 and 14): convert them to explicit/manual execution or remove their automatic triggers, keep write-capable single-use workflows on their narrow trigger (rule 15), and record the closed gates in the acceptance record.
 
 Reclassification from lightweight to formal before release is allowed and does not invalidate prior development work. A release already used as a formal authorization/adoption object shall not be retrospectively downgraded.

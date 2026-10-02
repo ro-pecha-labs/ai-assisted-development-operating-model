@@ -1,0 +1,15 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.3.0-RC1-FREEZE",
+  "kind": "candidate_freeze",
+  "subject": {
+    "identity": "OM2-2.3.0-RC1",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.3.0-rc1",
+    "revision": {
+      "kind": "git_commit",
+      "value": "e70e97dddeab9a3a941b705c6b478a5e982d8472"
+    }
+  },
+  "outcome": "PASS",
+  "summary": "RC1 freeze PASS. Annotated tag om-v2.3.0-rc1 (tag object 0802e505ca133a88be86c6988ba5b7c1b97a43f3, tagger Robert Pecha, 2026-10-02T13:04:01Z, unsigned) was read back from GitHub and resolves to exact commit e70e97dddeab9a3a941b705c6b478a5e982d8472 (merge of PR #54 into release/om-2.3). Tag-triggered Validate OM2 run 37011289261 completed SUCCESS on that commit. tools/release_identity_guard.py PASS (expected = observed). The tree of that commit is identical to the tree of the PR #54 head ee3af1c231ffcfaa70d7bf7ab4322a2f8a4c7542 (hosted run 37009025643 SUCCESS); the tag-triggered run is the hosted validation of the exact commit. The first attempt to push the tag from the development session was refused with HTTP 403; the tag was created by the owner. Individual ruleset clauses and GitHub Release publication were not verified in this record."
+}
