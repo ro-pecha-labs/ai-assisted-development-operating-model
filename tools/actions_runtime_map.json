@@ -1,0 +1,22 @@
+{
+  "schema": "om.actions-runtime-map/v1",
+  "verified_on": "2026-10-02",
+  "source": "runs.using of action.yml at each major tag in the upstream action repository (raw.githubusercontent.com/<action>/<tag>/action.yml)",
+  "scope": "official actions/* only; the map is a bounded known-boundary list, not a complete catalog",
+  "node24_min_major": {
+    "actions/checkout": 5,
+    "actions/setup-python": 6,
+    "actions/setup-dotnet": 5,
+    "actions/upload-artifact": 6,
+    "actions/download-artifact": 7,
+    "actions/cache": 5,
+    "actions/setup-node": 5,
+    "actions/github-script": 8,
+    "actions/setup-java": 5,
+    "actions/setup-go": 6,
+    "actions/deploy-pages": 5,
+    "actions/configure-pages": 6,
+    "actions/stale": 10,
+    "actions/labeler": 6
+  }
+}

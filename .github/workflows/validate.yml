@@ -58,6 +58,25 @@ jobs:
             exit 1
           fi
           echo "Deprecated action runtime rejection PASS"
+          python tools/actions_runtime_guard.py qualification/actions-runtime/node24-positive.yml
+          python tools/actions_runtime_guard.py qualification/actions-runtime/unmapped-official.yml > guard-unmapped.out
+          cat guard-unmapped.out
+          grep -q '^UNJUDGED: ' guard-unmapped.out
+          rm guard-unmapped.out
+          if python tools/actions_runtime_guard.py qualification/actions-runtime/node20-negative-extended.yml > guard-extended.out; then
+            cat guard-extended.out
+            echo "Expected every mapped Node.js 20 action to fail"
+            exit 1
+          fi
+          cat guard-extended.out
+          test "$(grep -c '^FAIL: .*actions/' guard-extended.out)" -eq "$(python -c "import json;print(len(json.load(open('tools/actions_runtime_map.json'))['node24_min_major']))")"
+          rm guard-extended.out
+          python tools/actions_runtime_guard.py --report qualification/actions-runtime/node20-negative-extended.yml
+          if python tools/actions_runtime_guard.py --map qualification/actions-runtime/invalid-map.json qualification/actions-runtime/node24-positive.yml; then
+            echo "Expected invalid runtime map to fail"
+            exit 1
+          fi
+          echo "Actions runtime map coverage PASS"
       - name: Validate reusable project bootstrap conformance
         run: >-
           python tools/validate_project_bootstrap.py
