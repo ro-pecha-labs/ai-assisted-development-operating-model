@@ -99,6 +99,10 @@ The caller selects the behavior with the optional input `actions_runtime`:
 
 Any other value fails the job. Official actions that are not in the map (`UNJUDGED`) and third-party actions do not fail in either mode. `enforce` requires the adopted OM revision (`om_ref`) to provide `tools/actions_runtime_gate.py`; otherwise the job fails closed. The check runs when the caller workflow runs, so a caller that should catch workflow-only changes must also trigger on them (see the enforcing caller above).
 
+### Runtime map maintenance
+
+The map (`tools/actions_runtime_map.json`) records upstream facts and carries a mandatory `verified_on` date; it is validated against `schemas/ACTIONS_RUNTIME_MAP.v1.schema.json` in structural CI. Keeping it current is a PATCH-class change (`OM_RELEASE_POLICY.md`). The advisory tool `tools/actions_runtime_map_refresh.py` and the manual workflow `actions-runtime-map-refresh.yml` compare the map with the upstream `action.yml` of every mapped action and print differences; they never write the map and are not part of any gate. A project receives a map change only when it re-pins to the OM release that carries it.
+
 ## Cost model
 
 The gate is intentionally:

@@ -12,6 +12,7 @@ Typical scope:
 - stale status/coherence correction;
 - template pin correction;
 - validator/tooling bug that does not change normative behavior.
+- update of `tools/actions_runtime_map.json` to match verified upstream GitHub Action runtime facts (`verified_on` updated; valid against `schemas/ACTIONS_RUNTIME_MAP.v1.schema.json`). Adopters receive the map only through the OM release they pin, so such a change reaches a project only when it re-pins.
 
 Minimum:
 
