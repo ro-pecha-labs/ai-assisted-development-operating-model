@@ -73,6 +73,6 @@ The new schema `schemas/ACTIONS_RUNTIME_MAP.v1.schema.json` is **not** added to 
 
 ## Remaining before candidate readiness
 
-1. Close the two pilot pull requests without merging and remove the shadow branches (owner decision).
-2. Candidate readiness record, release identity promotion to `2.2.0-rc1` and README/index status for the candidate.
+1. ~~Close the two pilot pull requests without merging~~ — done on 2026-10-02 (AAE #69, DVC #350 closed unmerged). The `shadow/om-2.2-pilot-q6` branches are retained because Q6 evidence references their commits; deleting them is a separate owner decision.
+2. ~~Candidate readiness record, release identity promotion to `2.2.0-rc1` and README/index status~~ — see `CANDIDATE_READINESS_2.2.0_RC1.md`.
 3. Immutable RC tag, created by the owner, and RC qualification record.
