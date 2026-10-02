@@ -1,9 +1,9 @@
 # Operating Model 2.1 Canonical Index
 
-**Version:** `2.1.3`  
+**Version:** `2.2.0`  
 **Status:** CURRENT CANONICAL OPERATING MODEL  
-**Canonical tag:** `om-v2.1.3`  
-**Exact canonical commit:** `ed816aa46694b44b681f9453aaef3d0458ed0d79`
+**Canonical tag:** `om-v2.2.0`  
+**Exact canonical commit:** `89de89d0935d61d5442bc8301d9c6c4f2cf7af87`
 
 ## Canonical entrypoints
 
@@ -15,7 +15,7 @@
 - DEV templates: `templates/DEV/`
 - Validator: `tools/validate.py`
 
-The immutable release tag `om-v2.1.3` is the current normative authority. Post-release development and evidence on `main` do not mutate the canonical release bytes.
+The immutable release tag `om-v2.2.0` is the current normative authority. Post-release development and evidence on `main` do not mutate the canonical release bytes.
 
 ## OM 2.1 lineage
 
@@ -54,7 +54,7 @@ Canonical adoption is prospective. Existing child projects are not migrated auto
 
 Canonical adoption was prospective from 2026-09-29 until superseded on 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
 
-## OM 2.1.3 patch (ACCEPTED RELEASE / CURRENT CANONICAL NORMATIVE AUTHORITY)
+## OM 2.1.3 patch (ACCEPTED RELEASE / HISTORICAL CANONICAL AUTHORITY, superseded by 2.2.0 on 2026-10-02)
 
 - release branch: `release/om-2.1` (from `om-v2.1.2`);
 - tag: `om-v2.1.3` → `ed816aa46694b44b681f9453aaef3d0458ed0d79`;
@@ -63,14 +63,14 @@ Canonical adoption was prospective from 2026-09-29 until superseded on 2026-10-0
 - tag-bound validation: `36987775749 / SUCCESS`;
 - records: `PATCH_2.1.3.md`, `ACCEPTANCE_2.1.3.md`, `CANONICAL_ADOPTION_2.1.3.md`.
 
-Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
+Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-02 by 2.2.0. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
 
-## OM 2.2.0 minor release (ACCEPTED RELEASE / NON-CANONICAL)
+## OM 2.2.0 minor release (ACCEPTED RELEASE / CURRENT CANONICAL NORMATIVE AUTHORITY)
 
 - tag: `om-v2.2.0` → `89de89d0935d61d5442bc8301d9c6c4f2cf7af87` (source candidate `om-v2.2.0-rc1` → `f0a8fa5b0c945a6ed684db67bbf21b6baf8328c1`);
 - scope: optional enforce mode of the Node.js runtime check, runtime map maintenance, pin reference finder, hosted conformance caller guidance;
 - class: MINOR (backward compatible; `actions_runtime` defaults to `report`);
 - tag-bound validation: `37000769192 / SUCCESS`;
-- records: `OM_2.2_QUALIFICATION_PLAN.md`, `OM_2.2_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.2.0_RC1.md`, `RC1_QUALIFICATION_2.2.0.md`, `ACCEPTANCE_2.2.0.md`.
+- records: `OM_2.2_QUALIFICATION_PLAN.md`, `OM_2.2_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.2.0_RC1.md`, `RC1_QUALIFICATION_2.2.0.md`, `ACCEPTANCE_2.2.0.md`, `CANONICAL_ADOPTION_2.2.0.md`.
 
-Canonical authority remains `om-v2.1.3`. Canonical adoption of 2.2.0 requires a separate explicit authorization.
+Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
