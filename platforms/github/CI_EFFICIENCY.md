@@ -18,6 +18,13 @@ This policy specializes the DEV profile for GitHub-hosted CI. It governs new wor
 10. **Qualification before reliance.** A CI optimization that changes runner, trigger topology, packaging or gate decomposition shall be qualified before it replaces the prior control.
 11. **Candidate/checkpoint is the cumulative qualification boundary.** Intermediate development commits, including AI-assisted commits, shall not each independently invoke cumulative candidate, release or historical qualification merely because they were pushed. Routine development should use the lightest sufficient PR validation; cumulative qualification belongs at an explicit candidate/checkpoint boundary, unless a safety-critical dependency requires earlier execution.
 12. **Retire closed lifecycle gates from automatic execution.** Once a candidate/wave gate is accepted, closed or superseded, its workflow should normally become explicit/manual historical requalification or be replaced by the successor gate. Closed gates shall not remain on broad automatic PR/push triggers without a documented current control purpose.
+13. **Parameterize release-line gates; do not duplicate them per release or wave.** A profile should keep one pre-candidate gate and one candidate/readiness gate whose candidate identity (source commit, release tag, expected package digest) is supplied by a tracked manifest or by dispatch inputs. Creating a new set of automatic workflows for each patch release or wave multiplies CI cost and leaves closed gates behind. Where a project already has per-release workflows, rule 12 applies to the closed ones.
+14. **Gate closure is part of acceptance.** The acceptance or checkpoint record of a candidate/wave shall state which gates were converted to explicit/manual execution or removed from automatic triggers. Closure is performed in the same or the immediately following change, not left for a later cleanup.
+15. **Write-capable single-use workflows keep their narrow trigger.** Publication, tagging and freeze workflows that hold write permission and are meant to run once shall keep their narrowly path-filtered trigger, shall not receive a new manual entry point unless that entry point has a read-only verification path, shall not use `cancel-in-progress`, and shall declare `timeout-minutes`. A manual run of such a workflow after the release exists would fail its own empty-namespace check and cannot requalify the release.
+16. **Require the operating system the claim needs, and say so.** Windows and macOS runners are justified by a gate's claim (for example an exact Windows runtime), not by a pinned runtime version alone (rule 2). A gate that uses a non-Linux runner shall record that claim in the workflow or its review record, so it can be reviewed when the claim changes.
+17. **Every job is bounded.** Every job shall declare `timeout-minutes`, and every mutable PR gate shall use workflow concurrency (rule 4). A job that runs on Windows or macOS is billed at a higher rate, so its bound shall be proportionate to its measured duration.
+18. **Governance state churn is a CI input.** Files that trigger governance conformance (for example `.project/ACTIVE_STATE.yaml`) shall be updated at checkpoints, not with every intermediate commit, where the project uses the conformance gate on pull requests. A bounded state that exceeds its schema bounds is PROJECT_STATE drift: fix it in the next change instead of leaving the gate red, because each red run is also a billed run.
+19. **Measure before and after.** A project should record estimated CI minutes (by workflow, event and runner OS) at each candidate/checkpoint boundary and before and after a CI optimization (rule 10). Use `tools/ci_usage_report.py`; the Actions `billable` timing field is not a reliable source.
 
 ## Recommended PR concurrency baseline
 
@@ -53,3 +60,16 @@ Before enabling or materially changing a GitHub Actions workflow, determine:
 7. **Prefer standard hosted runners by default.** Do not move to larger/specialized runners solely to avoid a setup step that can be handled efficiently by setup actions or cache.
 
 Before adopting a storage optimization, measure both execution savings and the new storage/runner cost. A cost optimization shall not weaken exact-runtime or evidence claims.
+
+## Measurement and reporting
+
+`tools/ci_usage_report.py` is read-only and never blocks:
+
+- `static <path>...` reports, per repository, automatic workflows without concurrency or `timeout-minutes`, automatic workflows that use Windows or macOS runners, workflows that trigger on both `pull_request` and `push`, and write-capable automatic workflows;
+- `usage` estimates minutes from job durations (each job rounded up to a whole minute, Windows x2, macOS x10) by workflow and by event. The result is an estimate for comparing periods, not an invoice.
+
+Small, frequent jobs matter: a 20-second job is counted as one minute, so very frequent cheap gates (for example governance conformance on every commit) can dominate usage.
+
+## Reference pattern: consolidated gate
+
+A single offline gate per profile (for example one Linux-hosted `offline-all` workflow with `paths-ignore` for documentation and governance files, PR concurrency and a job timeout) replaces many per-slice workflows. Slice-level or exact-runtime variants that are needed only at a candidate boundary stay explicit/manual (rule 11).
