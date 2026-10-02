@@ -1,4 +1,4 @@
-# GitHub Project-State Conformance — OM 2.1
+# GitHub Project-State Conformance — OM 2.2
 
 **Status:** PROSPECTIVE DEVELOPMENT GUIDANCE
 
@@ -24,9 +24,15 @@ OM provides:
 
 The caller passes its immutable adopted OM ref. The reusable workflow checks out that OM revision and the validator additionally verifies that the checked-out OM commit equals the exact commit pinned by the caller's `PROJECT.yaml`.
 
+## Hosted caller
+
+Every Git-native GitHub project that has an `.project/PROJECT.yaml` should have a hosted conformance caller, whatever its primary profile. The profile-specific rule (DEV, rule 29) makes the gate expected for DEV; for other profiles this is guidance.
+
+Without a hosted caller nothing validates the project bootstrap after adoption. A project can then keep, release after release, a `.project/ACTIVE_STATE.yaml` that exceeds the schema bounds or a pin that no longer matches the declared OM commit. A local validator run is useful evidence but does not replace the hosted gate.
+
 ## Recommended caller
 
-After adoption of an immutable OM 2.1 release, a GitHub DEV project may use:
+After adoption of an immutable OM release, a GitHub project may use (replace `<adopted OM tag>` with the immutable tag recorded in `.project/PROJECT.yaml`):
 
 ```yaml
 name: OM project-state conformance
@@ -35,23 +41,52 @@ on:
   pull_request:
     paths:
       - '.project/**'
+      - '.github/workflows/om-project-state-conformance.yml'
   push:
     branches:
       - main
     paths:
       - '.project/**'
+      - '.github/workflows/om-project-state-conformance.yml'
 
 permissions:
   contents: read
 
 jobs:
   conformance:
-    uses: ro-pecha-labs/ai-assisted-development-operating-model/.github/workflows/project-state-conformance.yml@om-v2.1.0
+    uses: ro-pecha-labs/ai-assisted-development-operating-model/.github/workflows/project-state-conformance.yml@<adopted OM tag>
     with:
-      om_ref: om-v2.1.0
+      om_ref: <adopted OM tag>
 ```
 
 The immutable ref in the caller and the exact commit in `PROJECT.yaml` must describe the same adopted OM release.
+
+### Caller that also enforces the runtime check
+
+The conformance workflow runs only when the caller triggers. A caller that uses `actions_runtime: enforce` (see below) should also trigger when workflow files change, otherwise a workflow-only change that reintroduces a deprecated Node.js action is not scanned:
+
+```yaml
+on:
+  pull_request:
+    paths:
+      - '.project/**'
+      - '.github/workflows/**'
+  push:
+    branches:
+      - main
+    paths:
+      - '.project/**'
+      - '.github/workflows/**'
+
+jobs:
+  conformance:
+    uses: ro-pecha-labs/ai-assisted-development-operating-model/.github/workflows/project-state-conformance.yml@<adopted OM tag>
+    with:
+      om_ref: <adopted OM tag>
+      actions_runtime: enforce
+```
+
+`<adopted OM tag>` must be a release that provides `tools/actions_runtime_gate.py`. The extra path trigger adds one short Linux run when workflows change; it does not run on ordinary product-code changes. A project that already has its own workflow-only governance guard may keep it until the hosted enforcement is qualified for that project.
 
 ## GitHub Actions runtime check
 
@@ -62,13 +97,7 @@ The caller selects the behavior with the optional input `actions_runtime`:
 - `report` (default): findings are printed, written to the job summary and raised as a warning; the job result is not affected;
 - `enforce`: the job fails when a mapped action is pinned below its Node.js 24 major.
 
-Any other value fails the job. Official actions that are not in the map (`UNJUDGED`) and third-party actions do not fail in either mode. `enforce` requires the adopted OM revision (`om_ref`) to provide `tools/actions_runtime_gate.py`; otherwise the job fails closed. The check runs when the caller workflow runs, so a caller that should catch workflow-only changes must also trigger on them.
-
-```yaml
-    with:
-      om_ref: om-v2.2.0
-      actions_runtime: enforce
-```
+Any other value fails the job. Official actions that are not in the map (`UNJUDGED`) and third-party actions do not fail in either mode. `enforce` requires the adopted OM revision (`om_ref`) to provide `tools/actions_runtime_gate.py`; otherwise the job fails closed. The check runs when the caller workflow runs, so a caller that should catch workflow-only changes must also trigger on them (see the enforcing caller above).
 
 ## Cost model
 
@@ -76,7 +105,7 @@ The gate is intentionally:
 
 - Linux-hosted;
 - read-only;
-- path-scoped to `.project/**`;
+- path-scoped to `.project/**` (and to `.github/workflows/**` when the runtime check is enforced);
 - free of package publication and durable artifact upload;
 - independent of product runtime matrices.
 
