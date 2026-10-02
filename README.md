@@ -63,6 +63,14 @@ PATCH-class under `OM_RELEASE_POLICY.md`: the GitHub-hosted validation workflow 
 
 OM 2.1.2 is the current canonical authority (`CANONICAL_ADOPTION_2.1.2.md`). Projects re-pin at their own safe boundary.
 
+## OM 2.1.3 patch release
+
+Accepted release: `2.1.3` (tag `om-v2.1.3` → `ed816aa46694b44b681f9453aaef3d0458ed0d79`, released from `release/om-2.1`); see `ACCEPTANCE_2.1.3.md`.
+
+PATCH-class under `OM_RELEASE_POLICY.md`: `tools/actions_runtime_guard.py` reads a data map of official `actions/*` Node.js 24 majors (`tools/actions_runtime_map.json`, 14 actions), reports unmapped official actions as `UNJUDGED`, and the reusable project-state conformance workflow runs the guard over the caller's workflows in non-blocking `--report` mode. Conformance pass/fail is unchanged; enforcement is deferred to a MINOR release. See `PATCH_2.1.3.md`.
+
+Canonical authority remains `om-v2.1.2` until OM 2.1.3 is explicitly adopted. Projects then re-pin at their own safe boundary.
+
 ## Project adoption boundary
 
 OM-level canonical adoption does not automatically migrate existing projects.

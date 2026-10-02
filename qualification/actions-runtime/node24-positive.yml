@@ -1,0 +1,23 @@
+# Positive fixture for tools/actions_runtime_guard.py: must pass.
+# Mapped actions at their Node.js 24 major, plus unmapped and third-party refs. Not a workflow; never executed.
+name: node24-positive-fixture
+on: workflow_dispatch
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+      - uses: actions/setup-dotnet@v5
+      - uses: actions/upload-artifact@v6
+      - uses: actions/download-artifact@v7
+      - uses: actions/cache@v5
+      - uses: actions/setup-node@v6
+      - uses: actions/github-script@v8
+      - uses: actions/setup-java@v5
+      - uses: actions/setup-go@v6
+      - uses: actions/deploy-pages@v5
+      - uses: actions/configure-pages@v6
+      - uses: actions/stale@v10
+      - uses: actions/labeler@v6
+      - uses: someorg/third-party@v1

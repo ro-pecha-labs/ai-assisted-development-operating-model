@@ -1,0 +1,9 @@
+# Fixture for tools/actions_runtime_guard.py: unmapped official action is UNJUDGED, not a failure.
+name: unmapped-official-fixture
+on: workflow_dispatch
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/some-unmapped-action@v1
+      - uses: someorg/third-party@v1

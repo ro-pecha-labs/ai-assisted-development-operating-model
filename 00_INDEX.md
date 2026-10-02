@@ -53,3 +53,14 @@ Canonical adoption is prospective. Existing child projects are not migrated auto
 - records: `PATCH_2.1.2.md`, `ACCEPTANCE_2.1.2.md`, `CANONICAL_ADOPTION_2.1.2.md`.
 
 Canonical adoption is prospective from 2026-09-29. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
+
+## OM 2.1.3 patch (ACCEPTED RELEASE / NON-CANONICAL)
+
+- release branch: `release/om-2.1` (from `om-v2.1.2`);
+- tag: `om-v2.1.3` → `ed816aa46694b44b681f9453aaef3d0458ed0d79`;
+- scope: data-driven Node.js 24 runtime map for official actions (`tools/actions_runtime_map.json`), `UNJUDGED` reporting, non-blocking guard step in `project-state-conformance.yml`;
+- class: PATCH (tooling/CI only; conformance pass/fail and normative OM 2.1 behavior unchanged);
+- tag-bound validation: `36987775749 / SUCCESS`;
+- records: `PATCH_2.1.3.md`, `ACCEPTANCE_2.1.3.md`.
+
+Canonical authority remains `om-v2.1.2`. Acceptance of 2.1.3 is not canonical adoption; no child project is migrated or re-pinned.
