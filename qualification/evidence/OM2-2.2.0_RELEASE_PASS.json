@@ -1,0 +1,20 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.2.0-RELEASE",
+  "kind": "release",
+  "subject": {
+    "identity": "OM2-2.2.0",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.2.0",
+    "revision": {
+      "kind": "git_commit",
+      "value": "89de89d0935d61d5442bc8301d9c6c4f2cf7af87"
+    }
+  },
+  "outcome": "PASS",
+  "execution": {
+    "provider": "github",
+    "run_id": "37000769192",
+    "run_url": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/actions/runs/37000769192"
+  },
+  "summary": "GA release PASS. Annotated tag om-v2.2.0 (tag object b0cd70d84d228deed5631706130ea65fca70c6ca, tagger Robert Pecha, 2026-10-02T11:23:45Z, unsigned) was read back from GitHub and resolves to exact commit 89de89d0935d61d5442bc8301d9c6c4f2cf7af87 (merge of PR #46 into release/om-2.2). Tag-triggered Validate OM2 run 37000769192 (event push, ref om-v2.2.0, head SHA 89de89d) completed SUCCESS. Compare gate against om-v2.2.0-rc1 (f0a8fa5b0c945a6ed684db67bbf21b6baf8328c1): only OM.yaml, README.md, 00_INDEX.md, RC1_QUALIFICATION_2.2.0.md and qualification/evidence/OM2-2.2.0-RC1_FREEZE_PASS.json differ; no normative file changed. GitHub Release OM 2.2.0 is published (prerelease false, latest). Individual ruleset clauses were not verified in this record. Canonical authority remains om-v2.1.3."
+}
