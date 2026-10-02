@@ -64,3 +64,12 @@ Canonical adoption was prospective from 2026-09-29 until superseded on 2026-10-0
 - records: `PATCH_2.1.3.md`, `ACCEPTANCE_2.1.3.md`, `CANONICAL_ADOPTION_2.1.3.md`.
 
 Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
+
+## OM 2.2 development line (non-canonical)
+
+- development branch: `release/om-2.2` (MINOR, target `2.2.0`);
+- scope: optional enforce mode of the Node.js runtime check, runtime map maintenance, pin reference finder, hosted conformance caller guidance;
+- records: `OM_2.2_QUALIFICATION_PLAN.md`, `OM_2.2_PRE_CANDIDATE_QUALIFICATION.md`;
+- no candidate, tag or release exists.
+
+Canonical authority remains `om-v2.1.3`.
