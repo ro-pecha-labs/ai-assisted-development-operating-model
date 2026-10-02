@@ -71,6 +71,14 @@ PATCH-class under `OM_RELEASE_POLICY.md`: `tools/actions_runtime_guard.py` reads
 
 OM 2.1.3 is the current canonical authority (`CANONICAL_ADOPTION_2.1.3.md`). Projects re-pin at their own safe boundary.
 
+## OM 2.2.0 minor release
+
+Accepted release: `2.2.0` (tag `om-v2.2.0` → `89de89d0935d61d5442bc8301d9c6c4f2cf7af87`, released from `release/om-2.2`; source candidate `om-v2.2.0-rc1` → `f0a8fa5b0c945a6ed684db67bbf21b6baf8328c1`); see `ACCEPTANCE_2.2.0.md`.
+
+MINOR under `OM_RELEASE_POLICY.md`: optional enforcement of the Node.js runtime check in the reusable project-state conformance workflow (`actions_runtime: report|enforce`, default `report`), runtime map maintenance, a pin reference finder for adoptions and hosted conformance caller guidance. Records: `OM_2.2_QUALIFICATION_PLAN.md`, `OM_2.2_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.2.0_RC1.md`, `RC1_QUALIFICATION_2.2.0.md`, `ACCEPTANCE_2.2.0.md`.
+
+OM 2.2.0 is accepted but non-canonical. Canonical authority remains `om-v2.1.3`; canonical adoption of 2.2.0 requires a separate explicit authorization.
+
 ## Project adoption boundary
 
 OM-level canonical adoption does not automatically migrate existing projects.

@@ -1,0 +1,15 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.2.0-RC1-FREEZE",
+  "kind": "candidate_freeze",
+  "subject": {
+    "identity": "OM2-2.2.0-RC1",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.2.0-rc1",
+    "revision": {
+      "kind": "git_commit",
+      "value": "f0a8fa5b0c945a6ed684db67bbf21b6baf8328c1"
+    }
+  },
+  "outcome": "PASS",
+  "summary": "RC1 freeze PASS. Annotated tag om-v2.2.0-rc1 (tag object 7779f7fc6f0d7f55dc67b26a748fca97a75c723b, tagger Robert Pecha, 2026-10-02T11:08:49Z, unsigned) was read back from GitHub and resolves to exact commit f0a8fa5b0c945a6ed684db67bbf21b6baf8328c1 (merge of PR #43 into release/om-2.2). Tag-triggered Validate OM2 run 36999398621 completed SUCCESS on that commit. tools/release_identity_guard.py PASS (expected = observed). Individual ruleset clauses and GitHub Release publication were not verified in this record."
+}

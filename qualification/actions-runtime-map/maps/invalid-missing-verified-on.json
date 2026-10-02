@@ -1,0 +1,1 @@
+{ "schema": "om.actions-runtime-map/v1", "source": "recorded fixtures for qualification", "scope": "qualification fixture, not a real map", "node24_min_major": { "actions/checkout": 5 } }
