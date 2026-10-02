@@ -5,7 +5,7 @@
 1. Identify the last trusted pre-adoption boundary.
 2. Define the prospective effective ref/commit/time boundary.
 3. Preserve all pre-boundary accepted/failed evidence under the governance effective when it was created.
-4. Qualify the new control plane and required enforcement before making it authoritative.
+4. Qualify the new control plane and required enforcement before making it authoritative. When a project changes its OM pin, first search the complete project tree at the project revision for tests, workflows, vendored schemas and local governance prechecks that assert the previous pin (for example with `tools/find_pin_references.py`), update the ones that must follow the pin as part of the adoption, and record the search result in the adoption record. A search that reads only the working tree of a sparse or partial clone is not a complete search.
 5. Migrate only current state needed for future operation; do not mass-rewrite historical artifacts for cosmetic consistency.
 6. Declare external sources that remain authoritative outside the new control plane.
 7. Verify recovery from the new bootstrap before adoption.

@@ -115,6 +115,9 @@ jobs:
           grep -q 'GitHub Actions runtime check (report)' gate-summary.md
           rm -f gate-enforce.out gate-report.out gate-summary.md
           echo "Actions runtime gate modes PASS"
+      - name: Qualify pin reference finder
+        shell: bash
+        run: bash qualification/pin-references/run_qualification.sh
       - name: Validate reusable project bootstrap conformance
         run: >-
           python tools/validate_project_bootstrap.py
