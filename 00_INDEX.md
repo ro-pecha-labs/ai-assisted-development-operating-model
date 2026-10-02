@@ -75,11 +75,11 @@ Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-0
 
 Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
 
-## OM 2.3 candidate line (non-canonical, `2.3.0-rc1`)
+## OM 2.3.0 minor release (promotion in progress, non-canonical)
 
-- development/candidate branch: `release/om-2.3` (MINOR, target `2.3.0`), based on `om-v2.2.0`;
+- branch: `release/om-2.3` (MINOR, `2.3.0`), based on `om-v2.2.0`; source candidate: `om-v2.3.0-rc1` → `e70e97dddeab9a3a941b705c6b478a5e982d8472`;
 - scope: CI efficiency portfolio rules (`platforms/github/CI_EFFICIENCY.md` rules 13-19), release playbook step 14, read-only `tools/ci_usage_report.py`;
-- records: `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.3.0_RC1.md`;
-- intended tag `om-v2.3.0-rc1` does not exist until created and read back; no GA, no adoption.
+- records: `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.3.0_RC1.md`, `RC1_QUALIFICATION_2.3.0.md`;
+- the GA tag `om-v2.3.0` does not exist until created and read back; no acceptance, no adoption.
 
 Canonical authority remains `om-v2.2.0`.
