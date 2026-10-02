@@ -80,6 +80,6 @@ The decisions open in `OM_2.3_CI_EFFICIENCY_PROPOSAL.md` were confirmed by the o
 
 ## Remaining before RC1 freeze
 
-1. Candidate-readiness change: `OM.yaml` `2.2.0` -> `2.3.0-rc1`, `accepted_release` -> `non_canonical_candidate`, `README.md` and `00_INDEX.md` status, `CANDIDATE_READINESS_2.3.0_RC1.md`, merged through protected `release/om-2.3`.
+1. Candidate-readiness change (`CANDIDATE_READINESS_2.3.0_RC1.md`, `OM.yaml` `2.2.0` -> `2.3.0-rc1`, status text), merged through protected `release/om-2.3`; prepared after the sync of `main` (2.2.0 acceptance and canonical adoption records) into `release/om-2.3`.
 2. Hosted validation of the exact merged SHA, then the immutable annotated tag `om-v2.3.0-rc1` created by the owner on that SHA, read-back and tag-triggered hosted validation, freeze evidence record.
 3. Candidate qualification of the exact frozen identity.

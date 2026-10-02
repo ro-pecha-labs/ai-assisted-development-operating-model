@@ -79,6 +79,12 @@ MINOR under `OM_RELEASE_POLICY.md`: optional enforcement of the Node.js runtime 
 
 OM 2.2.0 is the current canonical authority (`CANONICAL_ADOPTION_2.2.0.md`). Projects re-pin at their own safe boundary.
 
+## OM 2.3 candidate line
+
+Release candidate `2.3.0-rc1` (MINOR, non-canonical, target `2.3.0`) on `release/om-2.3`, based on `om-v2.2.0`: CI efficiency portfolio rules for GitHub-hosted DEV CI (`platforms/github/CI_EFFICIENCY.md` rules 13-19, gate closure on acceptance in `playbooks/CANDIDATE_RELEASE.md`), and the read-only measurement tool `tools/ci_usage_report.py` (`static` and `usage`, never blocking). No change to CORE, profiles, schemas, templates, project-state validator semantics or conformance pass/fail. See `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md` and `CANDIDATE_READINESS_2.3.0_RC1.md`.
+
+`OM.yaml` declares `2.3.0-rc1` (`non_canonical_candidate`). The RC is not frozen until the immutable tag `om-v2.3.0-rc1` exists and is read back. Canonical authority remains `om-v2.2.0`.
+
 ## Project adoption boundary
 
 OM-level canonical adoption does not automatically migrate existing projects.
