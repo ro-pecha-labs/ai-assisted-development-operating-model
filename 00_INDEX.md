@@ -65,7 +65,7 @@ Canonical adoption was prospective from 2026-09-29 until superseded on 2026-10-0
 
 Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-02 by 2.2.0. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
 
-## OM 2.2.0 minor release (ACCEPTED RELEASE / CURRENT CANONICAL NORMATIVE AUTHORITY)
+## OM 2.2.0 minor release (ACCEPTED RELEASE / HISTORICAL CANONICAL AUTHORITY, superseded by 2.3.0 on 2026-10-02)
 
 - tag: `om-v2.2.0` → `89de89d0935d61d5442bc8301d9c6c4f2cf7af87` (source candidate `om-v2.2.0-rc1` → `f0a8fa5b0c945a6ed684db67bbf21b6baf8328c1`);
 - scope: optional enforce mode of the Node.js runtime check, runtime map maintenance, pin reference finder, hosted conformance caller guidance;
@@ -73,13 +73,14 @@ Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-0
 - tag-bound validation: `37000769192 / SUCCESS`;
 - records: `OM_2.2_QUALIFICATION_PLAN.md`, `OM_2.2_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.2.0_RC1.md`, `RC1_QUALIFICATION_2.2.0.md`, `ACCEPTANCE_2.2.0.md`, `CANONICAL_ADOPTION_2.2.0.md`.
 
-Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
+Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-02 by 2.3.0. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
 
-## OM 2.3.0 minor release (promotion in progress, non-canonical)
+## OM 2.3.0 minor release (ACCEPTED RELEASE / CURRENT CANONICAL NORMATIVE AUTHORITY)
 
-- branch: `release/om-2.3` (MINOR, `2.3.0`), based on `om-v2.2.0`; source candidate: `om-v2.3.0-rc1` → `e70e97dddeab9a3a941b705c6b478a5e982d8472`;
+- tag: `om-v2.3.0` → `df716c43a8f19ef15ceb5b2bcc3237b393877c90` (source candidate `om-v2.3.0-rc1` → `e70e97dddeab9a3a941b705c6b478a5e982d8472`);
 - scope: CI efficiency portfolio rules (`platforms/github/CI_EFFICIENCY.md` rules 13-19), release playbook step 14, read-only `tools/ci_usage_report.py`;
-- records: `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.3.0_RC1.md`, `RC1_QUALIFICATION_2.3.0.md`;
-- the GA tag `om-v2.3.0` does not exist until created and read back; no acceptance, no adoption.
+- class: MINOR (backward compatible; conformance behavior unchanged from 2.2.0);
+- tag-bound validation: `37013239329 / SUCCESS`;
+- records: `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.3.0_RC1.md`, `RC1_QUALIFICATION_2.3.0.md`, `ACCEPTANCE_2.3.0.md`, `CANONICAL_ADOPTION_2.3.0.md`.
 
-Canonical authority remains `om-v2.2.0`.
+Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
