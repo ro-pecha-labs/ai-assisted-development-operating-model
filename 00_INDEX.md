@@ -52,3 +52,13 @@ Canonical adoption is prospective. Existing child projects are not migrated auto
 - record: `PATCH_2.1.2.md`.
 
 Canonical authority remains `om-v2.1.1`.
+
+## OM 2.1.3 patch (release target, not yet accepted)
+
+- release branch: `release/om-2.1` (from `om-v2.1.2`);
+- intended tag: `om-v2.1.3`;
+- scope: data-driven Node.js 24 runtime map for official actions (`tools/actions_runtime_map.json`), `UNJUDGED` reporting, non-blocking guard step in `project-state-conformance.yml`;
+- class: PATCH (tooling/CI only; conformance pass/fail and normative OM 2.1 behavior unchanged);
+- record: `PATCH_2.1.3.md`.
+
+Canonical authority remains `om-v2.1.2`.
