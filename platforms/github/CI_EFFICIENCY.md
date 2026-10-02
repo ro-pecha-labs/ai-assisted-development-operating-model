@@ -65,8 +65,8 @@ Before adopting a storage optimization, measure both execution savings and the n
 
 `tools/ci_usage_report.py` is read-only and never blocks:
 
-- `static <path>...` reports, per repository, automatic workflows without concurrency or `timeout-minutes`, automatic workflows that use Windows or macOS runners, workflows that trigger on both `pull_request` and `push`, and write-capable automatic workflows;
-- `usage` estimates minutes from job durations (each job rounded up to a whole minute, Windows x2, macOS x10) by workflow and by event. The result is an estimate for comparing periods, not an invoice.
+- `static <path>...` reports, per repository, automatic workflows without concurrency (write-capable workflows are excluded from this check and listed separately, rule 15) or `timeout-minutes`, automatic workflows that use Windows or macOS runners, workflows that trigger on both `pull_request` and `push`, and write-capable automatic workflows;
+- `usage` estimates minutes from job durations (each job rounded up to a whole minute, Windows x2, macOS x10) by workflow and by event. The result is an estimate for comparing periods, not an invoice. For large histories use `--since`, `--max-runs` and `--workers`.
 
 Small, frequent jobs matter: a 20-second job is counted as one minute, so very frequent cheap gates (for example governance conformance on every commit) can dominate usage.
 

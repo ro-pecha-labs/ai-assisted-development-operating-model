@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Offline stand-in for `gh api` used to qualify `usage --repo` (parallel fetch, --max-runs).
+endpoint="$2"
+case "$endpoint" in
+  *"/actions/runs?"*"page=1")
+    printf '1\tgate\tpull_request\tsuccess\t2026-10-01T10:00:00Z\n2\tgate\tpush\tfailure\t2026-10-01T11:00:00Z\n3\tgate\tpush\tsuccess\t2026-10-01T12:00:00Z\n' ;;
+  *"/actions/runs?"*) ;;
+  *"/actions/runs/1/jobs"*) printf '1\tgate\tubuntu-latest\t2026-10-01T10:00:05Z\t2026-10-01T10:00:35Z\n' ;;
+  *"/actions/runs/2/jobs"*) printf '2\tgate\twindows-latest\t2026-10-01T11:00:00Z\t2026-10-01T11:02:30Z\n' ;;
+  *"/actions/runs/3/jobs"*) printf '3\tgate\tubuntu-latest\t2026-10-01T12:00:00Z\t2026-10-01T12:05:00Z\n' ;;
+esac

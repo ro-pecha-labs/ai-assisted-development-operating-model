@@ -5,10 +5,12 @@ Usage:
   python tools/ci_usage_report.py static <path> [<path> ...]
   python tools/ci_usage_report.py usage --jobs-tsv <file> --runs-tsv <file>
   python tools/ci_usage_report.py usage --repo <owner/repo> [--since YYYY-MM-DD] [--max-pages N]
+                                        [--max-runs N] [--workers N]
 
 `static` scans workflow files (*.yml, *.yaml) and reports, per repository, how
 many workflows run automatically (pull_request, push, schedule) and how many of
-those lack `concurrency`, lack job `timeout-minutes`, use Windows or macOS
+those lack `concurrency` (write-capable workflows are excluded and reported
+separately, see CI_EFFICIENCY rule 15), lack job `timeout-minutes`, use Windows or macOS
 runners, trigger on both pull_request and push, or are write-capable. It always
 exits 0; findings are printed as `REPORT:` lines.
 
@@ -23,6 +25,7 @@ CLI (read-only API calls).
 
 import argparse
 import collections
+import concurrent.futures
 import math
 import re
 import subprocess
@@ -72,7 +75,11 @@ def static_report(paths):
             continue
         c["automatic"] += 1
         jobs = doc.get("jobs") or {}
-        if "concurrency" not in doc and not all("concurrency" in j for j in jobs.values()):
+        write_capable = "contents: write" in text
+        if write_capable:
+            c["automatic_write_capable"] += 1
+            print(f"REPORT: {f}: write-capable automatic workflow (concurrency not expected, CI_EFFICIENCY rule 15)")
+        elif "concurrency" not in doc and not all("concurrency" in j for j in jobs.values()):
             c["automatic_without_concurrency"] += 1
             print(f"REPORT: {f}: automatic workflow without concurrency")
         if not all(("timeout-minutes" in j) or ("uses" in j) for j in jobs.values()):
@@ -84,8 +91,6 @@ def static_report(paths):
         if "pull_request" in t and "push" in t:
             c["automatic_pr_and_push"] += 1
             print(f"REPORT: {f}: triggers on both pull_request and push")
-        if "contents: write" in text:
-            c["automatic_write_capable"] += 1
     print("REPORT: static summary " + ", ".join(f"{k}={v}" for k, v in sorted(c.items())))
     return 0
 
@@ -113,7 +118,7 @@ def gh_lines(args):
     return [l.split("\t") for l in out.stdout.splitlines() if l.strip()]
 
 
-def fetch(repo, since, max_pages):
+def fetch(repo, since, max_pages, max_runs=None, workers=8):
     runs = []
     for page in range(1, max_pages + 1):
         rows = gh_lines([f"repos/{repo}/actions/runs?per_page=100&page={page}", "--jq",
@@ -121,12 +126,17 @@ def fetch(repo, since, max_pages):
         if not rows:
             break
         runs += [r for r in rows if not since or r[4][:10] >= since]
-        if since and rows[-1][4][:10] < since:
+        if (since and rows[-1][4][:10] < since) or (max_runs and len(runs) >= max_runs):
             break
-    jobs = []
-    for r in runs:
-        jobs += gh_lines([f"repos/{repo}/actions/runs/{r[0]}/jobs?per_page=100&filter=all", "--jq",
-                          ".jobs[]|[.run_id,.name,(.labels|join(\",\")),.started_at,.completed_at]|@tsv"])
+    if max_runs:
+        runs = runs[:max_runs]
+
+    def run_jobs(r):
+        return gh_lines([f"repos/{repo}/actions/runs/{r[0]}/jobs?per_page=100&filter=all", "--jq",
+                         ".jobs[]|[.run_id,.name,(.labels|join(\",\")),.started_at,.completed_at]|@tsv"])
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+        jobs = [j for chunk in pool.map(run_jobs, runs) for j in chunk]
     return runs, jobs
 
 
@@ -160,6 +170,8 @@ def main(argv):
     u.add_argument("--repo")
     u.add_argument("--since")
     u.add_argument("--max-pages", type=int, default=40)
+    u.add_argument("--max-runs", type=int, help="stop after this many runs (newest first)")
+    u.add_argument("--workers", type=int, default=8, help="parallel job requests (default 8)")
     u.add_argument("--runs-tsv")
     u.add_argument("--jobs-tsv")
     a = ap.parse_args(argv)
@@ -168,7 +180,7 @@ def main(argv):
     if a.runs_tsv and a.jobs_tsv:
         return usage_report(read_tsv(a.runs_tsv), read_tsv(a.jobs_tsv))
     if a.repo:
-        runs, jobs = fetch(a.repo, a.since, a.max_pages)
+        runs, jobs = fetch(a.repo, a.since, a.max_pages, a.max_runs, a.workers)
         return usage_report(runs, jobs)
     ap.error("usage needs --repo or both --runs-tsv and --jobs-tsv")
 
