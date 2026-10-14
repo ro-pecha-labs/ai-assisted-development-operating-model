@@ -6,6 +6,7 @@ operating_model:
 
 entrypoints:
   core: CORE.md
+  common_rules: COMMON_RULES.md
 
 profiles:
   DEV: profiles/DEV.md
@@ -25,6 +26,7 @@ playbooks:
   adoption_migration: playbooks/ADOPTION_MIGRATION.md
   ai_development_loop: playbooks/AI_DEVELOPMENT_LOOP.md
   solo_assurance: playbooks/SOLO_ASSURANCE.md
+  ai_review_audit: playbooks/AI_REVIEW_AUDIT.md
 
 schemas:
   project: schemas/PROJECT.v2.schema.json
