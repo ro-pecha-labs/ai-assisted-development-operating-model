@@ -74,5 +74,5 @@ Out of scope for 2.4.0: validator without Python; a `governance.organization_rul
 
 ## Remaining before candidate readiness
 
-1. Candidate readiness record, identity promotion to `2.4.0-rc1`, README/index status for the candidate.
+1. ~~Candidate readiness record, identity promotion to `2.4.0-rc1`, README/index status for the candidate~~ — see `CANDIDATE_READINESS_2.4.0_RC1.md`.
 2. Immutable RC tag (owner) and RC qualification.
