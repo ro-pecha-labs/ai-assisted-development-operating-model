@@ -1,0 +1,33 @@
+#!/bin/sh
+# Example pre-commit hook (platforms/git_local). Enable per clone with:
+#   git config core.hooksPath .githooks
+# Bypassing it (--no-verify) requires explicit user approval.
+# The project sets CODE_PATHS, FORBIDDEN_FILES and the validator command.
+
+CODE_PATHS="src tools"
+FORBIDDEN_FILES='\.(csv|tsv|xlsx|xlsm|xls|ods|zip)$'
+ALLOWED_FIXTURES='(^|/)test/fixtures/'
+
+fail=0
+
+# 1. Temporary verification code must never be committed (e.g. a TEMP- marker).
+if git diff --cached -U0 --no-color -- $CODE_PATHS | grep -E '^\+' | grep -v '^+++' | grep -q 'TEMP-'; then
+  echo "[pre-commit] staged code contains a TEMP- marker" >&2
+  fail=1
+fi
+
+# 2. Data files (possible personal data): only synthetic fixtures may be committed.
+data=$(git diff --cached --name-only --diff-filter=ACMR | grep -iE "$FORBIDDEN_FILES" | grep -vE "$ALLOWED_FIXTURES")
+if [ -n "$data" ]; then
+  echo "[pre-commit] staged data files outside fixtures (possible personal data):" >&2
+  echo "$data" >&2
+  fail=1
+fi
+
+# 3. Project bootstrap must stay schema-conformant (validate the staged copy against the pinned OM revision).
+if git diff --cached --name-only | grep -q '^\.project/.*\.yaml$'; then
+  # Replace with the project's validator, e.g.: node .githooks/validate-project-state.js
+  echo "[pre-commit] .project/*.yaml staged: run the project bootstrap validator here" >&2
+fi
+
+exit $fail
