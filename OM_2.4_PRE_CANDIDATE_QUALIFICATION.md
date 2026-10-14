@@ -1,6 +1,6 @@
 # OM 2.4 — Pre-Candidate Qualification Status
 
-**Status:** PRE-CANDIDATE / Q0–Q5 AND Q7 PASS, Q6 PENDING (not passable with the origin project)  
+**Status:** PRE-CANDIDATE / Q0–Q7 PASS (Q6 by owner decision on non-independent real-project evidence) / READY FOR CANDIDATE-READINESS REVIEW (not passable with the origin project)  
 **Development head:** `e61a8aa8f5f1ffa224d8cd065d03412de7e5461c` (`release/om-2.4`)  
 **Date:** 2026-10-14
 
@@ -49,13 +49,17 @@ The example `pre-commit` hook originally only printed a notice for staged `.proj
 - Manual review of the claims against the profile texts: U4 refines DEV 20 (active state) and DEV 22 (handoff); D2.5 maps to DEV 8 (failed candidates); G compensates DEV 24 and 29; LIGHT 10 excludes transition packages at session end, consistent with D2 not applying to LIGHT; SOLUTION 6 and DOCUMENT 6 (validation/review) are complemented by U5; EXPERIMENT 3 and LIGHT 2 state the single-authority principle behind U4. The invariants listed in `COMMON_RULES.md` map to CORE 1 (authority), 6 (historical integrity), 11 (fail closed: authorization, target identity, mutation scope, destructive semantics) and DEV 7 (candidate identity).
 - **Finding (corrected):** `COMMON_RULES.md` D1 and the proposal stated that D1 "refines DEV 25". DEV 25 concerns AI-assisted implementation; DEV has no dependency rule. D1 is a new DEV rule, and the text now says so. The finding shows the value of the reference check, which is part of CI from this change on.
 
-## Q6 — Shadow pilot
+## Q6 — Representative real-project evidence
 
-**PENDING — not PASS.** A read-only shadow adoption in a real project is required by `OM_RELEASE_POLICY.md` for a MINOR whose behavior affects assurance and lifecycle.
+**PASS by owner decision, on non-independent real-project evidence, with the limits below.**
 
-CRA Business Mapping is the project from whose rules the Common Rules were derived, and, as the owner stated on 2026-10-14, work in it has already been performed under the new rules. A shadow adoption there would therefore not be independent evidence: the rules were fitted to that project, and the project's own work already follows them. It cannot be declared a PASS of Q6. Its experience is recorded as supporting, non-independent evidence only (the origin of the 14 project rules and of the observation that about half of them are general).
+`OM_RELEASE_POLICY.md` requires, for a MINOR whose behavior affects assurance or lifecycle, a "representative real-project or shadow pilot". The owner declared on 2026-10-14 that work in CRA Business Mapping (OM 2.3.0, DEV, solo) has already been performed under the Common Rules, and decided to take that as the Q6 evidence instead of a separate read-only shadow adoption.
 
-A valid pilot needs a project that did not contribute to the rules and whose work did not follow them. Intended method (as in 2.2 Q6): a draft pull request that is never merged, pinning the project to the exact `release/om-2.4` commit, replacing the project rules by the DEV template skeleton with its project-specific rules, and recording (a) what the project rules file shrinks to, (b) whether an adopted rule is lost, (c) which Common Rule needs an exception. Candidates available in this session's repository scope include AAE and the other portfolio projects; the choice is the owner's. Q6 cannot be executed or passed until a project is chosen.
+Limits of this evidence (not hidden, and not a gate):
+
+1. **Not independent.** CRA Business Mapping is the project from whose rules the Common Rules were derived. The evidence shows that the rules are workable for that project; it does not show that they fit a project that did not shape them.
+2. **Not read in this session.** No shadow adoption pull request was made, and the project's rules file, evidence and review records were not read here. The three observations a pilot would record — what the project rules file shrank to, whether an adopted rule was lost, which Common Rule needed an exception — are therefore not recorded in this document. The basis is the owner's statement.
+3. **Recommended follow-up (not part of the candidate gate):** adoption of OM 2.4.0 in a project that did not contribute to the rules (for example AAE) at its own safe boundary, with those three observations recorded in its adoption record.
 
 ## Q7 — Disposition of the proposal's open questions
 
@@ -70,6 +74,5 @@ Out of scope for 2.4.0: validator without Python; a `governance.organization_rul
 
 ## Remaining before candidate readiness
 
-1. Q6 pilot in a project that did not contribute to the rules (owner chooses the project).
-2. Candidate readiness record, identity promotion to `2.4.0-rc1`.
-3. Immutable RC tag (owner) and RC qualification.
+1. Candidate readiness record, identity promotion to `2.4.0-rc1`, README/index status for the candidate.
+2. Immutable RC tag (owner) and RC qualification.

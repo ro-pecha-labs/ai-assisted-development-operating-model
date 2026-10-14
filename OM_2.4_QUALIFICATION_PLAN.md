@@ -59,7 +59,7 @@ MINOR: backward-compatible. Projects pinned to an earlier OM revision are not af
 - **Q3** `git_local` fixtures (WP3).
 - **Q4** AI review and audit policy cases (WP4).
 - **Q5** negative controls of the new semantics: an exception that touches an invariant is not permitted by the documented rules; the layers table and the applicability table are consistent with the profiles.
-- **Q6** representative shadow pilot: read-only shadow adoption in a real project that did not contribute to the rules and whose work did not follow them (AAE or another portfolio project; the owner chooses), recording what the project rules file shrinks to, whether any adopted rule is lost and which Common Rule needs an exception. CRA Business Mapping, the origin project, is not independent evidence and cannot pass this step; its experience is recorded as supporting evidence only.
+- **Q6** representative real-project evidence or shadow pilot (`OM_RELEASE_POLICY.md`): taken from the real work already performed under the Common Rules in the origin project (CRA Business Mapping), by owner decision of 2026-10-14. The evidence is not independent (the rules were derived from that project) and is recorded with that limit; adoption in a project that did not contribute to the rules is a recommended follow-up, not a gate.
 - **Q7** disposition of the proposal's open questions in this plan.
 
 ## Release train
@@ -70,8 +70,7 @@ Candidate readiness `2.4.0-rc1` → merge → immutable RC tag (owner) → Relea
 
 - an unexpected normative diff between RC and GA;
 - a failed pre-candidate or RC qualification step: the failed candidate is preserved, a successor RC is created;
-- the pilot shows that adopting the Common Rules loses a project rule;
-- Q6 is claimed with a project that is not independent of the rules.
+- the real-project evidence or a later adoption shows that adopting the Common Rules loses a project rule.
 
 ## Out of scope
 
