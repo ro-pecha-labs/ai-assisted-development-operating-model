@@ -31,7 +31,7 @@ U3. **Outward and irreversible actions.** Commit, tag, push, merge, publishing, 
 
 U4. **Repository is the source of state.** Decisions, open points and approvals shall be recorded in the project's authoritative state in the session where they arise. An agent's own memory is only a helper; on conflict the repository wins. This refines DEV 20 and 22.
 
-U5. **AI review under solo assurance.** See `playbooks/AI_REVIEW_AUDIT.md`.
+U5. **AI review under solo assurance.** See `playbooks/AI_REVIEW_AUDIT.md`. It applies in two cases: `PROJECT.assurance.mode` is `solo` and the change is material or at an acceptance boundary; or the profile requires independent analytical review (for DEV, materially AI-delegated work under DEV 25 and the review step of `AI_DEVELOPMENT_LOOP.md`). A project without an `assurance` key can still fall under the second case.
 
 ## Section D: DEV
 

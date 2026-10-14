@@ -20,10 +20,23 @@ git config user.name qualification
 git config commit.gpgsign false
 git config tag.gpgsign false
 mkdir .githooks
-cp "$OM_ROOT/platforms/git_local/pre-commit.example" .githooks/pre-commit
-cp "$OM_ROOT/platforms/git_local/reference-transaction.example" .githooks/reference-transaction
-chmod +x .githooks/pre-commit .githooks/reference-transaction
+# The example hooks shall be committed executable: they are installed by copy (mode preserved) without chmod.
+expect_ok "example pre-commit is committed executable" test -x "$OM_ROOT/platforms/git_local/pre-commit.example"
+expect_ok "example reference-transaction is committed executable" test -x "$OM_ROOT/platforms/git_local/reference-transaction.example"
+cp -p "$OM_ROOT/platforms/git_local/pre-commit.example" .githooks/pre-commit
+cp -p "$OM_ROOT/platforms/git_local/reference-transaction.example" .githooks/reference-transaction
 git config core.hooksPath .githooks
+
+# A disposable clone of the OM checkout stands in for the adopted OM revision: the ref cases need refs that can be created.
+OM_SRC="$OM_ROOT"
+OM_ROOT="$W/om"
+pin="$(git -C "$OM_SRC" rev-parse HEAD)"
+git clone -q --no-checkout "$OM_SRC" "$OM_ROOT"
+git -C "$OM_ROOT" checkout -q --detach "$pin"
+git -C "$OM_ROOT" tag om-test
+git -C "$OM_ROOT" -c user.email=q@example.invalid -c user.name=qualification -c commit.gpgsign=false commit -q --allow-empty -m other
+git -C "$OM_ROOT" tag om-other
+git -C "$OM_ROOT" checkout -q --detach "$pin"
 export OM_ROOT PYTHON="$PY"
 
 echo base > README.md
@@ -59,7 +72,6 @@ git add test/fixtures/ok.csv
 expect_ok "synthetic fixture data file is accepted" git commit -q -m fixture
 
 # --- pre-commit: project bootstrap validated from the staged copy against the exact OM revision ---
-pin="$(git -C "$OM_ROOT" rev-parse HEAD)"
 mkdir -p .project
 cp "$OM_ROOT/qualification/project-conformance/valid/.project/"*.yaml .project/
 sed -i "s/ref: development/ref: om-test/; s/commit: '1111111111111111111111111111111111111111'/commit: '$pin'/" .project/PROJECT.yaml
@@ -71,6 +83,16 @@ git add .project/PROJECT.yaml
 expect_fail "staged ref/commit mismatch is rejected" git commit -q -m mismatch
 sed -i "s/commit: '2222222222222222222222222222222222222222'/commit: '$pin'/" .project/PROJECT.yaml
 expect_fail "working-tree fix does not mask the staged mismatch" git commit -q -m masked
+sed -i "s/ref: om-test/ref: om-missing/" .project/PROJECT.yaml
+git add .project/PROJECT.yaml
+expect_fail "staged ref that does not resolve in the OM checkout is rejected" git commit -q -m badref
+sed -i "s/ref: om-missing/ref: om-other/" .project/PROJECT.yaml
+git add .project/PROJECT.yaml
+expect_fail "staged ref that resolves to a different commit than the pin is rejected" git commit -q -m otherref
+sed -i "s/ref: om-other/ref: 'om-test typo'/" .project/PROJECT.yaml
+git add .project/PROJECT.yaml
+expect_fail "staged ref containing whitespace is checked as a whole and rejected" git commit -q -m spaceref
+sed -i "s/ref: 'om-test typo'/ref: om-test/" .project/PROJECT.yaml
 sed -i "s/name: Conformance Valid Fixture/name: Conformance Valid Fixture Renamed/" .project/PROJECT.yaml
 git add .project/PROJECT.yaml
 expect_ok "a conformant staged change of the bootstrap is accepted" git commit -q -m renamed

@@ -93,6 +93,12 @@ Accepted release: `2.4.0` (tag `om-v2.4.0` → `88466c2dc9a2033d623d1d9bb4ab7a57
 
 `OM.yaml` declares `2.4.0` (`accepted_release`); the normative bytes are those of `om-v2.4.0-rc1`. OM 2.4.0 is the current canonical authority (`CANONICAL_ADOPTION_2.4.0.md`). Projects re-pin at their own safe boundary.
 
+## OM 2.4.1 patch (promotion in progress, non-canonical)
+
+PATCH under `OM_RELEASE_POLICY.md` on `release/om-2.4`, based on `om-v2.4.0` (no release candidate; structural CI and targeted regression): the `git_local` example `reference-transaction` hook is committed executable; the example `pre-commit` hook rejects a declared OM `ref` that does not resolve to the pinned commit (`qualification/git-local/run_qualification.sh`, 22 checks); the DEV rules template skeleton no longer repeats the OM pin recorded in `PROJECT.yaml`; `COMMON_RULES.md` U5 states both triggers.
+
+`OM.yaml` declares `2.4.1` (`accepted_release`) as release-identity metadata only. OM 2.4.1 has no immutable GA tag until `om-v2.4.1` is created and read back, is not accepted until the tag-bound qualification passes, and is not canonical until explicit prospective adoption. Canonical authority remains `om-v2.4.0`.
+
 ## Project adoption boundary
 
 OM-level canonical adoption does not automatically migrate existing projects.

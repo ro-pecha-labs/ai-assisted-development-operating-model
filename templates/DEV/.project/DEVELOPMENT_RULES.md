@@ -7,7 +7,7 @@ This file specializes the adopted OM release. It does not repeat OM rules. On co
 
 ## Adopted common rules
 
-OM release: `<ref>` (`<commit>`), pinned in `PROJECT.yaml`. The Common Rules of that release (`COMMON_RULES.md`) apply in full, except for the exceptions below.
+OM release: the release pinned in `PROJECT.yaml` (`governance.operating_model`; `ref` and `commit` are recorded there only and not repeated here). The Common Rules of that release (`COMMON_RULES.md`) apply in full, except for the exceptions below.
 
 ## Organization rules
 
