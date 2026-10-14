@@ -24,10 +24,24 @@ if [ -n "$data" ]; then
   fail=1
 fi
 
-# 3. Project bootstrap must stay schema-conformant (validate the staged copy against the pinned OM revision).
+# 3. Project bootstrap must stay schema-conformant. The staged copy (not the working tree) is validated against the
+#    exact adopted OM revision checked out at OM_ROOT; a missing OM checkout or interpreter stops the commit (fail closed).
 if git diff --cached --name-only | grep -q '^\.project/.*\.yaml$'; then
-  # Replace with the project's validator, e.g.: node .githooks/validate-project-state.js
-  echo "[pre-commit] .project/*.yaml staged: run the project bootstrap validator here" >&2
+  OM_ROOT="${OM_ROOT:-.om}"
+  PYTHON="${PYTHON:-python3}"
+  if [ ! -f "$OM_ROOT/tools/validate_project_bootstrap.py" ] || ! command -v "$PYTHON" >/dev/null 2>&1; then
+    echo "[pre-commit] .project/*.yaml staged but the OM validator or interpreter is not available (OM_ROOT=$OM_ROOT)" >&2
+    fail=1
+  else
+    tmp=$(mktemp -d)
+    git checkout-index -a --prefix="$tmp/"
+    if ! "$PYTHON" "$OM_ROOT/tools/validate_project_bootstrap.py" "$tmp" --om-root "$OM_ROOT" >"$tmp.out" 2>&1; then
+      cat "$tmp.out" >&2
+      echo "[pre-commit] staged project bootstrap is not conformant" >&2
+      fail=1
+    fi
+    rm -rf "$tmp" "$tmp.out"
+  fi
 fi
 
 exit $fail
