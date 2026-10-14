@@ -35,7 +35,7 @@ U5. **AI review under solo assurance.** See `playbooks/AI_REVIEW_AUDIT.md`.
 
 ## Section D: DEV
 
-D1. **Dependencies.** Libraries shall be installed with locked versions and bundled with the product. A new dependency shall be justified (licence, version, known vulnerabilities). Runtime loading from a CDN or other uncontrolled source is an explicit exception. This refines DEV 25.
+D1. **Dependencies.** Libraries shall be installed with locked versions and bundled with the product. A new dependency shall be justified (licence, version, known vulnerabilities). Runtime loading from a CDN or other uncontrolled source is an explicit exception. DEV has no dependency rule today; this is a new DEV rule.
 
 D2. **Work unit lifecycle (may).** An optional convention for AI-delegated work in bounded units (a unit is a project-defined slice of work, e.g. a wave or milestone):
 

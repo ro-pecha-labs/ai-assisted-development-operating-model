@@ -37,6 +37,66 @@ def classify_ai_review(c):
     return "PASS"
 
 
+def check_common_rules_consistency():
+    """Q5: the layers/applicability tables of COMMON_RULES.md agree with the manifest, the profiles and the rule texts."""
+    import re
+    import yaml
+
+    text = (ROOT / "COMMON_RULES.md").read_text(encoding="utf-8")
+    manifest = yaml.safe_load((ROOT / "OM.yaml").read_text(encoding="utf-8"))
+    profiles = list(manifest["profiles"])
+    problems = []
+
+    defined = set(re.findall(r"^([UD]\d+)\. ", text, flags=re.MULTILINE))
+    table = text[text.index("## Profile applicability"):]
+    rows = [ln for ln in table.splitlines() if ln.startswith("|")]
+    header = [c.strip() for c in rows[0].strip("|").split("|")]
+    if header[1:] != profiles:
+        problems.append(f"applicability columns {header[1:]} differ from manifest profiles {profiles}")
+    listed = set()
+    for ln in rows[2:]:
+        cells = [c.strip() for c in ln.strip("|").split("|")]
+        if len(cells) != len(profiles) + 1:
+            problems.append(f"row has {len(cells)} cells: {ln}")
+            continue
+        for label in re.findall(r"[UDG]\d*", cells[0]):
+            listed.add(label)
+        if not all(re.match(r"(yes|no|optional|with|only)", v) for v in cells[1:]):
+            problems.append(f"unexpected cell value in row: {ln}")
+    for item in sorted(defined - listed):
+        problems.append(f"{item} is defined but missing in the applicability table")
+    for item in sorted(listed - defined - {"G"}):
+        problems.append(f"{item} is in the applicability table but not defined")
+    if "## Section G" not in text:
+        problems.append("section G missing")
+
+    dev = (ROOT / "profiles/DEV.md").read_text(encoding="utf-8")
+    dev_max = max(int(n) for n in re.findall(r"^(\d+)\. \*\*", dev, flags=re.MULTILINE))
+    for doc in ("COMMON_RULES.md", "playbooks/AI_REVIEW_AUDIT.md", "platforms/git_local/README.md"):
+        body = (ROOT / doc).read_text(encoding="utf-8")
+        for n in re.findall(r"\bDEV (\d+)\b", body):
+            if not 1 <= int(n) <= dev_max:
+                problems.append(f"{doc}: DEV {n} does not exist (DEV has {dev_max} rules)")
+
+    contract = {
+        "CORE.md": ("invariant", "exception"),
+        "profiles/DEV.md": ("invariant", "exception"),
+        "COMMON_RULES.md": ("invariant", "exception"),
+        "templates/DEV/.project/DEVELOPMENT_RULES.md": ("invariant", "exception"),
+    }
+    for doc, words in contract.items():
+        body = (ROOT / doc).read_text(encoding="utf-8").lower()
+        for w in words:
+            if w not in body:
+                problems.append(f"{doc} does not mention '{w}'")
+
+    for p in problems:
+        print(f"FAIL: common rules consistency: {p}")
+    if not problems:
+        print(f"PASS: common rules consistency ({len(defined)} rules, {len(profiles)} profiles, DEV references within 1-{dev_max})")
+    return bool(problems)
+
+
 def run(path, schema, fn):
     doc = load(path)
     if doc.get("schema") != schema:
@@ -51,6 +111,7 @@ def run(path, schema, fn):
 
 
 failed = run("qualification/om2.4/ai_review_audit_cases.json", "om24.ai-review-audit-cases/v1", classify_ai_review)
+failed |= check_common_rules_consistency()
 
 if failed:
     sys.exit(1)
