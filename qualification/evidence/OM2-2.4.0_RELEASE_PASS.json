@@ -1,0 +1,20 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.4.0-RELEASE",
+  "kind": "release",
+  "subject": {
+    "identity": "OM2-2.4.0",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.4.0",
+    "revision": {
+      "kind": "git_commit",
+      "value": "88466c2dc9a2033d623d1d9bb4ab7a57aebd3445"
+    }
+  },
+  "outcome": "PASS",
+  "execution": {
+    "provider": "github",
+    "run_id": "38550361745",
+    "run_url": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/actions/runs/38550361745"
+  },
+  "summary": "GA release PASS. Annotated tag om-v2.4.0 (tag object 78d5ead481ea06bc0f0613a454eb282d092d40f1, unsigned) was read back from the remote and resolves to exact commit 88466c2dc9a2033d623d1d9bb4ab7a57aebd3445 (squash merge of PR #70 into release/om-2.4). Tag-triggered Validate OM2 run 38550361745 (event push, ref om-v2.4.0, head SHA 88466c2) completed SUCCESS. Compare gate against om-v2.4.0-rc1 (9ec7f6a8584b04e6d3483ceb5e7c875be7cf66a8): only OM.yaml, README.md, 00_INDEX.md, RC1_QUALIFICATION_2.4.0.md and qualification/evidence/OM2-2.4.0-RC1_FREEZE_PASS.json differ; no normative file changed. All 16 validate.yml run steps were executed locally on the tag (15 executed steps exit 0; dependency installation not re-executed). GitHub Release OM 2.4.0 is published (not a pre-release, Latest). Individual ruleset clauses were not verified in this record. Canonical authority remains om-v2.3.0."
+}

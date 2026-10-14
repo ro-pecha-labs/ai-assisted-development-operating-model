@@ -1,0 +1,47 @@
+#!/bin/sh
+# Example pre-commit hook (platforms/git_local). Enable per clone with:
+#   git config core.hooksPath .githooks
+# Bypassing it (--no-verify) requires explicit user approval.
+# The project sets CODE_PATHS, FORBIDDEN_FILES and the validator command.
+
+CODE_PATHS="src tools"
+FORBIDDEN_FILES='\.(csv|tsv|xlsx|xlsm|xls|ods|zip)$'
+ALLOWED_FIXTURES='(^|/)test/fixtures/'
+
+fail=0
+
+# 1. Temporary verification code must never be committed (e.g. a TEMP- marker).
+if git diff --cached -U0 --no-color -- $CODE_PATHS | grep -E '^\+' | grep -v '^+++' | grep -q 'TEMP-'; then
+  echo "[pre-commit] staged code contains a TEMP- marker" >&2
+  fail=1
+fi
+
+# 2. Data files (possible personal data): only synthetic fixtures may be committed.
+data=$(git diff --cached --name-only --diff-filter=ACMR | grep -iE "$FORBIDDEN_FILES" | grep -vE "$ALLOWED_FIXTURES")
+if [ -n "$data" ]; then
+  echo "[pre-commit] staged data files outside fixtures (possible personal data):" >&2
+  echo "$data" >&2
+  fail=1
+fi
+
+# 3. Project bootstrap must stay schema-conformant. The staged copy (not the working tree) is validated against the
+#    exact adopted OM revision checked out at OM_ROOT; a missing OM checkout or interpreter stops the commit (fail closed).
+if git diff --cached --name-only | grep -q '^\.project/.*\.yaml$'; then
+  OM_ROOT="${OM_ROOT:-.om}"
+  PYTHON="${PYTHON:-python3}"
+  if [ ! -f "$OM_ROOT/tools/validate_project_bootstrap.py" ] || ! command -v "$PYTHON" >/dev/null 2>&1; then
+    echo "[pre-commit] .project/*.yaml staged but the OM validator or interpreter is not available (OM_ROOT=$OM_ROOT)" >&2
+    fail=1
+  else
+    tmp=$(mktemp -d)
+    git checkout-index -a --prefix="$tmp/"
+    if ! "$PYTHON" "$OM_ROOT/tools/validate_project_bootstrap.py" "$tmp" --om-root "$OM_ROOT" >"$tmp.out" 2>&1; then
+      cat "$tmp.out" >&2
+      echo "[pre-commit] staged project bootstrap is not conformant" >&2
+      fail=1
+    fi
+    rm -rf "$tmp" "$tmp.out"
+  fi
+fi
+
+exit $fail

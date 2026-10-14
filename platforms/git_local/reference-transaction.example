@@ -1,0 +1,31 @@
+#!/bin/sh
+# Example reference-transaction hook (platforms/git_local): accepted tags matching ACCEPTED_TAG_PATTERN
+# may be created once but never moved or deleted. Set the pattern for the project.
+# Input lines: <old-oid> <new-oid> <ref-name>; a non-zero exit in state "prepared" aborts the transaction.
+# The old-oid may be zero when the caller does not pin it (e.g. git tag -f), so the current value is read instead.
+
+ACCEPTED_TAG_PATTERN='refs/tags/*-pass'
+
+[ "$1" = "prepared" ] || exit 0
+
+zero=0000000000000000000000000000000000000000
+status=0
+while read -r old new ref; do
+  case "$ref" in
+    $ACCEPTED_TAG_PATTERN) ;;
+    *) continue ;;
+  esac
+  current=$(git rev-parse -q --verify "$ref" 2>/dev/null)
+  # Creation (no current value) and no-op rewrites are allowed.
+  if [ -z "$current" ] || [ "$current" = "$new" ]; then
+    continue
+  fi
+  # git pack-refs / gc: the loose ref is pruned after the same value was written to packed-refs.
+  if [ "$new" = "$zero" ] && [ -f "$(git rev-parse --git-path "$ref")" ] &&
+    grep -qx "$current $ref" "$(git rev-parse --git-path packed-refs)" 2>/dev/null; then
+    continue
+  fi
+  echo "[reference-transaction] refusing to move or delete accepted tag ${ref#refs/tags/} ($current -> $new)" >&2
+  status=1
+done
+exit $status

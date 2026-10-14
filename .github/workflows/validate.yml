@@ -38,6 +38,11 @@ jobs:
           --expected qualification/recovery/expected-solo.json
       - name: Qualify OM 2.1 policy semantics
         run: python tools/qualify_om21.py
+      - name: Qualify OM 2.4 AI review and audit policy semantics
+        run: python tools/qualify_om24.py
+      - name: Qualify git_local example hooks
+        shell: bash
+        run: bash qualification/git-local/run_qualification.sh
       - name: Qualify release identity pin guard
         shell: bash
         run: |
