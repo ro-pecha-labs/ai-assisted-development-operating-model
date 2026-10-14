@@ -94,3 +94,11 @@ Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-1
 - records: `OM_2.4_QUALIFICATION_PLAN.md`, `OM_2.4_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.4.0_RC1.md`, `RC1_QUALIFICATION_2.4.0.md`, `ACCEPTANCE_2.4.0.md`, `CANONICAL_ADOPTION_2.4.0.md`, `OM_COMMON_RULES_PROPOSAL.md`.
 
 Canonical adoption is prospective from 2026-10-14. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
+
+## OM 2.4.1 patch (promotion in progress, non-canonical)
+
+- branch: `release/om-2.4` (PATCH, `2.4.1`), based on `om-v2.4.0` (`88466c2dc9a2033d623d1d9bb4ab7a57aebd3445`); no release candidate;
+- scope: `git_local` hook fixes (executable mode, `ref` resolves to the pinned commit), DEV rules template skeleton pin, `COMMON_RULES.md` U5 triggers;
+- the GA tag `om-v2.4.1` does not exist until created and read back; no acceptance, no adoption.
+
+Canonical authority remains `om-v2.4.0`.
