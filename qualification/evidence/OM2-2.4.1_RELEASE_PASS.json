@@ -1,0 +1,20 @@
+{
+  "schema": "om.evidence/v2",
+  "id": "OM2-2.4.1-RELEASE",
+  "kind": "release",
+  "subject": {
+    "identity": "OM2-2.4.1",
+    "locator": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/releases/tag/om-v2.4.1",
+    "revision": {
+      "kind": "git_commit",
+      "value": "46deca26c3fb880fb5dc25e75d5d2b87bafd0c72"
+    }
+  },
+  "outcome": "PASS",
+  "execution": {
+    "provider": "github",
+    "run_id": "38556301549",
+    "run_url": "https://github.com/ro-pecha-labs/ai-assisted-development-operating-model/actions/runs/38556301549"
+  },
+  "summary": "GA release PASS (PATCH, no release candidate). Annotated tag om-v2.4.1 (tag object 0eaee4d1fc4f2322c2bc4127095b7c47d1b2a73f, unsigned) was read back from the remote and resolves to exact commit 46deca26c3fb880fb5dc25e75d5d2b87bafd0c72 (merge of PR #75 into release/om-2.4). Tag-triggered Validate OM2 run 38556301549 (event push, ref om-v2.4.1, head SHA 46deca2) completed SUCCESS. Normative delta against om-v2.4.0: COMMON_RULES.md, platforms/git_local/pre-commit.example, platforms/git_local/reference-transaction.example (mode only), qualification/git-local/run_qualification.sh, templates/DEV/.project/DEVELOPMENT_RULES.md and the OM.yaml identity; no schema, validator, workflow or conformance tool differs. git_local qualification 22 checks PASS; the two new ref cases and the executable-mode checks FAIL against the om-v2.4.0 hook. All 16 validate.yml run steps were executed locally on the tag (15 executed steps exit 0; dependency installation not re-executed). GitHub Release OM 2.4.1 is published (not a pre-release, Latest). Individual ruleset clauses were not verified in this record. Canonical authority remains om-v2.4.0."
+}
