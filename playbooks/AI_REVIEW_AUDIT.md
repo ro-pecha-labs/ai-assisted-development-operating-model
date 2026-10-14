@@ -1,6 +1,5 @@
 # Playbook — AI Review and Audit
 
-**Status:** DEVELOPMENT CANDIDATE / NON-CANONICAL (not yet registered in `OM.yaml`)
 **Trigger:** `PROJECT.assurance.mode: solo` and a material change or acceptance boundary; or any profile that requires independent analytical review.
 
 This playbook operationalizes SOLO_ASSURANCE 4–5 and AI_DEVELOPMENT_LOOP 6.

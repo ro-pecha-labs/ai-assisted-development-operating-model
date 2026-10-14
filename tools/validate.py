@@ -47,7 +47,7 @@ EXPECTED_PROFILES = {"DEV", "SOLUTION", "DOCUMENT", "EXPERIMENT", "LIGHT"}
 EXPECTED_PLAYBOOKS = {
     "recovery", "initialize", "failure_diagnosis", "candidate_release",
     "connected_mutation", "external_source_mismatch", "exceptional_handoff",
-    "adoption_migration", "ai_development_loop", "solo_assurance",
+    "adoption_migration", "ai_development_loop", "solo_assurance", "ai_review_audit",
 }
 EXPECTED_CURRENT_SCHEMAS = {
     "project": "schemas/PROJECT.v2.schema.json",
@@ -73,6 +73,8 @@ NORMATIVE_COMPONENTS_WITHOUT_LOCAL_RELEASE_STATUS = [
     "playbooks/ADOPTION_MIGRATION.md",
     "playbooks/AI_DEVELOPMENT_LOOP.md",
     "playbooks/SOLO_ASSURANCE.md",
+    "playbooks/AI_REVIEW_AUDIT.md",
+    "COMMON_RULES.md",
 ]
 
 def load(path):
@@ -110,6 +112,12 @@ if not core or not (ROOT / core).is_file():
     failed |= fail(f"missing CORE entrypoint: {core}")
 else:
     print(f"PASS: CORE entrypoint exists: {core}")
+
+common_rules = (manifest.get("entrypoints") or {}).get("common_rules")
+if not common_rules or not (ROOT / common_rules).is_file():
+    failed |= fail(f"missing COMMON_RULES entrypoint: {common_rules}")
+else:
+    print(f"PASS: COMMON_RULES entrypoint exists: {common_rules}")
 
 profiles = manifest.get("profiles") or {}
 if set(profiles) != EXPECTED_PROFILES:

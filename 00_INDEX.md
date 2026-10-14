@@ -84,3 +84,12 @@ Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-0
 - records: `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.3.0_RC1.md`, `RC1_QUALIFICATION_2.3.0.md`, `ACCEPTANCE_2.3.0.md`, `CANONICAL_ADOPTION_2.3.0.md`.
 
 Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
+
+## OM 2.4 development line (non-canonical)
+
+- development branch: `release/om-2.4` (MINOR, target `2.4.0`);
+- scope: common project rules layer, AI review and audit playbook, `git_local` platform, DEV rules template skeleton;
+- records: `OM_2.4_QUALIFICATION_PLAN.md`, `OM_COMMON_RULES_PROPOSAL.md`;
+- no candidate, tag or release exists.
+
+Canonical authority remains `om-v2.3.0`.

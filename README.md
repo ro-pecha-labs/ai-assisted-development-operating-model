@@ -87,6 +87,10 @@ MINOR under `OM_RELEASE_POLICY.md`: CI efficiency portfolio rules for GitHub-hos
 
 OM 2.3.0 is the current canonical authority (`CANONICAL_ADOPTION_2.3.0.md`). Projects re-pin at their own safe boundary.
 
+## OM 2.4 development line (non-canonical)
+
+Development line (target `2.4.0`, MINOR): a common project rules layer (`COMMON_RULES.md`), the AI review and audit playbook, the `git_local` platform and a DEV rules template skeleton. Plan: `OM_2.4_QUALIFICATION_PLAN.md`; rationale: `OM_COMMON_RULES_PROPOSAL.md`. No candidate, tag or release exists. `OM.yaml` keeps the identity `2.3.0` until candidate readiness. Canonical authority remains `om-v2.3.0`.
+
 ## Project adoption boundary
 
 OM-level canonical adoption does not automatically migrate existing projects.

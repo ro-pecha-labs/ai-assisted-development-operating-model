@@ -1,9 +1,5 @@
 # OM Common Rules
 
-**Status:** DEVELOPMENT CANDIDATE / NON-CANONICAL
-**Target:** next OM minor release (number assigned by the OM owner)
-**Rationale:** `OM_COMMON_RULES_PROPOSAL.md` (origin: CRA Business Mapping project rules)
-
 Common Rules are a baseline that every project adopting the exact OM revision inherits. They specialize CORE and the profiles; they do not replace them. A project adds only what is specific to it in its project rules file (`governance.project_rules`).
 
 ## Layers and precedence
@@ -66,7 +62,6 @@ See `platforms/git_local/README.md`. Applies to Git-native projects whose platfo
 
 LIGHT 10 does not want transition packages when a session ends, so D2 does not apply to LIGHT.
 
-## Open points
+## Organization layer and schema
 
-- Whether Common Rules are mandatory for DEV (recommended: yes, with a justified exception) is a decision of the OM owner.
-- A field for the organization layer in `PROJECT.v2` (`governance.organization_rules`) would change the schema; until then the organization layer is referenced from the project rules file.
+`om.project/v2` has no field for the organization layer. Until a later MINOR release adds one, the project rules file (`governance.project_rules`, which may be a URI) references the organization layer by a pinned revision. Adopting Common Rules needs no `PROJECT.yaml` change beyond pinning the OM release.

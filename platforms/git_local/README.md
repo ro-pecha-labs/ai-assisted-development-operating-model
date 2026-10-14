@@ -1,7 +1,5 @@
 # Platform: `git_local` (compensation without platform enforcement)
 
-**Status:** DEVELOPMENT CANDIDATE / NON-CANONICAL
-
 For Git-native projects whose control plane is a local repository or any Git host that cannot enforce protected refs and required checks (`control_plane.platform: git_other`). These controls compensate for DEV 24 and 29 until native enforcement exists, and shall be recorded in the project rules as compensation.
 
 ## Controls
