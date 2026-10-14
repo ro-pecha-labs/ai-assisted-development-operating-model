@@ -38,7 +38,7 @@ Numbering = the rules in the adopting project's `DEVELOPMENT_RULES.md`.
 | 7 | Personal data: not in the repository, documents, evidence, tests or external services; the agent works with identifiers, counts and pseudonyms; fixtures are synthetic | general baseline in OM Common Rules | no organization specifics (data protection officer, named files); the organization may tighten |
 | 8 | Secrets: no credentials or tokens in source, documents or commits | general baseline in OM Common Rules | the secret store and the leak procedure are set by the organization |
 | 13 | Git: commit, tag and push after user approval; push only to an approved host | general baseline in OM Common Rules | commit message language and the concrete host are set by the organization or project |
-| 9 | Dependencies: locked versions, justification for new ones | refinement of DEV 25 | a ban on CDN loading stays project-specific |
+| 9 | Dependencies: locked versions, justification for new ones | new DEV rule (DEV has no dependency rule; DEV 25 concerns AI-assisted implementation) | a ban on CDN loading stays project-specific |
 | 11 | A failed unit is not overwritten | no OM change | already covered by DEV 8; map the pattern to DEV 8 |
 
 ### 3.1 AI review and audit playbook
