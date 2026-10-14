@@ -1,9 +1,9 @@
 # Operating Model 2.1 Canonical Index
 
-**Version:** `2.2.0`  
+**Version:** `2.4.0`  
 **Status:** CURRENT CANONICAL OPERATING MODEL  
-**Canonical tag:** `om-v2.2.0`  
-**Exact canonical commit:** `89de89d0935d61d5442bc8301d9c6c4f2cf7af87`
+**Canonical tag:** `om-v2.4.0`  
+**Exact canonical commit:** `88466c2dc9a2033d623d1d9bb4ab7a57aebd3445`
 
 ## Canonical entrypoints
 
@@ -15,7 +15,7 @@
 - DEV templates: `templates/DEV/`
 - Validator: `tools/validate.py`
 
-The immutable release tag `om-v2.2.0` is the current normative authority. Post-release development and evidence on `main` do not mutate the canonical release bytes.
+The immutable release tag `om-v2.4.0` is the current normative authority. Post-release development and evidence on `main` do not mutate the canonical release bytes.
 
 ## OM 2.1 lineage
 
@@ -75,7 +75,7 @@ Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-0
 
 Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-02 by 2.3.0. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
 
-## OM 2.3.0 minor release (ACCEPTED RELEASE / CURRENT CANONICAL NORMATIVE AUTHORITY)
+## OM 2.3.0 minor release (ACCEPTED RELEASE / HISTORICAL CANONICAL AUTHORITY, superseded by 2.4.0 on 2026-10-14)
 
 - tag: `om-v2.3.0` → `df716c43a8f19ef15ceb5b2bcc3237b393877c90` (source candidate `om-v2.3.0-rc1` → `e70e97dddeab9a3a941b705c6b478a5e982d8472`);
 - scope: CI efficiency portfolio rules (`platforms/github/CI_EFFICIENCY.md` rules 13-19), release playbook step 14, read-only `tools/ci_usage_report.py`;
@@ -83,13 +83,14 @@ Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-0
 - tag-bound validation: `37013239329 / SUCCESS`;
 - records: `OM_2.3_CI_EFFICIENCY_PROPOSAL.md`, `OM_2.3_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.3.0_RC1.md`, `RC1_QUALIFICATION_2.3.0.md`, `ACCEPTANCE_2.3.0.md`, `CANONICAL_ADOPTION_2.3.0.md`.
 
-Canonical adoption is prospective from 2026-10-02. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
+Canonical adoption was prospective from 2026-10-02 until superseded on 2026-10-14 by 2.4.0. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
 
-## OM 2.4.0 minor release (promotion in progress, non-canonical)
+## OM 2.4.0 minor release (ACCEPTED RELEASE / CURRENT CANONICAL NORMATIVE AUTHORITY)
 
-- branch: `release/om-2.4` (MINOR, `2.4.0`); source candidate: `om-v2.4.0-rc1` → `9ec7f6a8584b04e6d3483ceb5e7c875be7cf66a8`;
-- scope: common project rules layer, AI review and audit playbook, `git_local` platform, DEV rules template skeleton;
-- records: `OM_2.4_QUALIFICATION_PLAN.md`, `OM_2.4_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.4.0_RC1.md`, `RC1_QUALIFICATION_2.4.0.md`, `OM_COMMON_RULES_PROPOSAL.md`;
-- the GA tag `om-v2.4.0` does not exist until created and read back; no acceptance, no adoption.
+- tag: `om-v2.4.0` → `88466c2dc9a2033d623d1d9bb4ab7a57aebd3445` (source candidate `om-v2.4.0-rc1` → `9ec7f6a8584b04e6d3483ceb5e7c875be7cf66a8`);
+- scope: common project rules layer (`COMMON_RULES.md`; CORE rule 17, DEV rule 30), AI review and audit playbook, `git_local` platform, DEV rules template skeleton;
+- class: MINOR (backward compatible; project-state conformance behavior unchanged from 2.3.0);
+- tag-bound validation: `38550361745 / SUCCESS`;
+- records: `OM_2.4_QUALIFICATION_PLAN.md`, `OM_2.4_PRE_CANDIDATE_QUALIFICATION.md`, `CANDIDATE_READINESS_2.4.0_RC1.md`, `RC1_QUALIFICATION_2.4.0.md`, `ACCEPTANCE_2.4.0.md`, `CANONICAL_ADOPTION_2.4.0.md`, `OM_COMMON_RULES_PROPOSAL.md`.
 
-Canonical authority remains `om-v2.3.0`.
+Canonical adoption is prospective from 2026-10-14. Existing child projects are not migrated automatically and retain their project-recorded OM pins until separate safe-boundary adoption.
