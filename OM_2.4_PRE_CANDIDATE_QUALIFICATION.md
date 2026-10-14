@@ -8,7 +8,7 @@
 
 Development target: `2.4.0 — Common Project Rules` (MINOR). Plan: `OM_2.4_QUALIFICATION_PLAN.md`; rationale: `OM_COMMON_RULES_PROPOSAL.md`.
 
-Current canonical authority remains `om-v2.3.0`. This record does not freeze a candidate, does not make OM 2.4 canonical and does not adopt it in any child project. `OM.yaml` still declares `2.3.0`; the identity is promoted at candidate readiness (`2.4.0-rc1`).
+Current canonical authority remains `om-v2.3.0`. This record does not freeze a candidate, does not make OM 2.4 canonical and does not adopt it in any child project. During the pre-candidate qualification below, `OM.yaml` declared `2.3.0`. The identity was promoted to `2.4.0-rc1` (`non_canonical_candidate`) by the candidate readiness change (`CANDIDATE_READINESS_2.4.0_RC1.md`); the qualification evidence below refers to the state before that change.
 
 ## Work packages (merged into `release/om-2.4`)
 
@@ -74,5 +74,5 @@ Out of scope for 2.4.0: validator without Python; a `governance.organization_rul
 
 ## Remaining before candidate readiness
 
-1. Candidate readiness record, identity promotion to `2.4.0-rc1`, README/index status for the candidate.
+1. ~~Candidate readiness record, identity promotion to `2.4.0-rc1`, README/index status for the candidate~~ — see `CANDIDATE_READINESS_2.4.0_RC1.md`.
 2. Immutable RC tag (owner) and RC qualification.
