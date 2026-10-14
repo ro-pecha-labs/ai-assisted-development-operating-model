@@ -89,7 +89,10 @@ expect_fail "staged ref that does not resolve in the OM checkout is rejected" gi
 sed -i "s/ref: om-missing/ref: om-other/" .project/PROJECT.yaml
 git add .project/PROJECT.yaml
 expect_fail "staged ref that resolves to a different commit than the pin is rejected" git commit -q -m otherref
-sed -i "s/ref: om-other/ref: om-test/" .project/PROJECT.yaml
+sed -i "s/ref: om-other/ref: 'om-test typo'/" .project/PROJECT.yaml
+git add .project/PROJECT.yaml
+expect_fail "staged ref containing whitespace is checked as a whole and rejected" git commit -q -m spaceref
+sed -i "s/ref: 'om-test typo'/ref: om-test/" .project/PROJECT.yaml
 sed -i "s/name: Conformance Valid Fixture/name: Conformance Valid Fixture Renamed/" .project/PROJECT.yaml
 git add .project/PROJECT.yaml
 expect_ok "a conformant staged change of the bootstrap is accepted" git commit -q -m renamed

@@ -41,9 +41,9 @@ if git diff --cached --name-only | grep -q '^\.project/.*\.yaml$'; then
       fail=1
     else
       # The validator compares only the commit; the declared ref shall resolve to the pinned commit (fail closed).
-      binding=$("$PYTHON" -c 'import sys, yaml; b = yaml.safe_load(open(sys.argv[1]))["governance"]["operating_model"]; print(b["ref"], b["commit"])' "$tmp/.project/PROJECT.yaml" 2>/dev/null)
-      ref=${binding%% *}
-      pinned=${binding##* }
+      py_get='import sys, yaml; print(yaml.safe_load(open(sys.argv[1]))["governance"]["operating_model"][sys.argv[2]])'
+      ref=$("$PYTHON" -c "$py_get" "$tmp/.project/PROJECT.yaml" ref 2>/dev/null)
+      pinned=$("$PYTHON" -c "$py_get" "$tmp/.project/PROJECT.yaml" commit 2>/dev/null)
       resolved=$(git -C "$OM_ROOT" rev-parse -q --verify "$ref^{commit}" 2>/dev/null)
       if [ -z "$ref" ] || [ -z "$resolved" ] || [ "$resolved" != "$pinned" ]; then
         echo "[pre-commit] OM ref '$ref' does not resolve to the pinned commit $pinned (resolved: ${resolved:-none})" >&2
